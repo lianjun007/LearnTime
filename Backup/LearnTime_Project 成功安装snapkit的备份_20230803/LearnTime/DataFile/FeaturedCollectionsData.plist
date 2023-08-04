@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>imageName</key>
+		<string>FC0</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>HTML5和CSS3</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC1</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>iOS开发基础</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC2</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>JavaScript基础</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC3</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>swift基础语法</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC4</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>UI设计规范</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC5</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>数据库mySQL</string>
+	</dict>
+	<dict>
+		<key>imageName</key>
+		<string>FC6</string>
+		<key>author</key>
+		<string>LianJun</string>
+		<key>title</key>
+		<string>计算机硬件基础</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,3523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>collections</key>
+	<dict>
+		<key>1</key>
+		<dict>
+			<key>title</key>
+			<string>Swift基础</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC1</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
+		</dict>
+		<key>2</key>
+		<dict>
+			<key>title</key>
+			<string>iOS开发基础</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC2</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+			</array>
+		</dict>
+		<key>3</key>
+		<dict>
+			<key>title</key>
+			<string>JavaScript基础</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC3</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>4</integer>
+				<integer>9</integer>
+				<integer>7</integer>
+			</array>
+		</dict>
+		<key>4</key>
+		<dict>
+			<key>title</key>
+			<string>UI设计规范</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC4</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>7</integer>
+			</array>
+		</dict>
+		<key>5</key>
+		<dict>
+			<key>title</key>
+			<string>数据库mySQL</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC5</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>5</integer>
+				<integer>7</integer>
+				<integer>4</integer>
+			</array>
+		</dict>
+		<key>6</key>
+		<dict>
+			<key>title</key>
+			<string>计算机硬件基础</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC6</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>11</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+			</array>
+		</dict>
+		<key>7</key>
+		<dict>
+			<key>title</key>
+			<string>swift基础语法</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC7</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>11</integer>
+				<integer>6</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<key>8</key>
+		<dict>
+			<key>title</key>
+			<string>Swift基础1</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC8</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>11</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+			</array>
+		</dict>
+		<key>9</key>
+		<dict>
+			<key>title</key>
+			<string>Swift基础2</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC9</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>11</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+			</array>
+		</dict>
+		<key>10</key>
+		<dict>
+			<key>title</key>
+			<string>Swift基础3</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC10</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>11</integer>
+				<integer>3</integer>
+				<integer>6</integer>
+			</array>
+		</dict>
+		<key>11</key>
+		<dict>
+			<key>title</key>
+			<string>跟我学Swift5.2</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC0</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>essays</key>
+			<array>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+			</array>
+		</dict>
+	</dict>
+	<key>essay</key>
+	<dict>
+		<key>1</key>
+		<dict>
+			<key>title</key>
+			<string>1、入门介绍</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC2</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>简介</string>
+				<string>text</string>
+				<string>Swift语言由Apple公司在2014年推出，主要用于开发iOS/iPadOS/macOS应用程序。
+发布于 Apple WWDC 2014。
+作者：Chris Lattner
+LLVM 项目的主要发起人与作者之一
+Clang 编译器的作者
+领导 Xcode、Instruments 等编译器团队
+Swift 的大部分基础架构由他完成
+已从 Apple 离职</string>
+				<string>title2</string>
+				<string>历史</string>
+				<string>text</string>
+				<string>时间	事件
+2010年7月	开始 Swift 编程语言的设计工作
+2014年6月	Swift 1.0 提出
+2014年9月	Swift 1.0 发布
+2014年10月	Swift 1.1 发布
+2015年4月	Swift 1.2 发布
+2015年9月	Swift 2.0 发布
+2015年12月	Apple 宣布 Swift 开放源代码
+2016年9月	Swift 3.0 发布
+2017年9月	Swift 4.0 发布
+2018年3月	Swift 4.1 发布
+2018年9月	Swift 4.2 发布
+2019年3月	Swift 5 发布
+2019年9月	Swift 5.1 发布
+2020年3月	Swift 5.2 发布</string>
+				<string>text</string>
+				<string>随着 Swift 5 发布，Swift 迎来了ABI（Application Binary Interface）稳定，未来版本将与 Swift 5 二进制兼容。Swift 5 与 Swift 4.2 兼容，但与早期的 Swift 版本不兼容。Swift 5.1 版本后，我们可以用不同 Swift 支持的第三方框架，最终编译成同一个 APP，这是成熟语言的标志，只有这样才能让不同的框架和代码为你所用，大家使用时也不会有那么多的顾虑。</string>
+				<string>title2</string>
+				<string>ABI</string>
+				<string>text</string>
+				<string>应用程序二进制接口
+应用程序与底层操作系统之间的接口
+ABI 稳定意味着语法不会有太大的变动（实际上从 Swift 4 之后语法基本没变化）</string>
+				<string>title2</string>
+				<string>特性</string>
+				<string>text</string>
+				<string>现代，从它的语法中能看到 JavaScript、Python、Java 等语言的影子，吸取了很多语言好的特性。
+简单，语法简洁、使用方便，易于维护。
+安全，它是类型安全的语言。
+高效，速度更快，运算性能更高。
+混编，可与 Objective-C 混合使用（混合开发），提供了很多 Objective-C 中没有的新特性。
+
+</string>
+				<string>title2</string>
+				<string>重要性</string>
+				<string>text</string>
+				<string>Apple 目前在大力推广 Swift，以后 Swift 必将代替 Objective-C。
+已经出现 Swift Only 的 API，如 SwiftUI、Combine。
+很多企业要求掌握 Swift 或者有 Swift 开发经验。
+</string>
+				<string>title2</string>
+				<string>学习建议</string>
+				<string>text</string>
+				<string>先学习 Swift 基本语法，夯实语法的基础。
+应用于开发（iOS/iPadOS/macOS 开发），掌握 Swift 在项目工程的应用。</string>
+				<string>title2</string>
+				<string>开发环境</string>
+				<string>text</string>
+				<string>App Store 搜索下载 Xcode，如果下载不了，可能需要升级 macOS。
+对应关系</string>
+				<string>text</string>
+				<string>Xcode版本	Swift版本
+Xcode 10.2 - Xcode 10.3.3	Swift 5.0
+Xcode 11 - Xcode 11.3.1	Swift 5.1
+Xcode 11.4 -	Swift 5.2</string>
+				<string>title2</string>
+				<string>查看Swift版本</string>
+				<string>text</string>
+				<string>安装完 Xcode，可以在终端中输入Swift -v查看机器上 Swift 的版本。</string>
+				<string>image</string>
+				<string>eassyImg2-1</string>
+				<string>title2</string>
+				<string>playground是什么?</string>
+				<string>text</string>
+				<string>从 Xcode 6 开始出现（Swift 开始出现）
+翻译为操场/游乐场
+对于学习 Swift 基本语法非常方便
+所见即所得，可快速查看结果
+语法特性发生改变时，可以快速查看
+新建：打开 Xcode —&gt;选择Get stated with a playground，如下图的第一项。</string>
+				<string>image</string>
+				<string>eassyImg2-2</string>
+				<string>title2</string>
+				<string>Swift第一印象</string>
+				<string>text</string>
+				<string>导入模块 import UIKit
+定义标识符时，必须声明该标识符是变量还是常量。
+声明标识符的格式：变量/常量关键字 名称: 数据类型，当然: 数据类型可以省略。
+语句结束可以不加;
+如果同一行有多个语句，则依然需要加上，但不建议一行写多条语句。</string>
+				<string>title2</string>
+				<string>打印语句</string>
+				<string>text</string>
+				<string>Swift 中的打印语句：print(打印的内容)
+print语句输出的内容不是显示在代码预览区，而是显示在控制台。
+print语句输出的内容会自动换行。</string>
+				<string>code</string>
+				<string>// 直接输出
+print(&quot;Hello Swift&quot;)
+
+let str = &quot;Hello Swift&quot;
+// 输出变/常量
+print(str)</string>
+				<string>title2</string>
+				<string>注释</string>
+				<string>text</string>
+				<string>注释是程序开发中非常重要的组成部分，好的注释可以提高程序的可读性，帮助开发者快速理解程序的含义。Swift 中的注释主要有四种：
+单行注释
+多行注释
+分组注释
+文档注释</string>
+				<string>title3</string>
+				<string>单行注释</string>
+				<string>text</string>
+				<string>单行注释以双正斜杠//作为起始标记</string>
+				<string>code</string>
+				<string>// 注释内容</string>
+				<string>title3</string>
+				<string>多行注释</string>
+				<string>text</string>
+				<string>其起始标记为单个正斜杠后跟随一个星号/*
+终止标记为一个星号后跟随单个正斜杠*/</string>
+				<string>code</string>
+				<string>/* 这是一个，
+多行注释 */</string>
+				<string>text</string>
+				<string>多行注释可以嵌套在其它的多行注释之中</string>
+				<string>code</string>
+				<string>/* 这是第一个多行注释的开头
+/* 这是第二个被嵌套的多行注释 */
+这是第一个多行注释的结尾 */</string>
+				<string>title3</string>
+				<string>分组注释</string>
+				<string>text</string>
+				<string>如果打算对代码进行分组可以使用分组注释
+一般用在 iOS 开发中，用于方法的分组</string>
+				<string>code</string>
+				<string>// MARK:-</string>
+				<string>title3</string>
+				<string>文档注释</string>
+				<string>text</string>
+				<string>Swift 中添加文档注释较为简单
+使用///可以为方法或者属性添加文档注释</string>
+				<string>code</string>
+				<string>func add(num1: Int, num2: Int) -&gt; Int {
+    return num1 + num2
+}
+
+add(num1: 1, num2: 2)</string>
+				<string>text</string>
+				<string>按住 option，点击add，查看对话框内容，发现Parameters没有描述</string>
+				<string>image</string>
+				<string>eassyImg2-3</string>
+				<string>text</string>
+				<string>使用规范
+第一行概述功能，然后空一行再写详细描述
+参数格式- Paramerer 参数名: 描述
+返回格式- Returns: 描述
+批注格式- Note: 描述（可选）
+添加文档注释</string>
+				<string>code</string>
+				<string>/// 求和【概述】
+///
+/// 求两个整数的和【详细描述】
+/// - Parameter num1: 整型参数一【参数格式】
+/// - Parameter num2: 整型参数二
+/// - Returns: 两个整数的和【返回格式】
+/// - Note: 使用时需传入整型数据【批注格式】
+func add(num1: Int, num2: Int) -&gt; Int {
+    return num1 + num2
+}
+
+// 调用
+add(num1: 1, num2: 2)</string>
+				<string>text</string>
+				<string>再次查看</string>
+				<string>image</string>
+				<string>eassyImg2-4</string>
+				<string>title2</string>
+				<string>Xcode 11 文档注释的补齐功能</string>
+				<string>text</string>
+				<string>Xcode 11 增强了文档注释的自动补齐功能，只要按住command，单击想添加注释的函数，选择Add Documentation会自动补齐代码注释，简洁方便。</string>
+				<string>image</string>
+				<string>eassyImg2-5</string>
+			</array>
+		</dict>
+		<key>2</key>
+		<dict>
+			<key>title</key>
+			<string>官方设置示例文本</string>
+			<key>author</key>
+			<string>LianJun</string>
+			<key>cover</key>
+			<string>FC2</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>标题</string>
+				<string>title3</string>
+				<string>副标题</string>
+				<string>code</string>
+                <string>
+                    
+                    
+                </string>
+				<string>text</string>
+				<string>这是一段正文文字，你可以在这里展示你的正文内容。这是一段正文文字，你可以在这里展示你的正文内容。这是一段正文文字，你可以在这里展示你的正文内容。</string>
+				<string>title2</string>
+				<string>特性</string>
+				<string>text</string>
+				<string>现代，从它的语法中能看到 JavaScript、Python、Java 等语言的影子，吸取了很多语言好的特性。
+简单，语法简洁、使用方便，易于维护。
+安全，它是类型安全的语言。
+高效，速度更快，运算性能更高。
+混编，可与 Objective-C 混合使用（混合开发），提供了很多 Objective-C 中没有的新特性。
+
+</string>
+				<string>title2</string>
+				<string>重要性</string>
+				<string>text</string>
+				<string>Apple 目前在大力推广 Swift，以后 Swift 必将代替 Objective-C。
+已经出现 Swift Only 的 API，如 SwiftUI、Combine。
+很多企业要求掌握 Swift 或者有 Swift 开发经验。
+</string>
+				<string>title2</string>
+				<string>学习建议</string>
+				<string>text</string>
+				<string>先学习 Swift 基本语法，夯实语法的基础。
+应用于开发（iOS/iPadOS/macOS 开发），掌握 Swift 在项目工程的应用。</string>
+				<string>title2</string>
+				<string>开发环境</string>
+				<string>text</string>
+				<string>App Store 搜索下载 Xcode，如果下载不了，可能需要升级 macOS。
+对应关系</string>
+				<string>text</string>
+				<string>Xcode版本	Swift版本
+Xcode 10.2 - Xcode 10.3.3	Swift 5.0
+Xcode 11 - Xcode 11.3.1	Swift 5.1
+Xcode 11.4 -	Swift 5.2</string>
+				<string>title2</string>
+				<string>查看Swift版本</string>
+				<string>text</string>
+				<string>安装完 Xcode，可以在终端中输入Swift -v查看机器上 Swift 的版本。</string>
+				<string>image</string>
+				<string>eassyImg2-1</string>
+				<string>title2</string>
+				<string>playground是什么?</string>
+				<string>text</string>
+				<string>从 Xcode 6 开始出现（Swift 开始出现）
+翻译为操场/游乐场
+对于学习 Swift 基本语法非常方便
+所见即所得，可快速查看结果
+语法特性发生改变时，可以快速查看
+新建：打开 Xcode —&gt;选择Get stated with a playground，如下图的第一项。</string>
+				<string>image</string>
+				<string>eassyImg2-2</string>
+				<string>title2</string>
+				<string>Swift第一印象</string>
+				<string>text</string>
+				<string>导入模块 import UIKit
+定义标识符时，必须声明该标识符是变量还是常量。
+声明标识符的格式：变量/常量关键字 名称: 数据类型，当然: 数据类型可以省略。
+语句结束可以不加;
+如果同一行有多个语句，则依然需要加上，但不建议一行写多条语句。</string>
+				<string>title2</string>
+				<string>打印语句</string>
+				<string>text</string>
+				<string>Swift 中的打印语句：print(打印的内容)
+print语句输出的内容不是显示在代码预览区，而是显示在控制台。
+print语句输出的内容会自动换行。</string>
+				<string>code</string>
+				<string>// 直接输出
+print(&quot;Hello Swift&quot;)
+
+let str = &quot;Hello Swift&quot;
+// 输出变/常量
+print(str)</string>
+				<string>title2</string>
+				<string>注释</string>
+				<string>text</string>
+				<string>注释是程序开发中非常重要的组成部分，好的注释可以提高程序的可读性，帮助开发者快速理解程序的含义。Swift 中的注释主要有四种：
+单行注释
+多行注释
+分组注释
+文档注释</string>
+				<string>title3</string>
+				<string>单行注释</string>
+				<string>text</string>
+				<string>单行注释以双正斜杠//作为起始标记</string>
+				<string>code</string>
+				<string>// 注释内容</string>
+				<string>title3</string>
+				<string>多行注释</string>
+				<string>text</string>
+				<string>其起始标记为单个正斜杠后跟随一个星号/*
+终止标记为一个星号后跟随单个正斜杠*/</string>
+				<string>code</string>
+				<string>/* 这是一个，
+多行注释 */</string>
+				<string>text</string>
+				<string>多行注释可以嵌套在其它的多行注释之中</string>
+				<string>code</string>
+				<string>/* 这是第一个多行注释的开头
+/* 这是第二个被嵌套的多行注释 */
+这是第一个多行注释的结尾 */</string>
+				<string>title3</string>
+				<string>分组注释</string>
+				<string>text</string>
+				<string>如果打算对代码进行分组可以使用分组注释
+一般用在 iOS 开发中，用于方法的分组</string>
+				<string>code</string>
+				<string>// MARK:-</string>
+				<string>title3</string>
+				<string>文档注释</string>
+				<string>text</string>
+				<string>Swift 中添加文档注释较为简单
+使用///可以为方法或者属性添加文档注释</string>
+				<string>code</string>
+				<string>func add(num1: Int, num2: Int) -&gt; Int {
+    return num1 + num2
+}
+
+add(num1: 1, num2: 2)</string>
+				<string>text</string>
+				<string>按住 option，点击add，查看对话框内容，发现Parameters没有描述</string>
+				<string>image</string>
+				<string>eassyImg2-3</string>
+				<string>text</string>
+				<string>使用规范
+第一行概述功能，然后空一行再写详细描述
+参数格式- Paramerer 参数名: 描述
+返回格式- Returns: 描述
+批注格式- Note: 描述（可选）
+添加文档注释</string>
+				<string>code</string>
+				<string>/// 求和【概述】
+///
+/// 求两个整数的和【详细描述】
+/// - Parameter num1: 整型参数一【参数格式】
+/// - Parameter num2: 整型参数二
+/// - Returns: 两个整数的和【返回格式】
+/// - Note: 使用时需传入整型数据【批注格式】
+func add(num1: Int, num2: Int) -&gt; Int {
+    return num1 + num2
+}
+
+// 调用
+add(num1: 1, num2: 2)</string>
+				<string>text</string>
+				<string>再次查看</string>
+				<string>image</string>
+				<string>eassyImg2-4</string>
+				<string>title2</string>
+				<string>Xcode 11 文档注释的补齐功能</string>
+				<string>text</string>
+				<string>Xcode 11 增强了文档注释的自动补齐功能，只要按住command，单击想添加注释的函数，选择Add Documentation会自动补齐代码注释，简洁方便。</string>
+				<string>image</string>
+				<string>eassyImg2-5</string>
+			</array>
+		</dict>
+		<key>3</key>
+		<dict>
+			<key>title</key>
+			<string>2、数据类型与运算符</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC3</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>常量与变量</string>
+				<string>text</string>
+				<string>在 Swift 中规定：在定义一个标识符时必须明确说明该标识符是一个常量还是变量。
+使用let来定义常量，定义之后不可以再修改。
+使用var来定义变量，定义之后可以修改。</string>
+				<string>title3</string>
+				<string>基本使用</string>
+				<string>code</string>
+				<string>let a: Int = 10
+// 报错，当一个字段定义为常量时不可以修改
+// a = 20
+var b: Int = 20
+// 因为b定义为变量，因此是可以修改的
+b = 30</string>
+				<string>title3</string>
+				<string>关键字变/常量</string>
+				<string>text</string>
+				<string>每种语言都占用了一些 “单词” 称之为关键字，关键字一般情况下不能作为变/常量名，但 Swift 允许使用，使用方式为：`关键字` 。</string>
+				<string>code</string>
+				<string>var `var` = &quot;Hello&quot;
+let `let` = &quot;Swift&quot;
+
+print(`var`) // Hello
+print(`let`) // Swift</string>
+				<string>title2</string>
+				<string>数据类型</string>
+				<string>text</string>
+				<string>数据类型：通俗一点理解就是一门编程语言已经实现、可以直接用的数据结构。
+Swift 中的常见的数据类型有：整型/浮点型/Bool型/元组/枚举/结构体/类等。</string>
+				<string>title3</string>
+				<string>基本类型</string>
+				<string>text</string>
+				<string>整型
+UInt8：无符号8位整型
+UInt16：无符号16位整型
+UInt32：无符号32位整型
+UInt64：无符号64位整型
+UInt：和平台相关（默认）
+Int8：有符号8位整型
+Int16：有符号16位整型
+Int32：有符号32位整型
+Int64：有符号64位整型
+Int：和平台相关（默认）
+有符号（可以取负值）
+无符号（不可以取负值）
+浮点型
+Float：32位浮点型
+Double：64浮点型（默认）
+Bool型
+true：真
+false：假</string>
+				<string>code</string>
+				<string>// 定义一个Int类型的变量m，并且赋值为10
+var m: Int = 10
+// 定义一个Double类型的常量n，并且赋值为3.14
+let n: Double = 3.14
+// 定义一个Bool类型
+let t: Bool = true</string>
+				<string>title3</string>
+				<string>类型推断</string>
+				<string>text</string>
+				<string>Swift 是一种类型安全的语言，编译代码时执行类型检查，并将任何不匹配的类型标记为错误，让我们尽早捕获并修复错误。
+类型推断使编译器能够在编译代码时根据赋值的类型自动推断出变量或者常量的类型。
+可以通过option + 鼠标左键来查看变量的数据类型。 </string>
+				<string>image</string>
+				<string>essayImg3-1</string>
+				<string>code</string>
+				<string>// 定义变量时没有指定明确的类型，但是因为赋值给i一个20是一个Int类型的数据.因此i为Int类型
+var i = 20
+// 错误写法：如果之后赋值给i一个浮点型数值，则会报错
+// i = 30.5
+
+// 正确写法
+var j = 3.33
+j = 6.66</string>
+				<string>title3</string>
+				<string>类型别名</string>
+				<string>text</string>
+				<string>Swift 中使用 typealias 给已有的类型取一个别名（类似给人取外号）。</string>
+				<string>code</string>
+				<string>// 给Int取一个别名TypeA
+typealias TypeA = Int
+// 使用TypeA定义变量
+var a: TypeA = 10</string>
+				<string>title2</string>
+				<string>常用运算符</string>
+				<string>text</string>
+				<string>+ 、- 、*、/、%（ 算数运算符 ）
+=、+= 、-=、*=、/=、%=（ 赋值运算符 ）
+&gt;、&gt;=、&lt;、&lt;=、==、!=（ 比较运算符，得到Bool值）
+区间运算符
+半开半闭区间..&lt;：0..&lt;10 表示：0~9，不包括10
+闭区间...：0...10 表示：0~10
+数学中区间：(0,10)、(0,10]、[0,10)、[0,10]
+Swift 中的区间：
+与&amp;&amp;或||非!（ 逻辑运算符 ）
+操作数的类型必须是Bool
+&amp;&amp;与运算：表示多个条件必须同时成立
+||或运算：表示多个条件有一个成立即可
+!取反运算：表示对条件取反</string>
+				<string>code</string>
+				<string>true &amp;&amp; true  // true
+true &amp;&amp; false  // false
+false &amp;&amp; true  // false
+false &amp;&amp; false  // false
+
+true || true  // true
+true || false  // true
+false || true  // true
+false || false  // false
+
+!true  // false
+!false  // true</string>
+				<string>text</string>
+				<string>~=（ 包含运算符 ）</string>
+				<string>code</string>
+				<string>// 下面两行代码效果相同
+(1...100).contains(42) // true
+1...100 ~= 42 // true</string>
+				<string>title3</string>
+				<string>注意事项</string>
+				<string>text</string>
+				<string>运算符书写的时候，要么两边都不加空格，要么两边同时需要加空格。</string>
+				<string>code</string>
+				<string>let a: Int = 10
+let b: Int = 20
+a + b   // 正确写法
+a+b   // 正确写法
+a +b   // 错误写法</string>
+				<string>text</string>
+				<string>Swift 中在进行基本运算时必须保证数据的类型一致，否则会出错。
+Int 类型转成 Double 类型：Double(Int变量/常量)
+Double 类型转成 Int 类型：Int(Double变量/常量)
+只有相同类型的数据才可以进行运算。
+Swift 中没有隐式转换，数据类型的转换必须显示进行：转换类型(待转类型变量/常量)（类型转换章节详细讲解）</string>
+				<string>code</string>
+				<string>let a = 10
+let b = 3.14
+// 错误写法
+// let c = a + b
+// let c = a * b
+// 正确写法
+let c = Double(a) + b
+let d = a + Int(b)</string>
+				<string>title2</string>
+				<string>元组</string>
+				<string>text</string>
+				<string>元组是 Swift 中新增的一种数据类型（Python中也有）
+一种数据类型
+可以用于定义一组数据，用()括起来，多个值用,隔开
+组成元组的数据可以称为元素</string>
+				<string>title3</string>
+				<string>定义</string>
+				<string>text</string>
+				<string>元组的常见写法</string>
+				<string>code</string>
+				<string>// 使用元组描述一个人的信息
+var one = (&quot;1001&quot;, &quot;张三&quot;, 30, 90)
+// 给元素加上名称，之后可以通过名称访问元素
+var two = (id: &quot;1001&quot;, name: &quot;张三&quot;, Swift_score: 80, iOS_score: 90)</string>
+				<string>上面两种写法，查看一下one与two的类型有什么不同</string>
+				<string>code</string>
+				<string>var one: (String, String, Int, Int)
+
+var two: (id: String, name: String, Swift_score: Int, iOS_score: Int)</string>
+			</array>
+		</dict>
+		<key>4</key>
+		<dict>
+			<key>title</key>
+			<string>3、逻辑分支与循环</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC4</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+判断之后的执行语句必须用{}括起来。
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+guard语句必须带有else语句，它的执行逻辑如下：
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+switch后可以不跟()，但必须有:。
+case后可以跟break和fallthrough。
+每个case必须包含至少一条执行语句。
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+while的判断句必须有正确的真假。
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+break中断循环以后，后面的循环也不会执行。
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>5</key>
+		<dict>
+			<key>title</key>
+			<string>4、字符与字符串</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC5</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+判断之后的执行语句必须用{}括起来。
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+guard语句必须带有else语句，它的执行逻辑如下：
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+switch后可以不跟()，但必须有:。
+case后可以跟break和fallthrough。
+每个case必须包含至少一条执行语句。
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+break中断循环以后，后面的循环也不会执行。
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>6</key>
+		<dict>
+			<key>title</key>
+			<string>5、数组、集合与字典</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC6</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<false/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+判断之后的执行语句必须用{}括起来。
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+guard语句必须带有else语句，它的执行逻辑如下：
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>7</key>
+		<dict>
+			<key>title</key>
+			<string>6、可选型</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC7</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+
+判断之后的执行语句必须用{}括起来。
+
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+
+guard语句必须带有else语句，它的执行逻辑如下：
+
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>8</key>
+		<dict>
+			<key>title</key>
+			<string>7、函数与闭包</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC8</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+
+判断之后的执行语句必须用{}括起来。
+
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+
+guard语句必须带有else语句，它的执行逻辑如下：
+
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>9</key>
+		<dict>
+			<key>title</key>
+			<string>8、枚举</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC9</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+
+判断之后的执行语句必须用{}括起来。
+
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+
+guard语句必须带有else语句，它的执行逻辑如下：
+
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>10</key>
+		<dict>
+			<key>title</key>
+			<string>9、结构体与类</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC10</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+
+判断之后的执行语句必须用{}括起来。
+
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+
+guard语句必须带有else语句，它的执行逻辑如下：
+
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>11</key>
+		<dict>
+			<key>title</key>
+			<string>10、属性和方法</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC11</string>
+			<key>isFeatured</key>
+			<false/>
+			<key>isCollection</key>
+			<true/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>if分支</string>
+				<string>text</string>
+				<string>判断句可以不加()。
+
+判断之后的执行语句必须用{}括起来。
+
+在判断句中必须有明确的 Bool 值（true 或者 false）。
+
+案例一</string>
+				<string>code</string>
+				<string>let a = 10
+
+// 错误写法
+//if a {
+//    print(&quot;a&quot;)
+//}
+
+// 正确写法
+if a &gt; 9 {
+    print(a)
+}</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>let score = 87
+
+if score &lt; 60 {
+    print(&quot;不及格&quot;)
+} else if score &lt;= 70 {
+    print(&quot;及格&quot;)
+} else if score &lt;= 80 {
+    print(&quot;良好&quot;)
+} else if score &lt;= 90 {
+    print(&quot;优秀&quot;)
+} else {
+    print(&quot;完美&quot;)
+}
+</string>
+				<string>text</string>
+				<string>案例三</string>
+				<string>code</string>
+				<string>// 这个是可选类型，因为只有声明成可选类型后，才可以判断是否为空
+// 可选类型会在后续讲解
+let view: UIView? = UIView()
+
+// 判断如果view有值，则设置背景
+// 错误写法
+//if view {
+//    view.backgroundColor = UIColor.red
+//}
+
+if view != nil {
+    view!.backgroundColor = UIColor.red
+}</string>
+				<string>title2</string>
+				<string>三目运算符</string>
+				<string>text</string>
+				<string>简化为? :
+
+是对if else的一种简化</string>
+				<string>code</string>
+				<string>var a = 10
+var b = 50
+// 如果 a&gt;b 成立，result = a，否则 result = b
+var result = a &gt; b ? a : b
+print(result)</string>
+				<string>title2</string>
+				<string>guard语法</string>
+				<string>text</string>
+				<string>guard是 Swift 2.0 新增的语法，目的是提高程序的可读性。
+
+它与if语句非常类似，但不同的是当条件为false的时候执行{}里面的代码。
+
+guard语句必须带有else语句，它的执行逻辑如下：
+
+当条件表达式为true时候跳过else语句中的内容，执行后面的语句组。
+
+条件表达式为false时候执行else语句中的内容，跳转语句一般是return、break、continue或throw。
+
+必须在函数范围内使用。</string>
+				<string>code</string>
+				<string>guard 条件表达式 else { return }
+语句组</string>
+				<string>text</string>
+				<string>案例一</string>
+				<string>code</string>
+				<string>var age = 18
+
+func online(age: Int) -&gt; Void {
+
+    guard age &gt;= 18 else { // guard语句这么理解：确保age大于等于18否则返回
+        print(&quot;回家去&quot;)
+        return
+    }
+
+    print(&quot;可以上网&quot;)
+}
+
+online(age)</string>
+				<string>text</string>
+				<string>案例二</string>
+				<string>code</string>
+				<string>func validatePassword(_ password: String) -&gt; Bool {
+
+    // 把不符合条件的过滤掉
+    guard password.count &gt;= 6 else { return false }
+    guard password.count &lt;= 12 else { return false }
+    
+    // 到最后就是正确的
+    return true
+}</string>
+				<string>title2</string>
+				<string>switch分支</string>
+				<string>title3</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>switch也是常见的分支结构，用于分支较多的情况。
+
+Swift 对switch进行了大大的增强，使其拥有其他语言中没有的特性。
+
+switch后可以不跟()，但必须有:。
+
+case后可以跟break和fallthrough。
+
+每个case必须包含至少一条执行语句。
+
+case后如果是多行语句可以不加{}。</string>
+				<string>title3</string>
+				<string>案例</string>
+				<string>title3</string>
+				<string>案例一
+
+</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+    case 0 :
+        print(&quot;男&quot;)
+    case 1 :
+        print(&quot;女&quot;)
+    default :
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例二
+
+一个case判断中，可以判断多个值，它们之间用,隔开。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0, 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>text</string>
+				<string>案例三
+
+如果希望出现之前的case穿透，则可以使用关键字fallthrough。</string>
+				<string>code</string>
+				<string>let sex = 0
+
+switch sex {
+
+    case 0:
+        fallthrough
+    case 1:
+        print(&quot;正常人&quot;)
+    default:
+        print(&quot;其他&quot;)
+}</string>
+				<string>title3</string>
+				<string>支持多种数据类型</string>
+				<string>text</string>
+				<string>浮点型</string>
+				<string>code</string>
+				<string>let pi = 3.14
+switch pi {
+
+    case 3.14:
+        print(&quot;π&quot;)
+    default:
+        print(&quot;not π&quot;)
+}</string>
+				<string>text</string>
+				<string>字符串类型（字符串章节）</string>
+				<string>code</string>
+				<string>let m = 5
+let n = 10
+var result = 0
+
+let opration = &quot;+&quot;
+
+switch opration {
+
+    case &quot;+&quot;:
+        result = m + n
+    case &quot;-&quot;:
+        result = m - n
+    case &quot;*&quot;:
+        result = m * n
+    case &quot;/&quot;:
+        result = m / n
+    default:
+        result = 0
+}
+
+print(result)</string>
+				<string>text</string>
+				<string>区间判断</string>
+				<string>code</string>
+				<string>let score = 88
+
+switch score {
+
+    case 0..&lt;60:
+        print(&quot;不及格&quot;)
+    case 60..&lt;80:
+        print(&quot;及格&quot;)
+    case 80..&lt;90:
+        print(&quot;良好&quot;)
+    case 90..&lt;100:
+        print(&quot;优秀&quot;)
+    default:
+        print(&quot;满分&quot;)
+}</string>
+				<string>title2</string>
+				<string>for循环</string>
+				<string>text</string>
+				<string>for in循环</string>
+				<string>code</string>
+				<string>for i in 0..&lt;10 {
+    print(i)
+}
+
+for i in 0...10 {
+    print(i)
+}</string>
+				<string>text</string>
+				<string>特殊写法
+
+如果在for循环中不需要用到下标i，可以用_替代。</string>
+				<string>code</string>
+				<string>for _ in 0..&lt;10 {
+    print(&quot;hello&quot;)
+}</string>
+				<string>text</string>
+				<string>序列函数stride
+
+常见的区间运算符主要是...和..&lt;，通过它们可以构造遍历的内容区间。
+
+可以通过stride返回一个序列，作用类似于区间运算符。</string>
+				<string>code</string>
+				<string>// from：开始 through：结束（包含） by：间隔，类似于 1...11
+for i in stride(from: 1, through: 11, by: 2) {    
+    print(i)   
+}
+
+// from：开始 to：结束（不包含） by：间隔，类似于 1..&lt;11
+for i in stride(from: 1, to: 11, by: 2) {
+    print(i)   
+}
+
+// 构造序列
+let seq = stride(from: 0, to: 2, by: 1)
+// 迭代器，可以逐一获取序列的值（数组、字典中还会提到）
+var i = seq.makeIterator()
+i.next() // 0
+i.next() // 1
+i.next() // nil
+i.next() // nil</string>
+				<string>title2</string>
+				<string>while循环</string>
+				<string>text</string>
+				<string>while循环
+
+while的判断句必须有正确的真假。
+
+while后面的()可以省略。</string>
+				<string>code</string>
+				<string>var a = 0
+while a &lt; 10 {
+    print(b)
+    // a++已经在Swift3之后淘汰
+    a = a + 1
+}</string>
+				<string>text</string>
+				<string>repeat while循环
+
+循环体至少执行1次 </string>
+				<string>code</string>
+				<string>var b = 0
+repeat {
+    print(b)
+    b = b + 1
+} while b &lt; 20</string>
+				<string>title2</string>
+				<string>break与continue</string>
+				<string>text</string>
+				<string>二者都可以中断循环。
+
+break中断循环以后，后面的循环也不会执行。
+
+continue中断循环以后，只影响当前循环，不会影响后续的循环执行。</string>
+				<string>code</string>
+				<string>for i in 0...10 {    
+    if i == 5 {
+        break
+    }
+    print(i) // 输出 0 1 2 3 4
+}
+
+
+for i in 0...10 {    
+    if i == 5 {
+        continue
+    }
+    print(i) // 输出 0 1 2 3 4 6 7 8 9 10
+}</string>
+			</array>
+		</dict>
+		<key>12</key>
+		<dict>
+			<key>title</key>
+			<string>iOS开发之ReplayKit录屏</string>
+			<key>author</key>
+			<string>YungFan</string>
+			<key>cover</key>
+			<string>FC1</string>
+			<key>isFeatured</key>
+			<true/>
+			<key>isCollection</key>
+			<false/>
+			<key>content</key>
+			<array>
+				<string>title2</string>
+				<string>介绍</string>
+				<string>text</string>
+				<string>iOS中使用RPScreenRecorder进行专门的录屏操作。开始录屏时会弹出授权对话框，录制过程中是无感的，停止录制之后可以弹出录制的预览界面，然后可以保存到相册。录屏的同时可以录制麦克风的声音与摄像头的内容。需要导入ReplayKit模块。</string>
+				<string>title2</string>
+				<string>案例</string>
+				<string>code</string>
+				<string>import ReplayKit
+import UIKit
+
+	class ViewController: UIViewController {
+	// 显示摄像头
+		var cameraView: UIView?
+
+		override func viewDidLoad() {
+		super.viewDidLoad()
+
+			navigationItem.rightBarButtonItem = UIBarButtonItem(title: &quot;开始录屏&quot;,
+																style: .plain,
+																target: self,
+																action: #selector(startRecording))
+		}
+
+		@objc func startRecording() {
+			guard RPScreenRecorder.shared().isAvailable else { return }
+			// 获取RPScreenRecorder
+			let recorder = RPScreenRecorder.shared()
+			// 开启麦克风
+			recorder.isMicrophoneEnabled = true
+			// 开启摄像头
+			recorder.isCameraEnabled = true
+			// 摄像头类型（前、后摄像头）
+			recorder.cameraPosition = .front
+			// 开始录制
+			recorder.startRecording { [unowned self] error in
+				if let error = error {
+					print(error.localizedDescription)
+				} else {
+					self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: &quot;停止录屏&quot;,
+																			style: .plain,
+																			target: self,
+																			action: #selector(self.stopRecording))
+					// 设置摄像头
+					guard let cameraView = recorder.cameraPreviewView else { return }
+					cameraView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+					cameraView.center = view.center
+					view.addSubview(cameraView)
+					self.cameraView = cameraView
+				}
+			}
+		}
+
+    	@objc func stopRecording() {
+            let recorder = RPScreenRecorder.shared()
+            // 停止录制
+            recorder.stopRecording { [unowned self] preview, _ in
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: &quot;开始录屏&quot;,
+                                                                            style: .plain,
+                                                                            target: self,
+                                                                            action: #selector(self.startRecording))
+                if let preview = preview {
+                    // 设置代理
+                    preview.previewControllerDelegate = self
+                    self.present(preview, animated: true)
+                }
+            }
+                cameraView?.removeFromSuperview()
+        }
+    }
+
+	extension ViewController: RPPreviewViewControllerDelegate {
+        // MARK: 完成预览
+		func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+			dismiss(animated: true)
+    }
+}</string>
+				<string>text</string>
+				<string>注意：需要在真机运行测试。</string>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
