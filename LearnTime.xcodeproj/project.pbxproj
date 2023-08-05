@@ -62,6 +62,9 @@
 		DA15E4AA2A4221E2002CF9C0 /* SettingImage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA15E4A92A4221E2002CF9C0 /* SettingImage.xcassets */; };
 		DA182AB92A357E3D009F73EE /* ContentFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA182AB82A357E3D009F73EE /* ContentFile.plist */; };
 		DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA29D27A2A7C1BE30002D162 /* SnapKit */; };
+		DA3BE8A12A7DB305001B4D94 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = DA3BE8A02A7DB305001B4D94 /* Ink */; };
+		DA3BE8A32A7DB97D001B4D94 /* github-markdown-light.css in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A22A7DB97D001B4D94 /* github-markdown-light.css */; };
+		DA3BE8A52A7E044B001B4D94 /* ceshi.md in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */; };
 		DA54BBCA2A46109D0009BF68 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA54BBC92A46109D0009BF68 /* Media.xcassets */; };
 		DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */; };
 		DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */; };
@@ -118,6 +121,8 @@
 		DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInvoke.swift; sourceTree = "<group>"; };
 		DA15E4A92A4221E2002CF9C0 /* SettingImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SettingImage.xcassets; sourceTree = "<group>"; };
 		DA182AB82A357E3D009F73EE /* ContentFile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentFile.plist; sourceTree = "<group>"; };
+		DA3BE8A22A7DB97D001B4D94 /* github-markdown-light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown-light.css"; sourceTree = "<group>"; };
+		DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ceshi.md; sourceTree = "<group>"; };
 		DA54BBC92A46109D0009BF68 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */,
+				DA3BE8A12A7DB305001B4D94 /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +255,12 @@
 		DA13A4F42A2E5DE4002F44AB /* FrameFile */ = {
 			isa = PBXGroup;
 			children = (
+				DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */,
+				DA3BE8A22A7DB97D001B4D94 /* github-markdown-light.css */,
+				DA7068602A7175C5000977E9 /* UserDefaults.swift */,
 				DA13A4F52A2E5DE4002F44AB /* BasicData.swift */,
 				DAF514192A73CC68009EC9B1 /* ControlExtension.swift */,
 				DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */,
-				DA7068602A7175C5000977E9 /* UserDefaults.swift */,
 				DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */,
 				DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */,
 			);
@@ -294,6 +302,7 @@
 			name = LearnTime;
 			packageProductDependencies = (
 				DA29D27A2A7C1BE30002D162 /* SnapKit */,
+				DA3BE8A02A7DB305001B4D94 /* Ink */,
 			);
 			productName = LearnTime;
 			productReference = DA13A4862A2E5CE4002F44AB /* LearnTime.app */;
@@ -369,6 +378,7 @@
 			mainGroup = DA13A47D2A2E5CE4002F44AB;
 			packageReferences = (
 				DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DA3BE89F2A7DB305001B4D94 /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = DA13A4872A2E5CE4002F44AB /* Products */;
 			projectDirPath = "";
@@ -386,10 +396,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA3BE8A52A7E044B001B4D94 /* ceshi.md in Resources */,
 				DA6F428F2A7913DB00E9F8B4 /* loading.gif in Resources */,
 				DA13A4E82A2E5DAA002F44AB /* FeaturedCollectionsData.plist in Resources */,
 				DA13A4992A2E5CE5002F44AB /* LaunchScreen.storyboard in Resources */,
 				DA15E4AA2A4221E2002CF9C0 /* SettingImage.xcassets in Resources */,
+				DA3BE8A32A7DB97D001B4D94 /* github-markdown-light.css in Resources */,
 				DA13A4D72A2E5D66002F44AB /* Assets.xcassets in Resources */,
 				DA54BBCA2A46109D0009BF68 /* Media.xcassets in Resources */,
 				DA13A4E52A2E5DAA002F44AB /* ContentImage.xcassets in Resources */,
@@ -826,6 +838,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		DA3BE89F2A7DB305001B4D94 /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -833,6 +853,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		DA3BE8A02A7DB305001B4D94 /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA3BE89F2A7DB305001B4D94 /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

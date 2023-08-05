@@ -1,6 +1,5 @@
 //
 import UIKit
-import SnapKit
 
 /// ⌛️视图控制器初始化的方法：传入视图控制器（一般为`self`）、导航栏标题名
 struct Initialize {
