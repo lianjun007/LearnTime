@@ -59,7 +59,7 @@ class EssayViewController: UIViewController, WKUIDelegate, UIScrollViewDelegate 
 
 
                     // 获取CSS文件的路径
-                    guard let cssPath = Bundle.main.path(forResource: "github-markdown-light", ofType: "css") else { return }
+                    guard let cssPath = Bundle.main.path(forResource: "basic", ofType: "css") else { return }
                     
                     // 获取CSS内容
                     do {

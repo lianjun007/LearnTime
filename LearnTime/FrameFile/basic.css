@@ -3,6 +3,7 @@ body {
     height: 100%;
     font-size: 17px;
     font-family: -apple-system;
+    line-height: 1.7;
     
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -37,7 +38,6 @@ h6 {
 }
 
 p {
-    line-height: 1.6;
     margin: 8.5px 16px;
 }
 strong {
@@ -52,28 +52,18 @@ blockquote {
     padding: 5px 0px;
     border-left: 7px solid rgb(210, 210, 209);
     background-color: rgb(234, 234, 232);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
-ul {
+li {
     margin: 10px 16px 10px 0px;
-}
-ul ul {
-    margin: 0;
-}
-ol {
-    margin: 10px 16px 10px 0px;
-}
-ol ol {
-    margin: 0;
 }
 
 hr {
     margin: 10px 24px 10px 16px;
 }
 
-code:not(th > code),
-code:not(td > code) {
+code {
     font-family: Menlo;
     border-radius: 7px;
 }
@@ -86,11 +76,9 @@ pre {
     border-radius: 5px;
     margin: 14px 24px 14px 16px;
     padding: 10px 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
-code:not(pre > code),
-code:not(th > code),
-code:not(td > code) {
+code: not(pre > code) {
     font-size: 15px;
     border: 1px solid #ccc;
     background-color: #f8f8f8;
@@ -98,15 +86,14 @@ code:not(td > code) {
     margin: 0px 5px;
 }
 
-a:not(th > a),
-a:not(td > a) {
+a {
     background-color: #D2D2D1;
     font-size: 13px;
     color: #000000;
     border-radius: 10px;
     text-decoration: none;
     padding: 3px 6px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
 img {
@@ -114,7 +101,7 @@ img {
     max-width: calc(100% - 40px);
     border-radius: 7px;
     height: auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
 div {
@@ -127,7 +114,7 @@ div {
 table { /* 选择所有的表格元素 */
     border-collapse: collapse; /* 合并表格边框 */
     width: 100%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
 table thead tr { /* 选择表头中的所有行 */
@@ -166,25 +153,25 @@ table tbody tr:last-of-type { /* 选择表格主体中的最后一行 */
     border-bottom: 2px solid #2F302D; /* 给最后一行添加底部边框，颜色为深绿色，宽度为2px */
 }
 
-th code,
-td code {
-    /* 在这里添加你想要应用于表格中的代码元素的样式 */
-    font-family: Menlo;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    background-color: #f8f8f8;
-    padding: 0px 5px;
-    margin: 0px 5px;
-    border-radius: 3px;
-}
-
-th a,
-td a {
-    /* 在这里添加你想要应用于表格中的链接元素的样式 */
-    background-color: #D2D2D1;
-    font-size: 13px;
-    color: #000000;
-    border-radius: 7px;
-    text-decoration: none;
-    padding: 3px 6px;
-}
+/*th code,*/
+/*td code {*/
+/*    /* 在这里添加你想要应用于表格中的代码元素的样式 */*/
+/*    font-family: Menlo;*/
+/*    font-size: 15px;*/
+/*    border: 1px solid #ccc;*/
+/*    background-color: #f8f8f8;*/
+/*    padding: 0px 5px;*/
+/*    margin: 0px 5px;*/
+/*    border-radius: 3px;*/
+/*}*/
+/**/
+/*th a,*/
+/*td a {*/
+/*    /* 在这里添加你想要应用于表格中的链接元素的样式 */*/
+/*    background-color: #D2D2D1;*/
+/*    font-size: 13px;*/
+/*    color: #000000;*/
+/*    border-radius: 7px;*/
+/*    text-decoration: none;*/
+/*    padding: 3px 6px;*/
+/*}*/
