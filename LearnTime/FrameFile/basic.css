@@ -1,58 +1,136 @@
 body {
+    /* 设置通用的字体大小样式和行间距 */
     width: calc(100% - 8px);
     height: 100%;
     font-size: 17px;
     font-family: -apple-system;
     line-height: 1.7;
-    
+    /* 防止横屏使用膨胀方法缩放部分字体 */
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
 
-h1 {
+/* 设置标题样式 */
+#title {
+    line-height: 1;
     font-size: 34px;
-    margin: 22px 16px;
+    font-weight: bold;
+    margin: 5px 24px 0px 16px;
+}
+
+
+#essayInfo {
+    background-color: rgb(227, 227, 232);
+    color: rgb(0, 0, 0);
+    width: calc(100% - 40px);
+    margin: 16px;
+    border-radius: 13px;
+    float: left;
+    position: relative;
+}
+#essayType {
+    background-color: rgb(88, 86, 214);
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    float: left;
+    font-size: 13px;
+    position: relative;
+    right: 17px;
+    padding: 3px;
+}
+#essayAuthor {
+    font-size: 17px;
+    font-weight: bold;
+    position: absolute;
+    top: 11px;
+    left: 50px;
+}
+#essayData {
+    font-size: 17px;
+    position: absolute;
+    top: 11px;
+    right: 15px;
+}
+
+#infoAuthorBox {
+    position: relative;
+}
+#infoType {
+    background-color: rgb(88, 86, 214);
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    float: left;
+    font-size: 13px;
+    position: relative;
+    left: 2px;
+    padding: 0px 3px;
+}
+#infoAuthor {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    padding: 0px;
+    top: 6px;
+    left: 0px;
+}
+
+#infoDataBox {
+    background-color: rgb(227, 227, 232);
+    color: rgb(0, 0, 0);
+    width: calc(100% - 40px);
+    margin: 16px;
+    border-radius: 13px;
+    position: relative;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 24px 24px 10px 16px;
 }
 h2 {
-    font-size: 28px;
-    margin: 18px 16px;
+    font-size: 27px;
+    margin: 20px 24px 10px 16px;
 }
 h3 {
     font-size: 25px;
-    margin: 16px 16px;
+    margin: 18px 24px 10px 16px;
 }
 h4 {
     font-size: 22px;
-    margin: 15px 16px;
+    margin: 16px 24px 10px 16px;
 }
 h5 {
     font-size: 20px;
-    margin: 14px 16px;
+    margin: 14px 24px 10px 16px;
 }
 h6 {
     font-size: 18px;
     color: rgb(128, 128, 128);
-    margin: 12px 16px;
+    margin: 12px 24px 10px 16px;
 }
 
+/* 设置段落样式 */
 p {
-    margin: 8.5px 16px;
+    text-align: justify;
+    margin: 10px 24px 10px 16px;
 }
 strong {
     font-weight: bold;
 }
 em {
+    /* 设置倾斜样式 */
 }
 
 blockquote {
     font-size: 16px;
-    margin: 16px 24px 16px 16px;
+    margin: 10px 24px 10px 16px;
     padding: 5px 0px;
     border-left: 7px solid rgb(210, 210, 209);
     background-color: rgb(234, 234, 232);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
 li {
@@ -74,11 +152,10 @@ pre {
     overflow-x: auto;
     white-space: pre;
     border-radius: 5px;
-    margin: 14px 24px 14px 16px;
+    margin: 10px 24px 10px 16px;
     padding: 10px 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
-code: not(pre > code) {
+code:not(pre > code) {
     font-size: 15px;
     border: 1px solid #ccc;
     background-color: #f8f8f8;
@@ -86,14 +163,15 @@ code: not(pre > code) {
     margin: 0px 5px;
 }
 
-a {
-    background-color: #D2D2D1;
+a:not(#infoLink) {
+    background-color: rgb(0, 121, 252);
     font-size: 13px;
-    color: #000000;
-    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 7px;
     text-decoration: none;
     padding: 3px 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    position: relative;
+    bottom: 1px;
 }
 
 img {
@@ -101,10 +179,10 @@ img {
     max-width: calc(100% - 40px);
     border-radius: 7px;
     height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* 给表格添加阴影效果 */
 }
 
-div {
+.tableBox {
     overflow-x: auto;
     width: calc(100% - 40px);
     margin: 16px; /* 设置表格的上下外边距为25px */

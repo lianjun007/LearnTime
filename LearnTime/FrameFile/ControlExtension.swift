@@ -1,7 +1,29 @@
 // 常用控件的编写操作写成扩展，方便使用
-
 import Foundation
 import UIKit
+import ObjectiveC
+
+private var infoStringKey: UInt8 = 0
+//private var coverDataKey: Data = Data()
+
+extension UIButton {
+    var infoString: [String]? {
+        get {
+            return objc_getAssociatedObject(self, &infoStringKey) as? [String]
+        }
+        set {
+            objc_setAssociatedObject(self, &infoStringKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+//    var coverData: Data? {
+//        get {
+//            return objc_getAssociatedObject(self, &coverDataKey) as? Data
+//        }
+//        set {
+//            objc_setAssociatedObject(self, &coverDataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//        }
+//    }
+}
 
 // 扩展UILable的随字体大小自适应尺寸方法
 extension UILabel {

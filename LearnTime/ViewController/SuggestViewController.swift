@@ -163,68 +163,141 @@ extension SuggestViewController {
     }
     
     func fetchData() {
-        // 发送网络请求
-        URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/List/story.plist")!)) { (data, response, error) in
-            if let data = data {
-                // 将网络请求得到的数据解析为字典对象
-                do {
+        /// 收集所有获取索引值URL的数组
+        var indexURLArray: [URL] = []
+        // 故事与小说分区所有内容索引值的URL
+        guard let storyURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/List/story.plist") else { return }
+        indexURLArray.append(storyURL)
+        // 代码与技术分区所有内容索引值的URL
+        guard let codeURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/List/code.plist") else { return }
+        indexURLArray.append(codeURL)
+
+        /// 初始化获取索引值的任务计数器
+        let indexGroup = DispatchGroup()
+
+        /// 收集所有内容索引值的数组
+        var indexArray: [[Int]] = []
+        for item in indexURLArray {
+            indexGroup.enter()
+            URLSession.shared.dataTask(with: URLRequest(url: item)) { (data, response, error) in
+                if let data = data {
+                    /// 请求单个分区的索引值数组
                     let decoder = PropertyListDecoder()
-                    var result = try decoder.decode(Array<Array<Int>>.self, from: data)
-                      
-                    // 在主线程更新UI
-                    DispatchQueue.main.async { [self] in
-                        let randomNumbers = self.randomElements(from: &result, count: 7) // 随机取 7 个元素
-                        var newArray: Array<Int> = []
-                        for i in 0 ... 6 {
-                            newArray.append(randomNumbers[i][0])
-                        }
-                        for (index, item) in newArray.enumerated() {
-                            // 请求info
-                            // 创建URL对象
-                            guard let infoURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/info.plist") else { return }
-                            // 创建URL请求
-                            let request0 = URLRequest(url: infoURL)
-                            // 发送网络请求
-                            URLSession.shared.dataTask(with: request0) { [self] (data0, response0, error0) in
-                                if let data0 = data0 {
-                                    // 处理网络请求得到的数据
-                                    do {
-                                        let dict = try PropertyListDecoder().decode([String: String].self, from: data0)
-                                        info.append(dict)
-                                        
-                                        DispatchQueue.main.async { [self] in
-                                            titleArray[index].text = dict["title"]!
-                                            textArray[index].text = dict["author"]!
-                                        }
-                                    } catch {
-                                        print(error0 ?? "error0的错误")
-                                    }
-                                }
-                            }.resume() // 发送网络请求
-                            guard let coverURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/cover.png") else { return }
-                            // 创建URL请求
-                            let request1 = URLRequest(url: coverURL)
-                            // 发送网络请求
-                            URLSession.shared.dataTask(with: request1) { [self] (data1, response1, error1) in
-                                if let data1 = data1 {
-                                    // 处理网络请求得到的数据
-                                    let coverImage = UIImage(data: data1)
-                                    cover.append(coverImage ?? UIImage(named: "loading")!)
-                                    
-                                    DispatchQueue.main.async { [self] in
-                                        coverArray[index].image = coverImage ?? UIImage(named: "loading")
-                                        backgroundArray[index].image = coverImage ?? UIImage(named: "loading")
-                                        cellViewArray[index].tag = item
-                                    }
-                                }
-                            }.resume() // 发送网络请求
+                    let result = try? decoder.decode([[Int]].self, from: data)
+                    indexArray += result ?? [[0, 0]]
+                    indexGroup.leave()
+                }
+            }.resume()
+        }
+        
+        indexGroup.notify(queue: .main) {
+            /// 从索引值数组中随机取出的7个元素
+            let indexArray_random7 = self.randomElements(from: &indexArray, count: 7)
+            /// 选出文章的编号数组（从索引值数组中随机取出7个元素组成数组的每个子数组的第一个元素组成的数组）
+            var indexArray_random7_0: [Int] = []
+            for i in 0 ... 6 {
+                indexArray_random7_0.append(indexArray_random7[i][0])
+            }
+            
+            /// 初始化获取cover和info的任务计数器
+            // let infoGroup = DispatchGroup()
+            for (index, item) in indexArray_random7_0.enumerated() {
+                /// 获取选出文章的info的URL
+                guard let infoURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/info.txt") else { return }
+                URLSession.shared.dataTask(with: URLRequest(url: infoURL)) { (data, response, error) in
+                    if let data = data {
+                        let string = String(data: data, encoding: .utf8) ?? "简介转换失败"
+                        print(string)
+                        let stringArray = string.components(separatedBy: "\n")
+                        DispatchQueue.main.async { [self] in
+                            titleArray[index].text = stringArray[0]
+                            textArray[index].text = stringArray[1]
+                            cellViewArray[index].tag = item
+                            cellViewArray[index].infoString = []
+                            cellViewArray[index].infoString?.append(stringArray[0])
+                            cellViewArray[index].infoString?.append(stringArray[1])
+                            let dataString = dateInvoke(stringArray[2])
+                            cellViewArray[index].infoString?.append(dataString)
                         }
                     }
-                } catch {
-                    print(error)
-                }
+                }.resume()
+                guard let coverURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/cover.png") else { return }
+                URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
+                    if let data = data {
+                        let coverImage = UIImage(data: data)
+                        DispatchQueue.main.async { [self] in
+                            if let coverImage = coverImage {
+                                coverArray[index].image = coverImage
+                                backgroundArray[index].image = coverImage
+                                cellViewArray[index].tag = item
+                            }
+                        }
+                    }
+                }.resume()
             }
-        }.resume() // 发送网络请求
+        }
+
+//        // 发送网络请求
+//        URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/List/story.plist")!)) { (data, response, error) in
+//            if let data = data {
+//                // 将网络请求得到的数据解析为字典对象
+//                var result = try? PropertyListDecoder().decode([[Int]].self, from: data)
+//
+//                      
+//                    // 在主线程更新UI
+//                    DispatchQueue.main.async { [self] in
+////                        let randomNumbers = self.randomElements(from: &result, count: 7) // 随机取 7 个元素
+//                        var newArray: Array<Int> = []
+//                        for i in 0 ... 6 {
+//                            newArray.append(randomNumbers[i][0])
+//                        }
+//                        for (index, item) in newArray.enumerated() {
+//                            // 请求info
+//                            // 创建URL对象
+//                            guard let infoURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/info.plist") else { return }
+//                            // 创建URL请求
+//                            let request0 = URLRequest(url: infoURL)
+//                            // 发送网络请求
+//                            URLSession.shared.dataTask(with: request0) { [self] (data0, response0, error0) in
+//                                if let data0 = data0 {
+//                                    // 处理网络请求得到的数据
+//                                    do {
+//                                        let dict = try PropertyListDecoder().decode([String: String].self, from: data0)
+//                                        info.append(dict)
+//                                        
+//                                        DispatchQueue.main.async { [self] in
+//                                            titleArray[index].text = dict["title"]!
+//                                            textArray[index].text = dict["author"]!
+//                                        }
+//                                    } catch {
+//                                        print(error0 ?? "error0的错误")
+//                                    }
+//                                }
+//                            }.resume() // 发送网络请求
+//                            guard let coverURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(item)/cover.png") else { return }
+//                            // 创建URL请求
+//                            let request1 = URLRequest(url: coverURL)
+//                            // 发送网络请求
+//                            URLSession.shared.dataTask(with: request1) { [self] (data1, response1, error1) in
+//                                if let data1 = data1 {
+//                                    // 处理网络请求得到的数据
+//                                    let coverImage = UIImage(data: data1)
+//                                    cover.append(coverImage ?? UIImage(named: "loading")!)
+//                                    
+//                                    DispatchQueue.main.async { [self] in
+//                                        coverArray[index].image = coverImage ?? UIImage(named: "loading")
+//                                        backgroundArray[index].image = coverImage ?? UIImage(named: "loading")
+//                                        cellViewArray[index].tag = item
+//                                    }
+//                                }
+//                            }.resume() // 发送网络请求
+//                        }
+//                    }
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//        }.resume() // 发送网络请求
     }
 }
 
@@ -233,7 +306,8 @@ extension SuggestViewController {
     ///
     @objc func clickEssayControl(_ sender: UIButton) {
         let VC = EssayViewController()
-        VC.tag = "\(sender.tag)"
+        VC.essayIndex = sender.tag
+        VC.essayInfo = sender.infoString
         self.navigationController?.pushViewController(VC, animated: true)
     }
     ///
@@ -339,6 +413,9 @@ extension SuggestViewController: UIContextMenuInteractionDelegate {
         }
     }
 }
+
+
+
 
 
 

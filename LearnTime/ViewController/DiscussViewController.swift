@@ -43,13 +43,13 @@ class DiscussViewController: UIViewController {
 //        navigationItem.title = "交流讨论"
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        
-////        let searchControllerInstance = UISearchController(searchResultsController: nil)
-////        searchControllerInstance.obscuresBackgroundDuringPresentation = false
-////        definesPresentationContext = true
-////        navigationItem.hidesSearchBarWhenScrolling = false
-////        navigationItem.searchController = searchControllerInstance
-////        navigationItem.searchController?.searchBar.isHidden = true
-////        navigationItem.hidesSearchBarWhenScrolling = false
+//        let searchControllerInstance = UISearchController(searchResultsController: nil)
+//        searchControllerInstance.obscuresBackgroundDuringPresentation = false
+//        definesPresentationContext = true
+//        navigationItem.hidesSearchBarWhenScrolling = false
+//        navigationItem.searchController = searchControllerInstance
+//        navigationItem.searchController?.searchBar.isHidden = true
+//        navigationItem.hidesSearchBarWhenScrolling = false
 //        
 //        // 获取状态栏高度
 //        var statusBarHeight = CGFloat()

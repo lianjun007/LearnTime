@@ -5,13 +5,14 @@ import SnapKit
 /// ⌛️视图控制器初始化的方法：传入视图控制器（一般为`self`）、导航栏标题名
 struct Initialize {
     enum viewMode {
-    case basic, group
+        case basic, group, opaque
     }
     static func view(_ ViewController: UIViewController,_ navigaionTitle: String, mode: Initialize.viewMode) {
         // 设置界面背景色
         switch mode {
         case .basic: ViewController.view.backgroundColor = Color.background()
-        default: ViewController.view.backgroundColor = Color.groupBackground()
+        case .group: ViewController.view.backgroundColor = Color.groupBackground()
+        default: ViewController.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
         }
         // 设置导航栏标题
         ViewController.navigationItem.title = navigaionTitle
@@ -297,20 +298,20 @@ struct ShowcaseControl {
         let cover = UIImageView(image: image)
         cover.contentMode = .scaleAspectFill
         control.addSubview(cover)
-        cover.snp.makeConstraints { (mark) in
-            mark.top.bottom.equalTo(0)
+        cover.snp.makeConstraints { make in
+            make.top.bottom.equalTo(0)
             if direction {
-                mark.left.equalTo(0)
+                make.left.equalTo(0)
             } else {
-                mark.right.equalTo(0)
+                make.right.equalTo(0)
             }
-            mark.width.equalTo(120)
+            make.width.equalTo(120)
         }
         
         let background = UIImageView(image: image)
         control.addSubview(background)
-        background.snp.makeConstraints { (mark) in
-            mark.edges.equalToSuperview().inset(direction ?
+        background.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(direction ?
                                                 UIEdgeInsets(top: 0, left: 120, bottom: 0, right: 0):
                                                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 120))
         }
@@ -318,15 +319,15 @@ struct ShowcaseControl {
         /// 控件显示内容部分的高斯模糊
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         control.addSubview(blurView)
-        blurView.snp.makeConstraints { (mark) in
-            mark.edges.equalToSuperview().inset(direction ?
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(direction ?
                                                 UIEdgeInsets(top: 0, left: 120, bottom: 0, right: 0):
                                                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 120))
         }
         blurView.isUserInteractionEnabled = false
         blurView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         
-        // 设置控件的标题
+        /// 设置控件的标题
         let largeTitle = UILabel()
         largeTitle.text = title
         largeTitle.textColor = UIColor.black
@@ -334,11 +335,11 @@ struct ShowcaseControl {
         largeTitle.sizeToFit()
         largeTitle.isUserInteractionEnabled = false
         control.addSubview(largeTitle)
-        largeTitle.snp.makeConstraints { (mark) in
-            mark.height.equalTo(largeTitle.frame.height)
-            mark.top.equalTo(15)
-            mark.left.equalTo(direction ? 135: 15)
-            mark.right.equalTo(direction ? 15: 135)
+        largeTitle.snp.makeConstraints { make in
+            make.height.equalTo(largeTitle.frame.height)
+            make.top.equalTo(15)
+            make.left.equalTo(direction ? 135: 15)
+            make.right.equalTo(direction ? -15: -135)
         }
         
         // 设置控件的副标题(作者名)
@@ -349,11 +350,11 @@ struct ShowcaseControl {
         smallTitle.sizeToFit()
         smallTitle.isUserInteractionEnabled = false
         control.addSubview(smallTitle)
-        smallTitle.snp.makeConstraints { (mark) in
-            mark.height.equalTo(smallTitle.frame.height)
-            mark.bottom.equalTo(-15)
-            mark.left.equalTo(direction ? 135: 15)
-            mark.right.equalTo(direction ? 15: 135)
+        smallTitle.snp.makeConstraints { make in
+            make.height.equalTo(smallTitle.frame.height)
+            make.bottom.equalTo(-15)
+            make.left.equalTo(direction ? 135: 15)
+            make.right.equalTo(direction ? -15: -135)
         }
         // ⚠️这两个标题还有一个未解决的隐患：没有考虑标题字数太长的问题
         

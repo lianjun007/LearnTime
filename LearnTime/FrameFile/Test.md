@@ -1,3 +1,9 @@
+---
+title: Swift中安全优雅的使用UserDefaults
+author: 未知
+---
+
+
 # 前言
 
 纳尼？如此简单的 UserDefaults 怎么去优雅的使用？这么简单的还能玩出花来？没毛病吧？
@@ -19,6 +25,10 @@ defaults.integer(forKey: "defaultKey")
 ```
 
 > Objective-C 中需要调用 synchronize 方法进行同步，但是在 Swift 中已经废弃了该方法，所以不需要手动去调用。
+>
+>
+>
+>
 >
 > -synchronize is deprecated and will be marked with the NS_DEPRECATED macro in a future release.
 

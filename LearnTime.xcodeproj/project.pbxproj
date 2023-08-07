@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0C48472A7F179000658550 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = DA0C48462A7F179000658550 /* Yams */; };
 		DA13A48A2A2E5CE4002F44AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4892A2E5CE4002F44AB /* AppDelegate.swift */; };
 		DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A48B2A2E5CE4002F44AB /* SceneDelegate.swift */; };
 		DA13A4912A2E5CE4002F44AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13A48F2A2E5CE4002F44AB /* Main.storyboard */; };
@@ -64,12 +65,14 @@
 		DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA29D27A2A7C1BE30002D162 /* SnapKit */; };
 		DA3BE8A12A7DB305001B4D94 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = DA3BE8A02A7DB305001B4D94 /* Ink */; };
 		DA3BE8A32A7DB97D001B4D94 /* basic.css in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A22A7DB97D001B4D94 /* basic.css */; };
-		DA3BE8A52A7E044B001B4D94 /* ceshi.md in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */; };
+		DA3BE8A52A7E044B001B4D94 /* Test.md in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A42A7DFC9B001B4D94 /* Test.md */; };
 		DA54BBCA2A46109D0009BF68 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA54BBC92A46109D0009BF68 /* Media.xcassets */; };
 		DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */; };
 		DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */; };
 		DA6F428F2A7913DB00E9F8B4 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = DA6F428E2A7913DB00E9F8B4 /* loading.gif */; };
 		DA7068612A7175C5000977E9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7068602A7175C5000977E9 /* UserDefaults.swift */; };
+		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
+		DA8D71AB2A80540700566778 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71AA2A80540700566778 /* Trash.swift */; };
 		DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */; };
 		DAF514182A72A84C009EC9B1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF514172A72A84C009EC9B1 /* SettingViewController.swift */; };
 		DAF5141A2A73CC68009EC9B1 /* ControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF514192A73CC68009EC9B1 /* ControlExtension.swift */; };
@@ -122,12 +125,14 @@
 		DA15E4A92A4221E2002CF9C0 /* SettingImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SettingImage.xcassets; sourceTree = "<group>"; };
 		DA182AB82A357E3D009F73EE /* ContentFile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentFile.plist; sourceTree = "<group>"; };
 		DA3BE8A22A7DB97D001B4D94 /* basic.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = basic.css; sourceTree = "<group>"; };
-		DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ceshi.md; sourceTree = "<group>"; };
+		DA3BE8A42A7DFC9B001B4D94 /* Test.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Test.md; sourceTree = "<group>"; };
 		DA54BBC92A46109D0009BF68 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
 		DA6F428E2A7913DB00E9F8B4 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		DA8D71A82A802B2200566778 /* InfoViewControlle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControlle.swift; sourceTree = "<group>"; };
+		DA8D71AA2A80540700566778 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayThemeViewController.swift; sourceTree = "<group>"; };
 		DAF514172A72A84C009EC9B1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DAF514192A73CC68009EC9B1 /* ControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlExtension.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */,
+				DA0C48472A7F179000658550 /* Yams in Frameworks */,
 				DA3BE8A12A7DB305001B4D94 /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +236,7 @@
 		DA13A4BF2A2E5D52002F44AB /* SecondViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DA8D71A82A802B2200566778 /* InfoViewControlle.swift */,
 				DA13A4C02A2E5D52002F44AB /* CourseViewController.swift */,
 				DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */,
 				DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */,
@@ -255,7 +262,7 @@
 		DA13A4F42A2E5DE4002F44AB /* FrameFile */ = {
 			isa = PBXGroup;
 			children = (
-				DA3BE8A42A7DFC9B001B4D94 /* ceshi.md */,
+				DA3BE8A42A7DFC9B001B4D94 /* Test.md */,
 				DA3BE8A22A7DB97D001B4D94 /* basic.css */,
 				DA7068602A7175C5000977E9 /* UserDefaults.swift */,
 				DA13A4F52A2E5DE4002F44AB /* BasicData.swift */,
@@ -263,6 +270,7 @@
 				DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */,
 				DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */,
 				DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */,
+				DA8D71AA2A80540700566778 /* Trash.swift */,
 			);
 			path = FrameFile;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 			packageProductDependencies = (
 				DA29D27A2A7C1BE30002D162 /* SnapKit */,
 				DA3BE8A02A7DB305001B4D94 /* Ink */,
+				DA0C48462A7F179000658550 /* Yams */,
 			);
 			productName = LearnTime;
 			productReference = DA13A4862A2E5CE4002F44AB /* LearnTime.app */;
@@ -379,6 +388,7 @@
 			packageReferences = (
 				DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DA3BE89F2A7DB305001B4D94 /* XCRemoteSwiftPackageReference "Ink" */,
+				DA0C48452A7F179000658550 /* XCRemoteSwiftPackageReference "Yams" */,
 			);
 			productRefGroup = DA13A4872A2E5CE4002F44AB /* Products */;
 			projectDirPath = "";
@@ -396,7 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA3BE8A52A7E044B001B4D94 /* ceshi.md in Resources */,
+				DA3BE8A52A7E044B001B4D94 /* Test.md in Resources */,
 				DA6F428F2A7913DB00E9F8B4 /* loading.gif in Resources */,
 				DA13A4E82A2E5DAA002F44AB /* FeaturedCollectionsData.plist in Resources */,
 				DA13A4992A2E5CE5002F44AB /* LaunchScreen.storyboard in Resources */,
@@ -458,8 +468,10 @@
 				DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */,
 				DA13A4FB2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
 				DA13A4F82A2E5DE4002F44AB /* BasicData.swift in Sources */,
+				DA8D71AB2A80540700566778 /* Trash.swift in Sources */,
 				DA13A4C72A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
 				DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */,
+				DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */,
 				DA13A4CA2A2E5D52002F44AB /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,6 +842,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DA0C48452A7F179000658550 /* XCRemoteSwiftPackageReference "Yams" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/Yams.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.6;
+			};
+		};
 		DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -849,6 +869,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DA0C48462A7F179000658550 /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA0C48452A7F179000658550 /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
+		};
 		DA29D27A2A7C1BE30002D162 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */;
