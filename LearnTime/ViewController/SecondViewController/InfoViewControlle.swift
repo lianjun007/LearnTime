@@ -34,13 +34,10 @@ class InfoViewControlle: UIViewController {
         print(infoURL)
         // 发送网络请求
         URLSession.shared.dataTask(with: URLRequest(url: infoURL)) { [self] (data, response, error) in
-            print("aaa")
             if let data = data {
-                
                 DispatchQueue.main.async { [self] in
                     // 获取文章原始数据
                     let infoString = String(data: data, encoding: .utf8) ?? "文章数据转换失败"
-                    print(infoString)
                     // 处理文章中的元数据
                     let components = infoString.components(separatedBy: "7777lianjun7777")
                     let header = try? Yams.load(yaml: components[0]) as? [String: Any]
@@ -55,7 +52,6 @@ class InfoViewControlle: UIViewController {
                     let originalLink = header?["originalLink"] as? String
                     let authorArray = header?["authorArray"] as? [String]
                     let originalAuthor = header?["originalAuthor"] as? String
-                    print(coverLink)
                     
                     // 将文章原始数据markdown格式经过一系列处理转换为html格式并且加载
                     let html0 = MarkdownParser().html(from: components[1])

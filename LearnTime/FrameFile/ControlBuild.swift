@@ -361,97 +361,89 @@ struct ShowcaseControl {
         return [control, largeTitle, smallTitle, cover, background]
     }
     
-//    static func spliceImage(_ image: UIImage, direction: Bool, imageSize: CGFloat) -> UIImage {
+    static let largeControlSize = CGSize(width: 270, height: 360)
+    
+    static func boxBuild(image: UIImage,
+                         title: String,
+                         text: String) -> [UIView] {
+
+        // 创建控件主体(一个UIButton)
+        let control = UIButton()
+        control.layer.cornerRadius = 15
+        control.layer.masksToBounds = true
+        
+        let cover = UIImageView(image: image)
+        cover.contentMode = .scaleAspectFill
+        control.addSubview(cover)
+        cover.snp.makeConstraints { make in
+            make.top.left.right.equalTo(0)
+            make.height.equalTo(270)
+        }
+        
+        let background = UIImageView(image: image)
+        control.addSubview(background)
+        background.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0))
+        }
+        
 //        // 裁剪和拼接控件的背景图片
-//        let image = image
-//
-//        let flippedImage = UIImage(cgImage: image.cgImage!, scale: image.scale, orientation: .upMirrored)
-//        let imageSize = CGSize(width: Screen.basicWidth(), height: image.size.height / image.size.width * mediumControlImageWidth)
+//        let cover = UIImage(named: imageName)!
+//        let imageRef = cover.cgImage!.cropping(to: CGRect(x: 0, y: cover.size.height / 2, width: cover.size.width, height: cover.size.height / 2))
+//        let flippedImage = UIImage(cgImage: imageRef!, scale: cover.scale, orientation: .downMirrored)
+//        let imageSize = CGSize(width: cover.size.width, height: cover.size.height * (largeControlSize.height / largeControlSize.width))
 //        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-//        image.draw(in: CGRect(x: direction ? 0: imageSize - mediumControlImageWidth, y: 0, width: mediumControlImageWidth, height: imageSize.height))
-//        flippedImage.draw(in: CGRect(x: direction ? mediumControlImageWidth: 0, y: 0, width: Screen.basicWidth() - mediumControlImageWidth, height: imageSize.height))
+//        cover.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: cover.size.height))
+//        flippedImage.draw(in: CGRect(x: 0, y: cover.size.height, width: imageSize.width, height: cover.size.height / 2))
 //        let finalImage = UIGraphicsGetImageFromCurrentImageContext()!
 //        UIGraphicsEndImageContext()
-//
-//        return finalImage
-//    }
-}
 
-let largeControlSize = CGSize(width: 270, height: 360)
-/// 创建横向滚动展示控件
-///
-/// 创建开始学习界面的精选课程模块的
-/// - Parameter originY: Y轴坐标
-/// - Parameter imageName: 模块控件图片名
-/// - Parameter title: 标题名字
-/// - Returns: 两个整数的和【返回格式】
-/// - Note: 使用时需传入整型数据【批注格式】
-func largeControlBuild(origin: CGPoint, imageName: String, title: String, title2: String) -> UIButton {
-// 设置第一个模块的横向滚动视图，用来承载第一个模块“精选合集”
-//    let moduleView = UIScrollView(frame: CGRect(x: 0, y: moduleTitle1.frame.maxY + Spaced.control(), width: Screen.width(), height: largeControlSize.height))
-//    moduleView.contentSize = CGSize(width: largeControlSize.width * 7 + Spaced.control() * 6 + Spaced.screenAuto() * 2, height: largeControlSize.height)
-//    moduleView.showsHorizontalScrollIndicator = false
-//    moduleView.clipsToBounds = false
-//    underlyScrollView.addSubview(moduleView)
-//    // 创建7个精选合集框
-//    for i in 0 ... 6 {
-//        // 配置参数
-//        let moduleControlOrigin = CGPoint(x: Spaced.screenAuto() + CGFloat(i) * (largeControlSize.width + Spaced.control()), y: 0)
-//        let featuredCourseBox = largeControlBuild(origin: moduleControlOrigin, imageName: featuredCollectionsRandomDataArray[i]["imageName"]!, title: featuredCollectionsRandomDataArray[i]["title"]!, title2: featuredCollectionsRandomDataArray[i]["author"]!)
-//        featuredCourseBox.tag = i
-//        featuredCourseBox.addTarget(self, action: #selector(clickCollectionControl), for: .touchUpInside)
-//        moduleView.addSubview(featuredCourseBox)
-//        let interaction = UIContextMenuInteraction(delegate: self)
-//        featuredCourseBox.addInteraction(interaction)
-//    }
-    
-    // 创建控件主体(一个UIButton)
-    let control = UIButton(frame: CGRect(origin: origin, size: largeControlSize))
-    
-    // 裁剪和拼接控件的背景图片
-    let image = UIImage(named: imageName)!
-    let imageRef = image.cgImage!.cropping(to: CGRect(x: 0, y: image.size.height / 2, width: image.size.width, height: image.size.height / 2))
-    let flippedImage = UIImage(cgImage: imageRef!, scale: image.scale, orientation: .downMirrored)
-    let imageSize = CGSize(width: image.size.width, height: image.size.height * (largeControlSize.height / largeControlSize.width))
-    UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-    image.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: image.size.height))
-    flippedImage.draw(in: CGRect(x: 0, y: image.size.height, width: imageSize.width, height: image.size.height / 2))
-    let finalImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
+//        // 配置主体控件的基本属性
 
-    // 配置主体控件的基本属性
-    control.layer.cornerRadius = 15
-    control.setImage(finalImage, for: .normal)
-    control.imageView?.contentMode = .scaleAspectFill
-    control.layer.masksToBounds = true
-    
-    // 设置控件底部的高斯模糊
-    let blurEffect = UIBlurEffect(style: .light)
-    let blurView = UIVisualEffectView(effect: blurEffect)
-    blurView.frame = CGRect(x: 0, y: largeControlSize.width, width: largeControlSize.width, height: largeControlSize.height - largeControlSize.width)
-    blurView.isUserInteractionEnabled = false
-    blurView.backgroundColor = .black.withAlphaComponent(0.6)
-    control.addSubview(blurView)
-    
-    // 设置控件的标题
-    let largeTitle = UILabel(frame: CGRect(x: Spaced.screen(), y: largeControlSize.width + 12, width: 0, height: 0))
-    largeTitle.text = title
-    largeTitle.textColor = UIColor.white
-    largeTitle.font = Font.title2()
-    largeTitle.sizeToFit()
-    largeTitle.isUserInteractionEnabled = false
-    control.addSubview(largeTitle)
-    // 设置控件的副标题(作者名)
-    let smallTitle = UILabel(frame: CGRect(x: Spaced.screen(), y: largeTitle.frame.maxY + 8, width: 0, height: 0))
-    smallTitle.text = title2
-    smallTitle.textColor = UIColor.white
-    smallTitle.font = Font.text()
-    smallTitle.sizeToFit()
-    smallTitle.isUserInteractionEnabled = false
-    control.addSubview(smallTitle)
-    // 这两个标题还有一个未解决的隐患：没有考虑标题字数太长的问题
-    
-    return control
+//        control.setImage(finalImage, for: .normal)
+//        control.imageView?.contentMode = .scaleAspectFill
+
+        // 设置控件底部的高斯模糊
+        /// 控件显示内容部分的高斯模糊
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        control.addSubview(blurView)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0))
+        }
+        blurView.isUserInteractionEnabled = false
+        blurView.backgroundColor = .black.withAlphaComponent(0.6)
+        
+        // 设置控件的标题
+        let largeTitle = UILabel()
+        largeTitle.text = title
+        largeTitle.textColor = UIColor.white
+        largeTitle.font = Font.title2()
+        largeTitle.sizeToFit()
+        largeTitle.isUserInteractionEnabled = false
+        control.addSubview(largeTitle)
+        largeTitle.snp.makeConstraints { make in
+            make.height.equalTo(largeTitle.frame.height)
+            make.top.equalTo(285)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+        }
+        // 设置控件的副标题(作者名)
+        let smallTitle = UILabel()
+        smallTitle.text = text
+        smallTitle.textColor = UIColor.white
+        smallTitle.font = Font.text()
+        smallTitle.sizeToFit()
+        smallTitle.isUserInteractionEnabled = false
+        control.addSubview(smallTitle)
+        smallTitle.snp.makeConstraints { make in
+            make.height.equalTo(largeTitle.frame.height)
+            make.bottom.equalTo(-15)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+        }
+        // 这两个标题还有一个未解决的隐患：没有考虑标题字数太长的问题
+        
+        return [control, largeTitle, smallTitle, cover, background]
+    }
 }
 
 
