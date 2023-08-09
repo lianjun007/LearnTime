@@ -11,7 +11,13 @@ struct Screen {
         return window?.safeAreaInsets ?? UIEdgeInsets.zero
     }
     static func nativeHeight() -> CGFloat {
-        UIScreen.main.nativeBounds.height // 与设备屏幕宽度一样宽(物理)
+        UIScreen.main.nativeBounds.height / UIScreen.main.nativeScale // 与设备屏幕高度一样宽(物理)
+    }
+    static func nativeWidth() -> CGFloat {
+        UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale // 与设备屏幕宽度一样宽(物理)
+    }
+    static func nativeBasicWidth() -> CGFloat {
+        UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale - Spaced.screen() * 2 // 与设备屏幕宽度一样宽(物理)
     }
     static func width() -> CGFloat {
         UIScreen.main.bounds.width // 与设备屏幕宽度一样宽

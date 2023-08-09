@@ -30,13 +30,10 @@ class EssayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if essayInfo != nil {
-            Initialize.view(self, essayInfo[0], mode: .basic)
-        } else {
-            Initialize.view(self, "获取文章失败", mode: .basic)
-        } // 判断上级界面点击的按钮是否加载好数据
+        Initialize.view(self, mode: .basic)
         self.navigationItem.largeTitleDisplayMode = .never
         webView.navigationDelegate = self
+        webView.scrollView.delegate = self
         
         // 获取CSS内容
         guard let cssPath = Bundle.main.path(forResource: "basic", ofType: "css") else { return }
@@ -64,6 +61,20 @@ class EssayViewController: UIViewController {
                 }
             }
         }.resume()
+    }
+}
+
+extension EssayViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        webView.evaluateJavaScript("document.getElementById('title').getBoundingClientRect().bottom < 0") { [self] (result, error) in
+            if let isScrolledOut = result as? Bool {
+                if isScrolledOut {
+                    title = essayInfo[0]
+                } else {
+                    title = ""
+                }
+            }
+        }
     }
 }
 

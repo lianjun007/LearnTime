@@ -7,7 +7,7 @@ struct Initialize {
     enum viewMode {
         case basic, group, opaque
     }
-    static func view(_ ViewController: UIViewController,_ navigaionTitle: String, mode: Initialize.viewMode) {
+    static func view(_ ViewController: UIViewController,_ navigaionTitle: String = "", mode: Initialize.viewMode) {
         // 设置界面背景色
         switch mode {
         case .basic: ViewController.view.backgroundColor = Color.background()
@@ -15,7 +15,7 @@ struct Initialize {
         default: ViewController.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
         }
         // 设置导航栏标题
-        ViewController.navigationItem.title = navigaionTitle
+        ViewController.title = navigaionTitle
 //        if #available(iOS 17.0, *) {
 //            ViewController.navigationItem.largeTitleDisplayMode = .inline
 //        } else {
@@ -50,6 +50,8 @@ struct SettingControl {
         case custom4
         /// 跳转界面设置行，返回一个`UIButton`用来关联跳转界面的方法
         case forward
+        /// 开关设置行，返回一个`UISwitch`用来关联开关对应的方法
+        case forward0
         /// 开关设置行，返回一个`UISwitch`用来关联开关对应的方法
         case toggle
     }
@@ -218,6 +220,39 @@ struct SettingControl {
         /// 设置控件的单行
         let row = UIButton()
         row.frame.size.height = 44
+        
+        /// 设置控件跳转类型行的跳转箭头图标
+        let rowIcon = UIImageView()
+        rowIcon.image = UIImage(systemName: "chevron.forward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        rowIcon.tintColor = UIColor.black.withAlphaComponent(0.5)
+        row.addSubview(rowIcon)
+        rowIcon.snp.makeConstraints { make in
+            make.top.equalTo(14)
+            make.height.equalTo(16)
+            make.width.equalTo(10)
+            make.right.equalTo(-15)
+        }
+        
+        /// 每一行右侧的文本内容
+        let rowLabel = UILabel()
+        var string: String = " "
+        if text?.count ?? 0 > index {
+            string = text![index]
+        } // 处理空行或者数组数不够的情况
+        rowLabel.text = string
+        rowLabel.font = Font.text(.regular)
+        rowLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        rowLabel.sizeToFit()
+        rowLabel.textAlignment = .right
+        
+        return [row, rowLabel]
+    }
+    
+    /// 创建设置控件的单行（跳转界面类型）
+    private static func forward2(text: Array<String>? = nil, _ index: Int) -> Array<UIView> {
+        /// 设置控件的单行
+        let row = UIButton()
+        row.frame.size.height = 66
         
         /// 设置控件跳转类型行的跳转箭头图标
         let rowIcon = UIImageView()
