@@ -1,4 +1,18 @@
 import UIKit
+//import FirebaseCore
+//
+//@UIApplicationMain
+//class AppDelegate: UIResponder, UIApplicationDelegate {
+//
+//  var window: UIWindow?
+//
+//  func application(_ application: UIApplication,
+//    didFinishLaunchingWithOptions launchOptions:
+//      [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//    FirebaseApp.configure()
+//    return true
+//  }
+//}
 
 // 拓展UIViewController方法以方便创建导航栏对应的UITabBarItem
 extension UIViewController {
