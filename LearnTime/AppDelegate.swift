@@ -1,12 +1,24 @@
 import UIKit
+import LeanCloud
 import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        do {
+            try LCApplication.default.set(
+                id: "fqBds8CXi1tjMcYxyLOHTFTK-9Nh9j0Va",
+                key: "HevwM2CkuOcg7cutiPmduZP2",
+                serverURL: "https://fqbds8cx.lc-cn-e1-shared.com")
+        } catch {
+            print(error)
+        }
+        
         UITabBar.appearance().tintColor = UIColor.systemIndigo
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle

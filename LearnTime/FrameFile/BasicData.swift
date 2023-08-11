@@ -74,6 +74,8 @@ struct Spaced {
 /// 通知：修改主题相关
 let changeThemeNotification = Notification.Name(String())
 
+let changeAccountNotification = Notification.Name(String())
+
 /// 通知：数据请求相关
 let valueChangeNotification = Notification.Name(String())
 

@@ -51,8 +51,6 @@ struct SettingControl {
         /// 跳转界面设置行，返回一个`UIButton`用来关联跳转界面的方法
         case forward
         /// 开关设置行，返回一个`UISwitch`用来关联开关对应的方法
-        case forward0
-        /// 开关设置行，返回一个`UISwitch`用来关联开关对应的方法
         case toggle
     }
     
@@ -100,7 +98,7 @@ struct SettingControl {
         if caption != nil {
             captionLabel.textColor = UIColor.black.withAlphaComponent(0.6)
             settingControl.addSubview(captionLabel)
-            captionLabel.snp.makeConstraints { (make) in
+            captionLabel.snp.makeConstraints { make in
                 make.top.equalTo(0)
                 make.left.equalTo(16)
                 make.right.equalTo(-16)
@@ -189,22 +187,24 @@ struct SettingControl {
         }
         // 设置底层和主体视图的height
         settingControl.addSubview(settingTable)
-        settingTable.snp.makeConstraints { (make) in
+        settingTable.snp.makeConstraints { make in
             if (caption == nil) {
                 make.top.equalTo(0)
             } else {
                 make.top.equalTo(captionLabel.snp.bottom).offset(6)
             }
             make.bottom.equalTo(returnDictionary["\(control!.count)"]!.snp.bottom)
-            make.bottom.equalToSuperview()
             make.left.right.equalTo(0)
+            if tips == nil {
+                make.bottom.equalToSuperview()
+            }
         }
         /// 控件下方的提示（`tips`）部分
         let tipsLabel = UILabel().fontAdaptive(tips ?? "", font: Font.tips())
         if tips != nil {
             tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
             settingControl.addSubview(tipsLabel)
-            tipsLabel.snp.makeConstraints { (make) in
+            tipsLabel.snp.makeConstraints { make in
                 make.top.equalTo(settingTable.snp.bottom).offset(6)
                 make.bottom.equalToSuperview()
                 make.left.equalTo(16)

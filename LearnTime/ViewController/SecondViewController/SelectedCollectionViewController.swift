@@ -1,5 +1,5 @@
 //
-//  SelectedCollectionViewController.swift
+//  SelectedMineViewController.swift
 //  Learn Time
 //
 //  Created by LianJun on 2023/7/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedCollectionViewController: UIViewController {
+class SelectedMineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

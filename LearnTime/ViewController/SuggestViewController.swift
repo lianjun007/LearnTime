@@ -1,3 +1,4 @@
+
 import UIKit
 import SnapKit
 
@@ -354,7 +355,7 @@ extension SuggestViewController {
     }
     ///
     @objc func clickModuleTitleControl(_ sender: UIButton) {
-        let VC = SelectedCollectionViewController()
+        let VC = SelectedMineViewController()
         self.navigationController?.pushViewController(VC, animated: true)
     }
 }

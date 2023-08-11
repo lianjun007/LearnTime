@@ -1,20 +1,5 @@
 import UIKit
-//import FirebaseCore
-//
-//@UIApplicationMain
-//class AppDelegate: UIResponder, UIApplicationDelegate {
-//
-//  var window: UIWindow?
-//
-//  func application(_ application: UIApplication,
-//    didFinishLaunchingWithOptions launchOptions:
-//      [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//    FirebaseApp.configure()
-//    return true
-//  }
-//}
 
-// 拓展UIViewController方法以方便创建导航栏对应的UITabBarItem
 extension UIViewController {
     func withTabBarItem(title: String, image: UIImage?, selectedImage: UIImage?) -> UIViewController {
         let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
@@ -34,8 +19,8 @@ class ViewController: UITabBarController {
         let viewControllers = [
             UINavigationController(rootViewController: SuggestViewController().withTabBarItem(title: "推荐内容", image: UIImage(systemName: "book.pages"), selectedImage: UIImage(systemName: "book.pages.fill"))),
             UINavigationController(rootViewController: DiscussViewController().withTabBarItem(title: "发现更多", image: UIImage(systemName: "safari"), selectedImage: UIImage(systemName: "safari.fill"))),
-            UINavigationController(rootViewController: CollectionViewController().withTabBarItem(title: "用户与收藏", image: UIImage(systemName: "star.square.on.square"), selectedImage: UIImage(systemName: "star.square.on.square.fill"))),
-            UINavigationController(rootViewController: SearchViewController().withTabBarItem(title: "搜索和设置", image: UIImage(systemName: "rectangle.and.hand.point.up.left"), selectedImage: UIImage(systemName: "rectangle.and.hand.point.up.left.fill")))
+            UINavigationController(rootViewController: MineViewController().withTabBarItem(title: "关于我的", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))),
+            UINavigationController(rootViewController: SettingViewController().withTabBarItem(title: "软件设置", image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape.fill")))
         ]
         self.viewControllers = viewControllers
     }
