@@ -28,42 +28,24 @@ class SettingViewController: UIViewController {
             make.width.equalTo(underlyView)
         }
         
-        // 模块0：搜索相关的筛选设置
-        snpTop = module0()
         // 模块1：搜索相关的筛选设置
-        snpTop = module1(snpTop)
+        snpTop = module1()
         // 模块2：搜索相关的筛选设置
         module2(snpTop)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(accountChange), name: changeAccountNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(accountChange), name: accountStatusChangeNotification, object: nil)
     }
 }
 
 // 每一个模块内的代码都会整理到此扩展
 extension SettingViewController {
-    /// 模块0控件创建
-    func module0() -> ConstraintRelatableTarget {
-        /// 账号相关的设置控件（对应的字典）
-        let ctrlDict = SettingControl.build(control: [.custom3],
-                                            tips: "登录账号使用完整服务。若无账户，可注册账号或使用游客账户登录")
-        containerView.addSubview(ctrlDict["view"]!)
-        ctrlDict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(Spaced.navigation())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-        }
-        
-        signButton(ctrlDict["control1"]!)
-        
-        return ctrlDict["view"]!.snp.bottom
-    }
     /// 模块1控件创建
-    func module1(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
+    func module1() -> ConstraintRelatableTarget {
         /// 模块标题`1`：偏好设置
         let title = UIButton().moduleTitleMode("偏好设置", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
+            mark.top.equalTo(Spaced.navigation())
             mark.height.equalTo(title)
             mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
             mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
@@ -206,15 +188,15 @@ extension SettingViewController {
     @objc func signClicked(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let VC = SignViewController()
+            let VC = SignUpViewController()
             present(VC, animated: true)
         case 1:
-            let VC = SignViewController()
+            let VC = SignUpViewController()
             present(VC, animated: true)
         case 3:
             LCUser.logOut()
             // 在需要切换主题的地方发送通知
-            NotificationCenter.default.post(name: changeAccountNotification, object: nil)
+            NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
         default: break
         }
     }

@@ -50,7 +50,7 @@ class SuggestViewController: UIViewController {
     }
 }
 
-// 📦👷封装“推荐内容”界面中各个模块创建的方法
+// 📦👷封装界面中各个模块创建的方法
 extension SuggestViewController {
     /// 👷创建模块1的方法
     func module1() -> ConstraintRelatableTarget {
@@ -176,7 +176,7 @@ extension SuggestViewController {
     }
 }
 
-// 📦🌐封装“推荐内容”界面中网络交互与数据处理的方法
+// 📦🌐封装界面中网络交互与数据处理的方法
 extension SuggestViewController {
     /// 取随机数组
     func randomElements(from array: inout [[Int]], count: Int) -> [[Int]] {
@@ -337,7 +337,7 @@ extension SuggestViewController {
     }
 }
 
-// 📦➡️封装“推荐内容”界面中跳转界面的方法
+// 📦➡️封装界面中跳转界面的方法
 extension SuggestViewController {
     ///
     @objc func clickEssayControl(_ sender: UIButton) {
@@ -360,7 +360,7 @@ extension SuggestViewController {
     }
 }
 
-// 📦🔄封装“推荐内容”界面中刷新重载功能（横竖屏和主题色切换）
+// 📦🔄封装界面中刷新重载功能（横竖屏和主题色切换）
 extension SuggestViewController {
     
 }

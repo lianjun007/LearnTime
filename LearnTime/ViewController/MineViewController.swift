@@ -3,20 +3,55 @@ import UIKit
 import LeanCloud
 import SnapKit
 
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct Login_Preview: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            SignUpViewController()
+        }
+    }
+}
+
+struct ViewControllerPreview: UIViewControllerRepresentable {
+    
+    typealias UIViewControllerType = UIViewController
+    
+    let viewControllerBuilder: () -> UIViewControllerType
+ 
+    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+        self.viewControllerBuilder = viewControllerBuilder
+    }
+    
+    @available(iOS 13.0.0, *)
+    func makeUIViewController(context: Context) -> UIViewController {
+        viewControllerBuilder()
+    }
+ 
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // Do nothing
+    }
+}
+
+
+
 class MineViewController: UIViewController {
     /// 底层的滚动视图，最基础的界面
     let underlyView = UIScrollView()
+    /// 底层滚动视图的内容视图
     let containerView = UIView()
+    
+    /// 自动布局顶部参考，用来流式创建控件时定位
+    var snpTop: ConstraintRelatableTarget!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Initialize.view(self, "关于我的", mode: .group)
         
-        /// Y轴坐标原点，用来流式创建控件时定位
-        var snpTop: ConstraintRelatableTarget!
-        /// 底层的滚动视图，最基础的界面
+        // 设置底层视图和它的容器视图的自动布局
         view.addSubview(underlyView)
-        underlyView.snp.makeConstraints { (make) in
+        underlyView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
         underlyView.addSubview(containerView)
@@ -30,160 +65,175 @@ class MineViewController: UIViewController {
         // 模块1：搜索相关的筛选设置
         snpTop = module1(snpTop)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(accountChange), name: changeAccountNotification, object: nil)
+        // 通知观察者关联方法（账号状态修改）
+        NotificationCenter.default.addObserver(self, selector: #selector(overloadViewDidLoad), name: accountStatusChangeNotification, object: nil)
     }
 }
 
+// 📦👷封装界面中各个模块创建的方法
 extension MineViewController {
-    /// 模块0控件创建
+    /// 👷创建模块0的方法（账户设置模块）
     func module0() -> ConstraintRelatableTarget {
         /// 账号相关的设置控件（对应的字典）
-        let ctrlDict = SettingControl.build(control: [.custom3],
-                                            tips: "登录账号使用完整服务。\n若无账户，可注册账号或使用游客账户登录")
-        containerView.addSubview(ctrlDict["view"]!)
-        ctrlDict["view"]!.snp.makeConstraints { make in
+        let control = UIView()
+        containerView.addSubview(control)
+        control.snp.makeConstraints { make in
             make.top.equalTo(Spaced.navigation())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.height.equalTo(80)
         }
         
-        signButton(ctrlDict["control1"]!)
+        module0ButtonBuild(control)
         
-        return ctrlDict["view"]!.snp.bottom
+        return control.snp.bottom
     }
 
-    /// 模块1控件创建
+    /// 👷创建模块1的方法（我的创作模块）
     func module1(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
         /// 模块标题`1`：偏好设置
         let title = UIButton().moduleTitleMode("我的创作", mode: .arrow)
         containerView.addSubview(title)
-        title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
-            mark.height.equalTo(title)
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        title.snp.makeConstraints { make in
+            make.top.equalTo(snpTop).offset(Spaced.module())
+            make.height.equalTo(title)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
         /// 偏好设置（模块`1`）的设置控件（对应的字典）
-        let ctrlDict = SettingControl.build(control: [.custom3],
+        let ctrlDict = SettingControl.build(control: [.custom3, .custom4, .custom4, .custom4],
                                                             caption: "设置阅读文章时的主题风格",
-                                                            label: ["创建合集"])
+                                            label: ["创建合集", "", "", ""])
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(Spaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.bottom.equalToSuperview()
         }
         
         return ctrlDict["view"]!.snp.bottom
     }
 }
 
+// 📦🫳封装界面中交互触发的方法
 extension MineViewController {
-    /// 登陆注册界面跳转
-    @objc func signClicked(_ sender: UIButton) {
+    /// 账户设置模块（模块0）相关的交互方法
+    @objc func accountModuleCilcked(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let VC = SignViewController()
-            present(VC, animated: true)
+            let VC = SignUpViewController()
+            let NavC = UINavigationController(rootViewController: VC)
+            present(NavC, animated: true)
         case 1:
-            let VC = SignViewController()
-            present(VC, animated: true)
+            let VC = SignUpViewController()
+            let NavC = UINavigationController(rootViewController: VC)
+            present(NavC, animated: true)
         case 3:
             LCUser.logOut()
-            // 在需要切换主题的地方发送通知
-            NotificationCenter.default.post(name: changeAccountNotification, object: nil)
+            NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
         default: break
         }
     }
-    // 实现观察者方法
-    @objc func accountChange() {
-        // 移除旧的滚动视图
-        for subview in view.subviews {
-            if subview is UIScrollView {
-                subview.removeFromSuperview()
-            }
+    
+    /// 重新加载viewDidLoad方法以刷新界面
+    @objc func overloadViewDidLoad() {
+        // 移除旧的底层视图
+        for subview in containerView.subviews {
+            subview.removeFromSuperview()
         }
         self.viewDidLoad()
     }
-    
-    func signButton(_ superView: UIView) {
+}
+
+// 📦🫳封装界面中自定义控件的方法
+extension MineViewController {
+    /// 👷创建模块0的自定义按钮的方法
+    func module0ButtonBuild(_ superView: UIView) {
+        // 判断当前设备上是否有已登录的账户
         if let user = LCApplication.default.currentUser {
-            let userNameLabel = UILabel().fontAdaptive(user.username!.stringValue!, font: Font.text(.bold))
+            /// 显示当前账户用户名的标签
+            let userNameLabel = UIButton().moduleTitleMode("用户 \(user.username!.stringValue!)", mode: .arrow)
             superView.addSubview(userNameLabel)
             userNameLabel.snp.makeConstraints { make in
-                make.top.equalTo(10)
-                make.left.equalTo(20)
-                make.right.equalTo(-20)
+                make.top.equalTo(0)
+                make.height.equalTo(userNameLabel)
+                make.right.left.equalTo(0)
             }
             
-            let button3 = UIButton()
-            button3.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
-            button3.layer.cornerRadius = 10
-            button3.tag = 3
-            button3.setImage(UIImage(systemName: "person.badge.minusperson.badge.minus"), for: .normal)
-            button3.tintColor = UIColor.black
-            button3.setTitle("登出账户", for: .normal)
-            button3.setTitleColor(UIColor.black, for: .normal)
-            superView.addSubview(button3)
-            button3.snp.makeConstraints { make in
-                make.top.equalTo(88)
-                make.left.equalTo(20)
-                make.right.equalTo(-20)
-                make.bottom.equalTo(-10)
+            /// 登出当前账户的按钮
+            let signOutButton = UIButton()
+            signOutButton.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            signOutButton.layer.cornerRadius = 15
+            signOutButton.tag = 3
+            signOutButton.setImage(UIImage(systemName: "person.badge.minus"), for: .normal)
+            signOutButton.tintColor = UIColor.black
+            signOutButton.setTitle("登出账户", for: .normal)
+            signOutButton.setTitleColor(UIColor.black, for: .normal)
+            superView.addSubview(signOutButton)
+            signOutButton.snp.makeConstraints { make in
+                make.top.equalTo(userNameLabel.snp.bottom).offset(Spaced.control())
+                make.right.left.bottom.equalTo(0)
             }
-            button3.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
+            signOutButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
         } else {
-            let button0 = UIButton()
-            button0.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
-            button0.layer.cornerRadius = 10
-            button0.tag = 0
-            button0.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
-            button0.tintColor = UIColor.black
-            button0.setTitle("登录", for: .normal)
-            button0.setTitleColor(UIColor.black, for: .normal)
-            superView.addSubview(button0)
-            button0.snp.makeConstraints { make in
-                make.top.left.equalToSuperview().offset(20)
-                make.bottom.equalToSuperview().offset(-20)
+            /// 登录账户的按钮
+            let signInButton = UIButton()
+            signInButton.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            signInButton.layer.cornerRadius = 15
+            signInButton.tag = 0
+            signInButton.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
+            signInButton.tintColor = UIColor.black
+            signInButton.setTitle("登录", for: .normal)
+            signInButton.setTitleColor(UIColor.black, for: .normal)
+            superView.addSubview(signInButton)
+            signInButton.snp.makeConstraints { make in
+                make.top.left.equalToSuperview().offset(0)
+                make.bottom.equalToSuperview().offset(0)
             }
-            button0.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
+            signInButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
             
-            let button2 = UIButton()
-            button2.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
-            button2.layer.cornerRadius = 10
-            button2.tag = 2
-            button2.setImage(UIImage(systemName: "person"), for: .normal)
-            button2.tintColor = UIColor.black
-            button2.setTitle("游客", for: .normal)
-            button2.setTitleColor(UIColor.black, for: .normal)
-            superView.addSubview(button2)
-            button2.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(20)
-                make.bottom.right.equalToSuperview().offset(-20)
+            /// 游客登录的按钮
+            let temporaryAccountButton = UIButton()
+            temporaryAccountButton.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+            temporaryAccountButton.layer.cornerRadius = 15
+            temporaryAccountButton.tag = 2
+            temporaryAccountButton.setImage(UIImage(systemName: "person"), for: .normal)
+            temporaryAccountButton.tintColor = UIColor.black
+            temporaryAccountButton.setTitle("游客", for: .normal)
+            temporaryAccountButton.setTitleColor(UIColor.black, for: .normal)
+            superView.addSubview(temporaryAccountButton)
+            temporaryAccountButton.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(0)
+                make.bottom.right.equalToSuperview().offset(0)
             }
-            button2.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
+            temporaryAccountButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
             
-            let button1 = UIButton()
-            button1.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-            button1.layer.cornerRadius = 10
-            button1.tag = 1
-            button1.setImage(UIImage(systemName: "person.badge.key"), for: .normal)
-            button1.tintColor = UIColor.black
-            button1.setTitle("注册", for: .normal)
-            button1.setTitleColor(UIColor.black, for: .normal)
-            superView.addSubview(button1)
-            button1.snp.makeConstraints { make in
-                make.top.equalToSuperview().offset(20)
-                make.bottom.equalToSuperview().offset(-20)
-                make.left.equalTo(button0.snp.right).offset(20)
-                make.right.equalTo(button2.snp.left).offset(-20)
-                make.width.equalTo(button0)
-                make.width.equalTo(button2)
+            /// 注册账户的按钮
+            let signUpButton = UIButton()
+            signUpButton.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+            signUpButton.layer.cornerRadius = 15
+            signUpButton.tag = 1
+            signUpButton.setImage(UIImage(systemName: "person.badge.key"), for: .normal)
+            signUpButton.tintColor = UIColor.black
+            signUpButton.setTitle("注册", for: .normal)
+            signUpButton.setTitleColor(UIColor.black, for: .normal)
+            superView.addSubview(signUpButton)
+            signUpButton.snp.makeConstraints { make in
+                make.top.bottom.equalToSuperview().offset(0)
+                make.left.equalTo(signInButton.snp.right).offset(20)
+                make.right.equalTo(temporaryAccountButton.snp.left).offset(-20)
+                make.width.equalTo(signInButton)
+                make.width.equalTo(temporaryAccountButton)
             }
-            button1.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
+            signUpButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
         }
     }
 }
 
+// 📦🫳封装界面中的通用辅助方法
+extension MineViewController {
+    
+}

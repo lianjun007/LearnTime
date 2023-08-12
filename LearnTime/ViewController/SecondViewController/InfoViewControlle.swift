@@ -31,7 +31,6 @@ class InfoViewControlle: UIViewController {
         
         // 获取整个文章简介内容的URL
         guard let infoURL = URL(string: "https://lianjun581.github.io/lianjun581/LearnTime/Content/Essay/\(essayIndex ?? 0)/profile.txt") else { return }
-        print(infoURL)
         // 发送网络请求
         URLSession.shared.dataTask(with: URLRequest(url: infoURL)) { [self] (data, response, error) in
             if let data = data {
@@ -77,7 +76,6 @@ extension InfoViewControlle: WKUIDelegate, WKNavigationDelegate, WKScriptMessage
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "authorClicked" {
             // 在这里执行跳转到原生视图控制器的代码
-            print("nihao")
         }
     }
 }

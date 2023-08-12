@@ -420,22 +420,6 @@ struct ShowcaseControl {
         background.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0))
         }
-        
-//        // 裁剪和拼接控件的背景图片
-//        let cover = UIImage(named: imageName)!
-//        let imageRef = cover.cgImage!.cropping(to: CGRect(x: 0, y: cover.size.height / 2, width: cover.size.width, height: cover.size.height / 2))
-//        let flippedImage = UIImage(cgImage: imageRef!, scale: cover.scale, orientation: .downMirrored)
-//        let imageSize = CGSize(width: cover.size.width, height: cover.size.height * (largeControlSize.height / largeControlSize.width))
-//        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
-//        cover.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: cover.size.height))
-//        flippedImage.draw(in: CGRect(x: 0, y: cover.size.height, width: imageSize.width, height: cover.size.height / 2))
-//        let finalImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-
-//        // 配置主体控件的基本属性
-
-//        control.setImage(finalImage, for: .normal)
-//        control.imageView?.contentMode = .scaleAspectFill
 
         // 设置控件底部的高斯模糊
         /// 控件显示内容部分的高斯模糊
@@ -559,4 +543,3 @@ func settingControlBuild(title: String, tips: String, _ superView: UIView, _ poi
     }
     return settingModuleTips.frame.maxY
 }
-

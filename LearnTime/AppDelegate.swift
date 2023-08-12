@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 key: "HevwM2CkuOcg7cutiPmduZP2",
                 serverURL: "https://fqbds8cx.lc-cn-e1-shared.com")
         } catch {
-            print(error)
+            print("AppDelegate.swfit(初始化LeanTime地址报错):\(error)")
         }
         
         UITabBar.appearance().tintColor = UIColor.systemIndigo

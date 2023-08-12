@@ -125,7 +125,6 @@ class CourseViewController: UIViewController {
 
 extension CourseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(essayTitle)
         return essayTitle.count
     }
     
