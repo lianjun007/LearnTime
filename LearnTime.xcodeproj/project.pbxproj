@@ -70,6 +70,9 @@
 		DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */; };
 		DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */; };
 		DA6F428F2A7913DB00E9F8B4 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = DA6F428E2A7913DB00E9F8B4 /* loading.gif */; };
+		DA6FDED32A87EB8E00B18A0C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */; };
+		DA6FDED52A87EBC200B18A0C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */; };
+		DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DA6FDEDB2A88583700B18A0C /* Toast */; };
 		DA7068612A7175C5000977E9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7068602A7175C5000977E9 /* UserDefaults.swift */; };
 		DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */ = {isa = PBXBuildFile; productRef = DA70AD142A8514A800CBB2FA /* LeanCloud */; };
 		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
@@ -133,6 +136,8 @@
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
 		DA6F428E2A7913DB00E9F8B4 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		DA8D71A82A802B2200566778 /* InfoViewControlle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControlle.swift; sourceTree = "<group>"; };
 		DA8D71AA2A80540700566778 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 				DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */,
 				DAF5B1F92A8467200048B038 /* Ink in Frameworks */,
 				DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */,
+				DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */,
 				DA0C48472A7F179000658550 /* Yams in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,10 +246,12 @@
 		DA13A4BF2A2E5D52002F44AB /* SecondViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DA0253F62A85293D00D5FBFA /* SignUpViewController.swift */,
+				DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */,
+				DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */,
 				DA8D71A82A802B2200566778 /* InfoViewControlle.swift */,
 				DA13A4C02A2E5D52002F44AB /* CourseViewController.swift */,
 				DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */,
-				DA0253F62A85293D00D5FBFA /* SignUpViewController.swift */,
 				DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */,
 				DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */,
 			);
@@ -318,6 +326,7 @@
 				DA0C48462A7F179000658550 /* Yams */,
 				DAF5B1F82A8467200048B038 /* Ink */,
 				DA70AD142A8514A800CBB2FA /* LeanCloud */,
+				DA6FDEDB2A88583700B18A0C /* Toast */,
 			);
 			productName = LearnTime;
 			productReference = DA13A4862A2E5CE4002F44AB /* LearnTime.app */;
@@ -396,6 +405,7 @@
 				DA0C48452A7F179000658550 /* XCRemoteSwiftPackageReference "Yams" */,
 				DAF5B1F72A8467200048B038 /* XCRemoteSwiftPackageReference "Ink" */,
 				DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */,
+				DA6FDEDA2A88583600B18A0C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = DA13A4872A2E5CE4002F44AB /* Products */;
 			projectDirPath = "";
@@ -470,6 +480,7 @@
 				DA0253F72A85293D00D5FBFA /* SignUpViewController.swift in Sources */,
 				DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */,
 				DA13A4DB2A2E5D86002F44AB /* ViewController.swift in Sources */,
+				DA6FDED32A87EB8E00B18A0C /* AccountViewController.swift in Sources */,
 				DA13A4D32A2E5D52002F44AB /* MineViewController.swift in Sources */,
 				DAF5141A2A73CC68009EC9B1 /* ControlExtension.swift in Sources */,
 				DA13A4CD2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
@@ -480,6 +491,7 @@
 				DA13A4C72A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
 				DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */,
 				DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */,
+				DA6FDED52A87EBC200B18A0C /* SignInViewController.swift in Sources */,
 				DA13A4CA2A2E5D52002F44AB /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +878,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		DA6FDEDA2A88583600B18A0C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/leancloud/swift-sdk.git";
@@ -894,6 +914,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA29D2792A7C1BE30002D162 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		DA6FDEDB2A88583700B18A0C /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA6FDEDA2A88583600B18A0C /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		DA70AD142A8514A800CBB2FA /* LeanCloud */ = {
 			isa = XCSwiftPackageProductDependency;

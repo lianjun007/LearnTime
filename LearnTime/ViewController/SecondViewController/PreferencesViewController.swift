@@ -43,9 +43,9 @@ extension PreferencesViewController {
         let ctrlDict = SettingControl.build(control: [.forward], label: ["调整设置项顺序"])
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(Spaced.navigation())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(JunSpaced.navigation())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         return ctrlDict["view"]!.snp.bottom
@@ -56,19 +56,19 @@ extension PreferencesViewController {
         let title = UIButton().moduleTitleMode("显示与排版", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
+            mark.top.equalTo(snpTop).offset(JunSpaced.module())
             mark.height.equalTo(title)
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 显示与排版（模块`1`）的设置控件`1`（对应的字典）
         let ctrl1Dict = SettingControl.build(control: [.custom3, .forward], caption: "设置阅读文章时的主题风格", label: ["", "高级阅读设置"])
         containerView.addSubview(ctrl1Dict["view"]!)
         ctrl1Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         // 第一行自定义设置的代码
         module1ControlRow1Custom(ctrl1Dict["control1"]!)
@@ -78,9 +78,9 @@ extension PreferencesViewController {
                                                              label: ["选择主题色", "深色模式跟随系统", "设置字体", "字体样式跟随系统"])
         containerView.addSubview(ctrl2Dict["view"]!)
         ctrl2Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 显示与排版（模块`1`）的设置控件`3`（对应的字典）
@@ -89,9 +89,9 @@ extension PreferencesViewController {
                                              label: ["标准模式", "更多显示方向设置"])
         containerView.addSubview(ctrl3Dict["view"]!)
         ctrl3Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         return ctrl3Dict["view"]!.snp.bottom
@@ -102,9 +102,9 @@ extension PreferencesViewController {
         let title = UIButton().moduleTitleMode("通知与推送", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(snpTop).offset(JunSpaced.module())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 通知与推送（模块`2`）的设置控件`1`（对应的字典）
@@ -113,9 +113,9 @@ extension PreferencesViewController {
                                                              label: ["消息通知", "配置消息通知"])
         containerView.addSubview(ctrl1Dict["view"]!)
         ctrl1Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 通知与推送（模块`2`）的设置控件`2`（对应的字典）
@@ -127,9 +127,9 @@ extension PreferencesViewController {
                                              label: ["个性化推荐", "配置个性化标识", "个性化内容推送", "配置推送内容"])
         containerView.addSubview(ctrl2Dict["view"]!)
         ctrl2Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 通知与推送（模块`2`）的设置控件`3`（对应的字典）
@@ -137,10 +137,10 @@ extension PreferencesViewController {
                                              label: ["广告", "广告标识推荐", "配置广告显示"])
         containerView.addSubview(ctrl3Dict["view"]!)
         ctrl3Dict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-            make.bottom.equalToSuperview().offset(-Spaced.module())
+            make.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.bottom.equalToSuperview().offset(-JunSpaced.module())
         }
     }
 }
@@ -206,7 +206,7 @@ extension PreferencesViewController {
         if offset.y < -44 {
             newOffset.y = -(self.navigationController?.navigationBar.frame.height)!
         } else if offset.y == -44 {
-            newOffset.y = -((self.navigationController?.navigationBar.frame.height)! + Screen.safeAreaInsets().top)
+            newOffset.y = -((self.navigationController?.navigationBar.frame.height)! + JunScreen.safeAreaInsets().top)
         }
         self.underlyView.setContentOffset(newOffset, animated: false)
     }
@@ -219,7 +219,7 @@ extension PreferencesViewController {
         buttonArray = []
         
         /// 模块`1`控件的第一行设置（设置阅读主题行）的辅助X轴原点坐标值（确保三个图标平均分布）数组
-        let module1Control1OriginXArray: Array<CGFloat> = [(Screen.basicWidth() - 180) / 4, (Screen.basicWidth() - 180) / 2 + 60, (Screen.basicWidth() - 180) / 4 * 3 + 120]
+        let module1Control1OriginXArray: Array<CGFloat> = [(JunScreen.basicWidth() - 180) / 4, (JunScreen.basicWidth() - 180) / 2 + 60, (JunScreen.basicWidth() - 180) / 4 * 3 + 120]
         // 自定义设置控件（阅读主题切换）
         for i in 0 ... 2 {
             /// 上方的图片按钮

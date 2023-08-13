@@ -64,15 +64,15 @@ class CourseViewController: UIViewController {
                 URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { [self] (data, response, error) in
                     if let data = data {
                         DispatchQueue.main.async { [self] in
-                            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Screen.nativeWidth()))
+                            let coverView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: JunScreen.nativeWidth()))
                             
                             let collectionCoverView = UIImageView(image: UIImage(data: data))
                             collectionCoverView.layer.cornerRadius = 15
                             collectionCoverView.layer.masksToBounds = true
                             coverView.addSubview(collectionCoverView)
                             collectionCoverView.snp.makeConstraints { make in
-                                make.top.left.equalTo(Spaced.screen())
-                                make.size.equalTo(Screen.nativeBasicWidth())
+                                make.top.left.equalTo(JunSpaced.screen())
+                                make.size.equalTo(JunScreen.nativeBasicWidth())
                             }
                             underlyView.tableHeaderView = coverView
 
@@ -137,7 +137,7 @@ extension CourseViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.snp.makeConstraints { make in
             make.top.equalTo(2)
-            make.left.equalTo(cell.safeAreaLayoutGuide).offset(Spaced.screen())
+            make.left.equalTo(cell.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.width.height.equalTo(52)
             
         }

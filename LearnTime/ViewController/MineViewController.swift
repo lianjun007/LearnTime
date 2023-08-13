@@ -1,41 +1,8 @@
-
 import UIKit
 import LeanCloud
 import SnapKit
 
-import SwiftUI
-
-@available(iOS 13.0, *)
-struct Login_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            SignUpViewController()
-        }
-    }
-}
-
-struct ViewControllerPreview: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = UIViewController
-    
-    let viewControllerBuilder: () -> UIViewControllerType
- 
-    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-        self.viewControllerBuilder = viewControllerBuilder
-    }
-    
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        viewControllerBuilder()
-    }
- 
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Do nothing
-    }
-}
-
-
-
+/// 账户注册界面的声明内容
 class MineViewController: UIViewController {
     /// 底层的滚动视图，最基础的界面
     let underlyView = UIScrollView()
@@ -44,7 +11,11 @@ class MineViewController: UIViewController {
     
     /// 自动布局顶部参考，用来流式创建控件时定位
     var snpTop: ConstraintRelatableTarget!
-    
+}
+
+// ♻️控制器的生命周期方法
+extension MineViewController {
+    /// 初始化界面的枢纽
     override func viewDidLoad() {
         super.viewDidLoad()
         Initialize.view(self, "关于我的", mode: .group)
@@ -60,27 +31,27 @@ class MineViewController: UIViewController {
             make.width.equalTo(underlyView)
         }
 
-        // 模块0：搜索相关的筛选设置
+        // 模块0：登录注册或用户信息模块
         snpTop = module0()
-        // 模块1：搜索相关的筛选设置
+        // 模块1：我的创作模块
         snpTop = module1(snpTop)
         
-        // 通知观察者关联方法（账号状态修改）
+        // 账号登录状态修改时触发相关通知
         NotificationCenter.default.addObserver(self, selector: #selector(overloadViewDidLoad), name: accountStatusChangeNotification, object: nil)
     }
 }
 
 // 📦👷封装界面中各个模块创建的方法
 extension MineViewController {
-    /// 👷创建模块0的方法（账户设置模块）
+    /// 创建模块0的方法
     func module0() -> ConstraintRelatableTarget {
         /// 账号相关的设置控件（对应的字典）
         let control = UIView()
         containerView.addSubview(control)
         control.snp.makeConstraints { make in
-            make.top.equalTo(Spaced.navigation())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.top.equalTo(JunSpaced.navigation())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(80)
         }
         
@@ -89,16 +60,16 @@ extension MineViewController {
         return control.snp.bottom
     }
 
-    /// 👷创建模块1的方法（我的创作模块）
+    /// 创建模块1的方法
     func module1(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
         /// 模块标题`1`：偏好设置
         let title = UIButton().moduleTitleMode("我的创作", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
             make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
@@ -108,9 +79,9 @@ extension MineViewController {
                                             label: ["创建合集", "", "", ""])
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.bottom.equalToSuperview()
         }
         
@@ -124,7 +95,7 @@ extension MineViewController {
     @objc func accountModuleCilcked(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            let VC = SignUpViewController()
+            let VC = SignInViewController()
             let NavC = UINavigationController(rootViewController: VC)
             present(NavC, animated: true)
         case 1:
@@ -136,6 +107,13 @@ extension MineViewController {
             NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
         default: break
         }
+    }
+    
+    /// 重新加载viewDidLoad方法以刷新界面
+    @objc func userNameTitleCilcked() {
+        let VC = AccountViewController()
+        let NavC = UINavigationController(rootViewController: VC)
+        present(NavC, animated: true)
     }
     
     /// 重新加载viewDidLoad方法以刷新界面
@@ -155,18 +133,19 @@ extension MineViewController {
         // 判断当前设备上是否有已登录的账户
         if let user = LCApplication.default.currentUser {
             /// 显示当前账户用户名的标签
-            let userNameLabel = UIButton().moduleTitleMode("用户 \(user.username!.stringValue!)", mode: .arrow)
+            let userNameLabel = UIButton().moduleTitleMode("\(user.username!.stringValue!)", mode: .arrow)
             superView.addSubview(userNameLabel)
             userNameLabel.snp.makeConstraints { make in
                 make.top.equalTo(0)
                 make.height.equalTo(userNameLabel)
                 make.right.left.equalTo(0)
             }
+            userNameLabel.addTarget(self, action: #selector(userNameTitleCilcked), for: .touchUpInside)
             
             /// 登出当前账户的按钮
             let signOutButton = UIButton()
-            signOutButton.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
-            signOutButton.layer.cornerRadius = 15
+            signOutButton.backgroundColor = JunColor.learnTime0()
+            signOutButton.layer.cornerRadius = 10
             signOutButton.tag = 3
             signOutButton.setImage(UIImage(systemName: "person.badge.minus"), for: .normal)
             signOutButton.tintColor = UIColor.black
@@ -174,20 +153,28 @@ extension MineViewController {
             signOutButton.setTitleColor(UIColor.black, for: .normal)
             superView.addSubview(signOutButton)
             signOutButton.snp.makeConstraints { make in
-                make.top.equalTo(userNameLabel.snp.bottom).offset(Spaced.control())
+                make.top.equalTo(userNameLabel.snp.bottom).offset(JunSpaced.control())
                 make.right.left.bottom.equalTo(0)
             }
             signOutButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
         } else {
             /// 登录账户的按钮
             let signInButton = UIButton()
-            signInButton.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            signInButton.backgroundColor = JunColor.learnTime0()
             signInButton.layer.cornerRadius = 15
             signInButton.tag = 0
             signInButton.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
+            signInButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+            signInButton.imageView?.contentMode = .scaleAspectFit
+            signInButton.imageView?.snp.makeConstraints { make in
+                make.top.equalTo(signInButton.titleLabel!)
+                make.right.equalTo(signInButton.titleLabel!.snp.left).offset(-3)
+                make.width.height.equalTo(25)
+            }
             signInButton.tintColor = UIColor.black
             signInButton.setTitle("登录", for: .normal)
             signInButton.setTitleColor(UIColor.black, for: .normal)
+            signInButton.titleLabel?.font = JunFont.title2()
             superView.addSubview(signInButton)
             signInButton.snp.makeConstraints { make in
                 make.top.left.equalToSuperview().offset(0)
@@ -201,9 +188,17 @@ extension MineViewController {
             temporaryAccountButton.layer.cornerRadius = 15
             temporaryAccountButton.tag = 2
             temporaryAccountButton.setImage(UIImage(systemName: "person"), for: .normal)
+            temporaryAccountButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+            temporaryAccountButton.imageView?.contentMode = .scaleAspectFit
+            temporaryAccountButton.imageView?.snp.makeConstraints { make in
+                make.top.equalTo(temporaryAccountButton.titleLabel!)
+                make.right.equalTo(temporaryAccountButton.titleLabel!.snp.left).offset(-3)
+                make.width.height.equalTo(25)
+            }
             temporaryAccountButton.tintColor = UIColor.black
             temporaryAccountButton.setTitle("游客", for: .normal)
             temporaryAccountButton.setTitleColor(UIColor.black, for: .normal)
+            temporaryAccountButton.titleLabel?.font = JunFont.title2()
             superView.addSubview(temporaryAccountButton)
             temporaryAccountButton.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(0)
@@ -213,13 +208,21 @@ extension MineViewController {
             
             /// 注册账户的按钮
             let signUpButton = UIButton()
-            signUpButton.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+            signUpButton.backgroundColor = JunColor.learnTime1()
             signUpButton.layer.cornerRadius = 15
             signUpButton.tag = 1
             signUpButton.setImage(UIImage(systemName: "person.badge.key"), for: .normal)
+            signUpButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+            signUpButton.imageView?.contentMode = .scaleAspectFit
+            signUpButton.imageView?.snp.makeConstraints { make in
+                make.top.equalTo(signUpButton.titleLabel!)
+                make.right.equalTo(signUpButton.titleLabel!.snp.left).offset(-3)
+                make.width.height.equalTo(25)
+            }
             signUpButton.tintColor = UIColor.black
             signUpButton.setTitle("注册", for: .normal)
             signUpButton.setTitleColor(UIColor.black, for: .normal)
+            signUpButton.titleLabel?.font = JunFont.title2()
             superView.addSubview(signUpButton)
             signUpButton.snp.makeConstraints { make in
                 make.top.bottom.equalToSuperview().offset(0)
@@ -231,9 +234,4 @@ extension MineViewController {
             signUpButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
         }
     }
-}
-
-// 📦🫳封装界面中的通用辅助方法
-extension MineViewController {
-    
 }

@@ -58,10 +58,10 @@ extension SuggestViewController {
         let title = UIButton().moduleTitleMode("精选合集", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(Spaced.navigation())
+            make.top.equalTo(JunSpaced.navigation())
             make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         // 关联跳转方法
         title.addTarget(self, action: #selector(clickModuleTitleControl), for: .touchUpInside)
@@ -72,7 +72,7 @@ extension SuggestViewController {
         moduleView.clipsToBounds = false
         containerView.addSubview(moduleView)
         moduleView.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.right.equalTo(0)
             make.height.equalTo(360)
         }
@@ -82,7 +82,7 @@ extension SuggestViewController {
             make.edges.equalTo(moduleView)
             make.height.equalTo(moduleView)
         }
-        moduleView.contentSize = CGSize(width: (360 + Spaced.control()) * 7, height: 360)
+        moduleView.contentSize = CGSize(width: (360 + JunSpaced.control()) * 7, height: 360)
         
         // 创建7个精选合集框
         for i in 0 ... 6 {
@@ -97,11 +97,11 @@ extension SuggestViewController {
             collectionBox.snp.makeConstraints { make in
                 make.height.equalTo(360)
                 make.top.equalTo(moduleContainerView)
-                //                    .offset(Spaced.control() + CGFloat(i) * (Spaced.control() + 90))
-                make.left.equalTo(0).offset(Spaced.screen() + CGFloat(i) * (Spaced.control() + 270))
+                //                    .offset(JunSpaced.control() + CGFloat(i) * (JunSpaced.control() + 90))
+                make.left.equalTo(0).offset(JunSpaced.screen() + CGFloat(i) * (JunSpaced.control() + 270))
                 make.width.equalTo(270)
                 if i == 6 {
-                    make.right.equalToSuperview().offset(-Spaced.screen())
+                    make.right.equalToSuperview().offset(-JunSpaced.screen())
                 }
             }
             
@@ -131,9 +131,9 @@ extension SuggestViewController {
         let title = UIButton().moduleTitleMode("精选文章", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         // 关联跳转方法
         title.addTarget(self, action: #selector(clickModuleTitleControl), for: .touchUpInside)
@@ -156,11 +156,11 @@ extension SuggestViewController {
             containerView.addSubview(essayRowView)
             essayRowView.snp.makeConstraints { make in
                 make.height.equalTo(90)
-                make.top.equalTo(title.snp.bottom).offset(Spaced.control() + CGFloat(i) * (Spaced.control() + 90))
-                make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+                make.top.equalTo(title.snp.bottom).offset(JunSpaced.control() + CGFloat(i) * (JunSpaced.control() + 90))
+                make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
                 if i == 6 {
-                    make.bottom.equalToSuperview().offset(-Spaced.module())
+                    make.bottom.equalToSuperview().offset(-JunSpaced.module())
                 }
             }
             
@@ -378,53 +378,53 @@ extension SuggestViewController: UIContextMenuInteractionDelegate {
             
             let previewControllerInstance = UIViewController()
             if identifier < 7 {
-                let image = UIImageView(frame: CGRect(x: Spaced.screen(), y: Spaced.screen(), width: previewControllerInstance.view.bounds.width - Spaced.screen() * 2, height: previewControllerInstance.view.bounds.width - Spaced.screen() * 2))
+                let image = UIImageView(frame: CGRect(x: JunSpaced.screen(), y: JunSpaced.screen(), width: previewControllerInstance.view.bounds.width - JunSpaced.screen() * 2, height: previewControllerInstance.view.bounds.width - JunSpaced.screen() * 2))
                 image.layer.cornerRadius = 10
                 image.clipsToBounds = true
                 image.image = UIImage(named: featuredCollectionsRandomDataArray[identifier]["imageName"]!)
                 previewControllerInstance.view.addSubview(image)
                 
                 // 设置精选课程的标题
-                let courseLabel = UILabel(frame: CGRect(x: Spaced.screen(), y: image.frame.maxY + Spaced.screen(), width: 0, height: 0))
+                let courseLabel = UILabel(frame: CGRect(x: JunSpaced.screen(), y: image.frame.maxY + JunSpaced.screen(), width: 0, height: 0))
                 courseLabel.text = featuredCollectionsRandomDataArray[identifier]["title"]
-                courseLabel.font = Font.title1()
+                courseLabel.font = JunFont.title1()
                 courseLabel.sizeToFit()
                 courseLabel.isUserInteractionEnabled = false
                 previewControllerInstance.view.addSubview(courseLabel)
                 
                 // 设置精选课程的作者名
-                let courseLabel2 = UILabel(frame: CGRect(x: Spaced.screen(), y: courseLabel.frame.maxY + Spaced.control(), width: 0, height: 0))
+                let courseLabel2 = UILabel(frame: CGRect(x: JunSpaced.screen(), y: courseLabel.frame.maxY + JunSpaced.control(), width: 0, height: 0))
                 courseLabel2.text = featuredCollectionsRandomDataArray[identifier]["author"]
-                courseLabel2.font = Font.title2()
+                courseLabel2.font = JunFont.title2()
                 courseLabel2.sizeToFit()
                 courseLabel2.isUserInteractionEnabled = false
                 previewControllerInstance.view.addSubview(courseLabel2)
                 
-                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + Spaced.screen())
+                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + JunSpaced.screen())
             } else {
-                let image = UIImageView(frame: CGRect(x: Spaced.screen(), y: Spaced.screen(), width: previewControllerInstance.view.bounds.width - Spaced.screen() * 2, height: previewControllerInstance.view.bounds.width - Spaced.screen() * 2))
+                let image = UIImageView(frame: CGRect(x: JunSpaced.screen(), y: JunSpaced.screen(), width: previewControllerInstance.view.bounds.width - JunSpaced.screen() * 2, height: previewControllerInstance.view.bounds.width - JunSpaced.screen() * 2))
                 image.layer.cornerRadius = 10
                 image.clipsToBounds = true
                 image.image = UIImage(named: featuredCollectionsRandomDataArray[identifier - 7]["imageName"]!)
                 previewControllerInstance.view.addSubview(image)
                 
                 // 设置精选课程的标题
-                let courseLabel = UILabel(frame: CGRect(x: Spaced.screen(), y: image.frame.maxY + Spaced.screen(), width: 0, height: 0))
+                let courseLabel = UILabel(frame: CGRect(x: JunSpaced.screen(), y: image.frame.maxY + JunSpaced.screen(), width: 0, height: 0))
                 courseLabel.text = featuredCollectionsRandomDataArray[identifier - 7]["title"]
-                courseLabel.font = Font.title1()
+                courseLabel.font = JunFont.title1()
                 courseLabel.sizeToFit()
                 courseLabel.isUserInteractionEnabled = false
                 previewControllerInstance.view.addSubview(courseLabel)
                 
                 // 设置精选课程的作者名
-                let courseLabel2 = UILabel(frame: CGRect(x: Spaced.screen(), y: courseLabel.frame.maxY + Spaced.control(), width: 0, height: 0))
+                let courseLabel2 = UILabel(frame: CGRect(x: JunSpaced.screen(), y: courseLabel.frame.maxY + JunSpaced.control(), width: 0, height: 0))
                 courseLabel2.text = featuredCollectionsRandomDataArray[identifier - 7]["author"]
-                courseLabel2.font = Font.title2()
+                courseLabel2.font = JunFont.title2()
                 courseLabel2.sizeToFit()
                 courseLabel2.isUserInteractionEnabled = false
                 previewControllerInstance.view.addSubview(courseLabel2)
                 
-                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + Spaced.screenAuto())
+                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + JunSpaced.screenAuto())
             }
             
             return previewControllerInstance
@@ -460,16 +460,16 @@ extension SuggestViewController: UIContextMenuInteractionDelegate {
 //                essayLabel.numberOfLines += 1
 //            }
 //            essayLabel.sizeToFit()
-//            essayLabel.frame.size.width = blurView.frame.width - Spaced.control() * 2
+//            essayLabel.frame.size.width = blurView.frame.width - JunSpaced.control() * 2
 //            essayLabel.isUserInteractionEnabled = false
 //            cellView.addSubview(essayLabel)
 //
 //            // 根据字符串行数判断动态坐标
 //            if essayLabel.numberOfLines == 1 {
-//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - Spaced.control()) / 2
-//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + Spaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - Spaced.control()) / 2 + essayLabel.frame.height * 2 + Spaced.control())
+//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - JunSpaced.control()) / 2
+//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + JunSpaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - JunSpaced.control()) / 2 + essayLabel.frame.height * 2 + JunSpaced.control())
 //            } else {
-//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - Spaced.control()) / 2
-//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + Spaced.control(), y: (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - Spaced.control()) / 2 + essayLabel.frame.height + Spaced.control())
+//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - JunSpaced.control()) / 2
+//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + JunSpaced.control(), y: (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - JunSpaced.control()) / 2 + essayLabel.frame.height + JunSpaced.control())
 //            }
 //

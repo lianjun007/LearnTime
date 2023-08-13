@@ -45,10 +45,10 @@ extension SettingViewController {
         let title = UIButton().moduleTitleMode("偏好设置", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(Spaced.navigation())
+            mark.top.equalTo(JunSpaced.navigation())
             mark.height.equalTo(title)
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
@@ -58,9 +58,9 @@ extension SettingViewController {
                                                             label: ["", "设置内容数据源", "高级阅读设置"])
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         // 第一行自定义设置的代码
         module1ControlRow1Custom(ctrlDict["control1"]!)
@@ -75,9 +75,9 @@ extension SettingViewController {
         let title = UIButton().moduleTitleMode("更多设置", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(snpTop).offset(JunSpaced.module())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 更多设置（模块`2`）的设置控件`1`（对应的字典）
@@ -87,9 +87,9 @@ extension SettingViewController {
                                              text: ["develop.20230730"])
         containerView.addSubview(ctrl1Dict["view"]!)
         ctrl1Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 更多设置（模块`2`）的设置控件`2`（对应的字典）
@@ -98,9 +98,9 @@ extension SettingViewController {
                                              text: ["LianJun"])
         containerView.addSubview(ctrl2Dict["view"]!)
         ctrl2Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 更多设置（模块`2`）的设置控件`3`（对应的字典）
@@ -109,10 +109,10 @@ extension SettingViewController {
                                                              label: ["实验功能", "设置实验功能"])
         containerView.addSubview(ctrl3Dict["view"]!)
         ctrl3Dict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-            make.bottom.equalToSuperview().offset(-Spaced.module())
+            make.top.equalTo(ctrl2Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.bottom.equalToSuperview().offset(-JunSpaced.module())
         }
     }
 }
@@ -213,7 +213,7 @@ extension SettingViewController {
         buttonArray = []
         
         /// 模块`1`控件的第一行设置（设置阅读主题行）的辅助X轴原点坐标值（确保三个图标平均分布）数组
-        let module1Control1OriginXArray: Array<CGFloat> = [(Screen.basicWidth() - 180) / 4, (Screen.basicWidth() - 180) / 2 + 60, (Screen.basicWidth() - 180) / 4 * 3 + 120]
+        let module1Control1OriginXArray: Array<CGFloat> = [(JunScreen.basicWidth() - 180) / 4, (JunScreen.basicWidth() - 180) / 2 + 60, (JunScreen.basicWidth() - 180) / 4 * 3 + 120]
         // 自定义设置控件（阅读主题切换）
         for i in 0 ... 2 {
             /// 上方的图片按钮
@@ -265,7 +265,7 @@ extension SettingViewController {
     
     func signButton(_ superView: UIView) {
         if let user = LCApplication.default.currentUser {
-            let userNameLabel = UILabel().fontAdaptive(user.username!.stringValue!, font: Font.text(.bold))
+            let userNameLabel = UILabel().fontAdaptive(user.username!.stringValue!, font: JunFont.text(.bold))
             superView.addSubview(userNameLabel)
             userNameLabel.snp.makeConstraints { make in
                 make.top.equalTo(10)
@@ -274,7 +274,7 @@ extension SettingViewController {
             }
             
             let button3 = UIButton()
-            button3.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            button3.backgroundColor = JunColor.learnTime0()
             button3.layer.cornerRadius = 10
             button3.tag = 3
             button3.setImage(UIImage(systemName: "person.badge.minusperson.badge.minus"), for: .normal)
@@ -291,7 +291,7 @@ extension SettingViewController {
             button3.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
         } else {
             let button0 = UIButton()
-            button0.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            button0.backgroundColor = JunColor.learnTime0()
             button0.layer.cornerRadius = 10
             button0.tag = 0
             button0.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
@@ -321,7 +321,7 @@ extension SettingViewController {
             button2.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
 
             let button1 = UIButton()
-            button1.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+            button1.backgroundColor = JunColor.learnTime1()
             button1.layer.cornerRadius = 10
             button1.tag = 1
             button1.setImage(UIImage(systemName: "person.badge.key"), for: .normal)

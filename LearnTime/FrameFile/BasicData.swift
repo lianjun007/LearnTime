@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 /// 返回屏幕的基础尺寸数据
-struct Screen {
+struct JunScreen {
     static func safeAreaInsets() -> UIEdgeInsets {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let window = windowScene?.windows.first
@@ -17,7 +17,7 @@ struct Screen {
         UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale // 与设备屏幕宽度一样宽(物理)
     }
     static func nativeBasicWidth() -> CGFloat {
-        UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale - Spaced.screen() * 2 // 与设备屏幕宽度一样宽(物理)
+        UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale - JunSpaced.screen() * 2 // 与设备屏幕宽度一样宽(物理)
     }
     static func width() -> CGFloat {
         UIScreen.main.bounds.width // 与设备屏幕宽度一样宽
@@ -35,19 +35,19 @@ struct Screen {
         CGRect(x: 0, y: 0, width: UIScreen.main.nativeBounds.height, height: UIScreen.main.nativeBounds.height) // 整个屏幕显示范围
     }
     static func basicWidth() -> CGFloat {
-        UIScreen.main.bounds.width - Spaced.screenAuto() * 2 // 去掉外边距的标准宽度
+        UIScreen.main.bounds.width - JunSpaced.screenAuto() * 2 // 去掉外边距的标准宽度
     }
 }
 
 /// 选择间距相关的方法，返回CGFloat
-struct Spaced {
+struct JunSpaced {
     /// 屏幕边框与内容之间的间距
     static func screen() -> CGFloat {
         20
     }
     /// 屏幕边框与内容之间的间距，会根据安全区域自动调整
     static func screenAuto() -> CGFloat {
-        20 + Screen.safeAreaInsets().left
+        20 + JunScreen.safeAreaInsets().left
     }
     /// 各个相邻的控件之间的间距，也用做二级标题和模块之间的间距/
     static func control() -> CGFloat {
@@ -84,7 +84,7 @@ let valueChangeNotification = Notification.Name(String())
 /// 字体结构体，选择对应的方法返回对应的`UIFont`
 /// # 使用方法
 /// ```swift
-/// Font.title()
+/// JunFont.title()
 /// ```
 /// # 预设字体方法
 /// - 大标题（类似`largeTitle`）
@@ -120,7 +120,7 @@ let valueChangeNotification = Notification.Name(String())
 /// ```swift
 /// code() -> UIFont
 /// ```
-struct Font {
+struct JunFont {
     /// 大标题（类似`largeTitle`）
     static func title() -> UIFont {
         UIFont.boldSystemFont(ofSize: 34)
@@ -162,7 +162,7 @@ struct Font {
 /// 颜色结构体，选择对应的方法返回对应的`UIColor`
 /// # 使用方法
 /// ```swift
-/// Color.title()
+/// JunColor.title()
 /// ```
 /// # 预设字体方法
 /// - 大标题（类似`largeTitle`）
@@ -198,31 +198,7 @@ struct Font {
 /// ```swift
 /// code() -> UIFont
 /// ```
-struct Color {
-    /// 大标题（类似`largeTitle`）
-    static func title() -> UIFont {
-        UIFont.boldSystemFont(ofSize: 34)
-    }
-    /// 一级标题，每个模块的标题，正文的一级标题
-    static func title1() -> UIFont {
-        UIFont.boldSystemFont(ofSize: 28)
-    }
-    /// 二级标题，正文的二级标题
-    static func title2() -> UIFont {
-        UIFont.systemFont(ofSize: 22, weight: .medium)
-    }
-    /// 三级标题，正文的二级标题
-    static func title3() -> UIFont {
-        UIFont.systemFont(ofSize: 20, weight: .medium)
-    }
-    /// 正文字体
-    static func text() -> UIFont {
-        UIFont.systemFont(ofSize: 17, weight: .regular)
-    }
-    /// 自定义字重的正文字体
-    static func text(_ weight: UIFont.Weight) -> UIFont {
-        UIFont.systemFont(ofSize: 17, weight: weight)
-    }
+struct JunColor {
     /// 标准界面的背景色
     static func background() -> UIColor {
         UIColor.white
@@ -238,11 +214,14 @@ struct Color {
     /// 设置控件的行间分隔线颜色
     static func segmentedLine() -> UIColor {
         UIColor.black.withAlphaComponent(0.2)
-        
     }
-    /// 代码块显示字体
-    static func code() -> UIFont {
-        UIFont(name: "Menlo", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .regular)
+    /// 主题色（紫）
+    static func learnTime0() -> UIColor {
+        UIColor(red: 165/255.0, green: 164/255.0, blue: 231/255.0, alpha: 1.000)
+    }
+    /// 主题色（红）
+    static func learnTime1() -> UIColor {
+        UIColor(red: 246/255.0, green: 169/255.0, blue: 173/255.0, alpha: 1.000)
     }
 }
 

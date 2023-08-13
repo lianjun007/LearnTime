@@ -31,9 +31,9 @@
 //        accountView.layer.cornerRadius = 15
 //        containerView.addSubview(accountView)
 //        accountView.snp.makeConstraints { make in
-//            make.top.equalTo(Spaced.navigation())
-//            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-//            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+//            make.top.equalTo(JunSpaced.navigation())
+//            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+//            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
 //            make.height.equalTo(90)
 //            make.bottom.equalToSuperview().offset(-1000)
 //        }
@@ -97,15 +97,15 @@
 
 
 // 设置第一个模块的横向滚动视图，用来承载第一个模块“精选合集”
-//    let moduleView = UIScrollView(frame: CGRect(x: 0, y: moduleTitle1.frame.maxY + Spaced.control(), width: Screen.width(), height: largeControlSize.height))
-//    moduleView.contentSize = CGSize(width: largeControlSize.width * 7 + Spaced.control() * 6 + Spaced.screenAuto() * 2, height: largeControlSize.height)
+//    let moduleView = UIScrollView(frame: CGRect(x: 0, y: moduleTitle1.frame.maxY + JunSpaced.control(), width: JunScreen.width(), height: largeControlSize.height))
+//    moduleView.contentSize = CGSize(width: largeControlSize.width * 7 + JunSpaced.control() * 6 + JunSpaced.screenAuto() * 2, height: largeControlSize.height)
 //    moduleView.showsHorizontalScrollIndicator = false
 //    moduleView.clipsToBounds = false
 //    underlyScrollView.addSubview(moduleView)
 //    // 创建7个精选合集框
 //    for i in 0 ... 6 {
 //        // 配置参数
-//        let moduleControlOrigin = CGPoint(x: Spaced.screenAuto() + CGFloat(i) * (largeControlSize.width + Spaced.control()), y: 0)
+//        let moduleControlOrigin = CGPoint(x: JunSpaced.screenAuto() + CGFloat(i) * (largeControlSize.width + JunSpaced.control()), y: 0)
 //        let featuredCourseBox = largeControlBuild(origin: moduleControlOrigin, imageName: featuredCollectionsRandomDataArray[i]["imageName"]!, title: featuredCollectionsRandomDataArray[i]["title"]!, title2: featuredCollectionsRandomDataArray[i]["author"]!)
 //        featuredCourseBox.tag = i
 //        featuredCourseBox.addTarget(self, action: #selector(clickCollectionControl), for: .touchUpInside)
@@ -125,10 +125,10 @@
 //        let image = image
 //
 //        let flippedImage = UIImage(cgImage: image.cgImage!, scale: image.scale, orientation: .upMirrored)
-//        let imageSize = CGSize(width: Screen.basicWidth(), height: image.size.height / image.size.width * mediumControlImageWidth)
+//        let imageSize = CGSize(width: JunScreen.basicWidth(), height: image.size.height / image.size.width * mediumControlImageWidth)
 //        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
 //        image.draw(in: CGRect(x: direction ? 0: imageSize - mediumControlImageWidth, y: 0, width: mediumControlImageWidth, height: imageSize.height))
-//        flippedImage.draw(in: CGRect(x: direction ? mediumControlImageWidth: 0, y: 0, width: Screen.basicWidth() - mediumControlImageWidth, height: imageSize.height))
+//        flippedImage.draw(in: CGRect(x: direction ? mediumControlImageWidth: 0, y: 0, width: JunScreen.basicWidth() - mediumControlImageWidth, height: imageSize.height))
 //        let finalImage = UIGraphicsGetImageFromCurrentImageContext()!
 //        UIGraphicsEndImageContext()
 //
@@ -138,7 +138,7 @@
 
 
 
-//            let moduleControlOrigin = CGPoint(x: Spaced.screen() + CGFloat(i) * (largeControlSize.width + Spaced.control()), y: 0)
+//            let moduleControlOrigin = CGPoint(x: JunSpaced.screen() + CGFloat(i) * (largeControlSize.width + JunSpaced.control()), y: 0)
 //            let featuredCourseBox = largeControlBuild(origin: moduleControlOrigin, imageName: featuredCollectionsRandomDataArray[i]["imageName"]!, title: featuredCollectionsRandomDataArray[i]["title"]!, title2: featuredCollectionsRandomDataArray[i]["author"]!)
 //            featuredCourseBox.tag = i
 
@@ -235,14 +235,14 @@
 //
 //            let previewControllerInstance = UIViewController()
 //            if identifier < 7 {
-//                let image = UIImageView(frame: CGRect(x: Spaced.screenAuto(), y: Spaced.screenAuto(), width: previewControllerInstance.view.bounds.width - Spaced.screenAuto() * 2, height: previewControllerInstance.view.bounds.width - Spaced.screenAuto() * 2))
+//                let image = UIImageView(frame: CGRect(x: JunSpaced.screenAuto(), y: JunSpaced.screenAuto(), width: previewControllerInstance.view.bounds.width - JunSpaced.screenAuto() * 2, height: previewControllerInstance.view.bounds.width - JunSpaced.screenAuto() * 2))
 //                image.layer.cornerRadius = 15
 //                image.clipsToBounds = true
 //                image.image = UIImage(named: index2[identifier]["imageName"]!)
 //                previewControllerInstance.view.addSubview(image)
 //
 //                // 设置精选课程的标题
-//                let courseLabel = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: image.frame.maxY + Spaced.screenAuto(), width: 0, height: 0))
+//                let courseLabel = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: image.frame.maxY + JunSpaced.screenAuto(), width: 0, height: 0))
 //                courseLabel.text = index2[identifier]["title"]
 //                courseLabel.font = titleFont2
 //                courseLabel.sizeToFit()
@@ -250,38 +250,38 @@
 //                previewControllerInstance.view.addSubview(courseLabel)
 //
 //                // 设置精选课程的作者名
-//                let courseLabel2 = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: courseLabel.frame.maxY + Spaced.control(), width: 0, height: 0))
+//                let courseLabel2 = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: courseLabel.frame.maxY + JunSpaced.control(), width: 0, height: 0))
 //                courseLabel2.text = index2[identifier]["author"]
-//                courseLabel2.font = Font.title3()
+//                courseLabel2.font = JunFont.title3()
 //                courseLabel2.sizeToFit()
 //                courseLabel2.isUserInteractionEnabled = false
 //                previewControllerInstance.view.addSubview(courseLabel2)
 //
-//                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + Spaced.screenAuto())
+//                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + JunSpaced.screenAuto())
 //            } else {
-//                let image = UIImageView(frame: CGRect(x: Spaced.screenAuto(), y: Spaced.screenAuto(), width: previewControllerInstance.view.bounds.width - Spaced.screenAuto() * 2, height: previewControllerInstance.view.bounds.width - Spaced.screenAuto() * 2))
+//                let image = UIImageView(frame: CGRect(x: JunSpaced.screenAuto(), y: JunSpaced.screenAuto(), width: previewControllerInstance.view.bounds.width - JunSpaced.screenAuto() * 2, height: previewControllerInstance.view.bounds.width - JunSpaced.screenAuto() * 2))
 //                image.layer.cornerRadius = 20
 //                image.clipsToBounds = true
 //                image.image = UIImage(named: index2[identifier - 7]["name"]!)
 //                previewControllerInstance.view.addSubview(image)
 //
 //                // 设置精选课程的标题
-//                let courseLabel = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: image.frame.maxY + Spaced.screenAuto(), width: 0, height: 0))
+//                let courseLabel = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: image.frame.maxY + JunSpaced.screenAuto(), width: 0, height: 0))
 //                courseLabel.text = index2[identifier - 7]["name"]
-//                courseLabel.font = Font.title2()
+//                courseLabel.font = JunFont.title2()
 //                courseLabel.sizeToFit()
 //                courseLabel.isUserInteractionEnabled = false
 //                previewControllerInstance.view.addSubview(courseLabel)
 //
 //                // 设置精选课程的作者名
-//                let courseLabel2 = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: courseLabel.frame.maxY + Spaced.control(), width: 0, height: 0))
+//                let courseLabel2 = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: courseLabel.frame.maxY + JunSpaced.control(), width: 0, height: 0))
 //                courseLabel2.text = index2[identifier - 7]["author"]
-//                courseLabel2.font = Font.title3()
+//                courseLabel2.font = JunFont.title3()
 //                courseLabel2.sizeToFit()
 //                courseLabel2.isUserInteractionEnabled = false
 //                previewControllerInstance.view.addSubview(courseLabel2)
 //
-//                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + Spaced.screenAuto())
+//                previewControllerInstance.preferredContentSize = CGSize(width: previewControllerInstance.view.bounds.width, height: courseLabel2.frame.maxY + JunSpaced.screenAuto())
 //            }
 //
 //            return previewControllerInstance
@@ -319,27 +319,27 @@
 //
 //        // Set the UIScrollView at the underlying of the interface
 //        let mainScrollView = UIScrollView(frame: UIScreen.main.bounds)
-//        mainScrollView.contentSize = CGSize(width: Screen.width, height: Screen.height() * 2)
+//        mainScrollView.contentSize = CGSize(width: JunScreen.width, height: JunScreen.height() * 2)
 //        view.addSubview(mainScrollView)
 //
 //        // Set the UILabel at the featuredCoursesBox tilte
-//        let featuredCourseLable = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: Spaced.module(), width: 0, height: 0))
+//        let featuredCourseLable = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: JunSpaced.module(), width: 0, height: 0))
 //        featuredCourseLable.text = "收藏夹"
 //        featuredCourseLable.font = titleFont2
 //        featuredCourseLable.sizeToFit()
 //        mainScrollView.addSubview(featuredCourseLable)
 //
 //        // Set a UIScrollView of featuredCourses at the top of the interface
-//        let headerScrollView = UIScrollView(frame: CGRect(x: 0, y: featuredCourseLable.frame.maxY + Spaced.control(), width: Screen.width(), height: largeControlSize.height))
-//        headerScrollView.contentSize = CGSize(width: largeControlSize.width * 7 + Spaced.control() * 6 + Spaced.screenAuto() * 2, height: largeControlSize.height)
+//        let headerScrollView = UIScrollView(frame: CGRect(x: 0, y: featuredCourseLable.frame.maxY + JunSpaced.control(), width: JunScreen.width(), height: largeControlSize.height))
+//        headerScrollView.contentSize = CGSize(width: largeControlSize.width * 7 + JunSpaced.control() * 6 + JunSpaced.screenAuto() * 2, height: largeControlSize.height)
 //        headerScrollView.showsHorizontalScrollIndicator = false
 //        headerScrollView.clipsToBounds = false
 //        mainScrollView.addSubview(headerScrollView)
 //
 //        // Set the UILabel at the featuredCoursesBox tilte
-//        let featuredCourseLable1 = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: Spaced.module()2 + headerScrollView.frame.height + Spaced.module() * 2, width: 0, height: 0))
+//        let featuredCourseLable1 = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: JunSpaced.module()2 + headerScrollView.frame.height + JunSpaced.module() * 2, width: 0, height: 0))
 //        featuredCourseLable1.text = "收藏的合集"
-//        featuredCourseLable1.font = Font.title2()
+//        featuredCourseLable1.font = JunFont.title2()
 //        featuredCourseLable1.sizeToFit()
 //        mainScrollView.addSubview(featuredCourseLable1)
 //
@@ -354,7 +354,7 @@
 //        for i in 0 ... 6 {
 //
 //            // 创建精选课程框
-//            let featuredCourseBox = UIButton(frame: CGRect(x: Spaced.screenAuto() + CGFloat(CGFloat(i) * (Screen.width - Spaced.screenAuto() * 2 + Spaced.control())), y: 0, width: largeControl2Size.width, height: largeControl2Size.height))
+//            let featuredCourseBox = UIButton(frame: CGRect(x: JunSpaced.screenAuto() + CGFloat(CGFloat(i) * (JunScreen.width - JunSpaced.screenAuto() * 2 + JunSpaced.control())), y: 0, width: largeControl2Size.width, height: largeControl2Size.height))
 //            featuredCourseBox.layer.cornerRadius = basicCornerRadius(featuredCourseBox.frame.size)
 //            featuredCourseBox.setImage(UIImage(named: index2[i]["imageName"]!), for: .normal)
 //            featuredCourseBox.imageView?.contentMode = .scaleAspectFill
@@ -371,7 +371,7 @@
 //            featuredCourseBox.addSubview(blurView)
 //
 //            // 设置精选课程的标题
-//            let courseLabel = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: featuredCourseBox.frame.height / 4 * 3 + Spaced.screenAuto(), width: 0, height: 0))
+//            let courseLabel = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: featuredCourseBox.frame.height / 4 * 3 + JunSpaced.screenAuto(), width: 0, height: 0))
 //            courseLabel.text = index2[i]["title"]
 //            courseLabel.font = UIFont.systemFont(ofSize: CGFloat(titleFont3), weight: .bold)
 //            courseLabel.sizeToFit()
@@ -379,7 +379,7 @@
 //            featuredCourseBox.addSubview(courseLabel)
 //
 //            // 设置精选课程的作者名
-//            let courseLabel2 = UILabel(frame: CGRect(x: Spaced.screenAuto(), y: featuredCourseBox.frame.height / 4 * 3 + Spaced.screenAuto() + courseLabel.frame.height, width: 0, height: 0))
+//            let courseLabel2 = UILabel(frame: CGRect(x: JunSpaced.screenAuto(), y: featuredCourseBox.frame.height / 4 * 3 + JunSpaced.screenAuto() + courseLabel.frame.height, width: 0, height: 0))
 //            courseLabel2.text = index2[i]["author"]
 //            courseLabel2.font = UIFont.systemFont(ofSize: basicFont, weight: .regular)
 //            courseLabel2.sizeToFit()
@@ -394,7 +394,7 @@
 //        var cellViewArray: Array<UIButton> = []
 //        for i in 0 ... 6 {
 //            // 创建精选文章的框
-//            let cellView = UIButton(frame: CGRect(origin: CGPoint(x: Spaced.screenAuto(), y: featuredCourseLable1.frame.maxY + Spaced.control() + CGFloat(i) * (Spaced.control() + mediumControlSize.height)), size: mediumControlSize))
+//            let cellView = UIButton(frame: CGRect(origin: CGPoint(x: JunSpaced.screenAuto(), y: featuredCourseLable1.frame.maxY + JunSpaced.control() + CGFloat(i) * (JunSpaced.control() + mediumControlSize.height)), size: mediumControlSize))
 //            cellView.setImage(UIImage(named: index2[i]["imageName"]!), for: .normal)
 //            cellView.imageView?.contentMode = .scaleAspectFill
 //            cellView.layer.cornerRadius = basicCornerRadius(cellView.frame.size)
@@ -424,7 +424,7 @@
 //            cellView.addSubview(imageView)
 //
 //            // 设置精选文章的标题
-//            let essayLabel = UILabel(frame: CGRect(x: blurView.frame.origin.x + Spaced.screenAuto(), y: 0, width: blurView.frame.width - Spaced.control() * 2, height: 0))
+//            let essayLabel = UILabel(frame: CGRect(x: blurView.frame.origin.x + JunSpaced.screenAuto(), y: 0, width: blurView.frame.width - JunSpaced.control() * 2, height: 0))
 //            essayLabel.text = index2[i]["title"]
 //            essayLabel.font = UIFont.systemFont(ofSize: CGFloat(titleFont3), weight: .bold)
 //            // 根据字符串长度赋予不同行数,最多为两行
@@ -432,7 +432,7 @@
 //                essayLabel.numberOfLines += 1
 //            }
 //            essayLabel.sizeToFit()
-//            essayLabel.frame.size.width = blurView.frame.width - Spaced.control() * 2
+//            essayLabel.frame.size.width = blurView.frame.width - JunSpaced.control() * 2
 //            essayLabel.isUserInteractionEnabled = false
 //            cellView.addSubview(essayLabel)
 //
@@ -446,18 +446,18 @@
 //
 //            // 根据字符串行数判断动态坐标
 //            if essayLabel.numberOfLines == 1 {
-//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - Spaced.control()) / 2
-//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + Spaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - Spaced.control()) / 2 + essayLabel.frame.height * 2 + Spaced.control())
+//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - JunSpaced.control()) / 2
+//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + JunSpaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - JunSpaced.control()) / 2 + essayLabel.frame.height * 2 + JunSpaced.control())
 //            } else {
-//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - Spaced.control()) / 2
-//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + Spaced.control(), y: (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - Spaced.control()) / 2 + essayLabel.frame.height + Spaced.control())
+//                essayLabel.frame.origin.y = (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - JunSpaced.control()) / 2
+//                essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + JunSpaced.control(), y: (blurView.frame.height - essayLabel.frame.height - essayLabel2.frame.height - JunSpaced.control()) / 2 + essayLabel.frame.height + JunSpaced.control())
 //            }
 //
 //            let interaction = UIContextMenuInteraction(delegate: self)
 //            cellView.addInteraction(interaction)
 //        }
 //
-//        mainScrollView.contentSize = CGSize(width: Screen.width, height: cellViewArray[6].frame.maxY + Spaced.control())
+//        mainScrollView.contentSize = CGSize(width: JunScreen.width, height: cellViewArray[6].frame.maxY + JunSpaced.control())
 //
 //
 //    }
@@ -513,7 +513,7 @@
 //        navBarHeight = navBar(self.navigationController!.navigationBar) // 获取导航栏高度
 //        topHeight = statusBarHeight + navBarHeight // 导航栏加状态栏高度
 //
-//        scrollViewNav.frame = CGRect(x: 0, y: topHeight, width: Screen.width, height: 44)
+//        scrollViewNav.frame = CGRect(x: 0, y: topHeight, width: JunScreen.width, height: 44)
 //
 //        scrollViewNav.showsHorizontalScrollIndicator = false
 //
@@ -529,7 +529,7 @@
 //        for i in 0 ... 11 {
 //            if 0 ... 5 ~= i {
 //
-//                let headerBtn = UIButton(frame: CGRect(x: CGFloat(i) * (Spaced.control() + 100) + Spaced.screenAuto(), y: 0, width: 100, height: 33))
+//                let headerBtn = UIButton(frame: CGRect(x: CGFloat(i) * (JunSpaced.control() + 100) + JunSpaced.screenAuto(), y: 0, width: 100, height: 33))
 //                headerBtn.setTitle(array[i], for: .normal)
 //                headerBtn.setTitleColor(.black, for: .normal)
 //                headerBtn.tag = i
@@ -541,7 +541,7 @@
 //                scrollViewNav.addSubview(headerBtn)
 //            } else {
 //
-//                let headerBtn = UIButton(frame: CGRect(x: CGFloat(i) * (Spaced.control() + 100) + Spaced.screenAuto(), y: 44, width: 100, height: 40))
+//                let headerBtn = UIButton(frame: CGRect(x: CGFloat(i) * (JunSpaced.control() + 100) + JunSpaced.screenAuto(), y: 44, width: 100, height: 40))
 //                headerBtn.setTitleColor(.black, for: .normal)
 //                if i == 6 {
 //                    headerBtn.frame.size.width = referenceLabel2.frame.width
@@ -556,7 +556,7 @@
 //
 //        }
 //
-//        scrollViewNav.contentSize = CGSize(width: CGFloat(6) * (Spaced.control() + 100) + Spaced.screenAuto() * 2 - Spaced.control(), height: 44)
+//        scrollViewNav.contentSize = CGSize(width: CGFloat(6) * (JunSpaced.control() + 100) + JunSpaced.screenAuto() * 2 - JunSpaced.control(), height: 44)
 //
 //        collectionView.dataSource = self
 //        collectionView.delegate = self
@@ -574,7 +574,7 @@
 //    // 导航栏按钮点击事件
 //    @objc func navClicked(sender: UIButton) {
 //
-//        collectionView.setContentOffset(CGPoint(x: Int(Screen.width) * sender.tag, y: 0), animated: true)
+//        collectionView.setContentOffset(CGPoint(x: Int(JunScreen.width) * sender.tag, y: 0), animated: true)
 //        switch sender.tag {
 //        case 0:
 //            sender.backgroundColor = .systemIndigo
@@ -678,7 +678,7 @@
 //        cellView.addSubview(imageView)
 //
 //        // 设置精选文章的标题
-//        let essayLabel = UILabel(frame: CGRect(x: blurView.frame.origin.x + Spaced.screenAuto(), y: 0, width: blurView.frame.width - Spaced.control() * 2, height: 0))
+//        let essayLabel = UILabel(frame: CGRect(x: blurView.frame.origin.x + JunSpaced.screenAuto(), y: 0, width: blurView.frame.width - JunSpaced.control() * 2, height: 0))
 //        essayLabel.text = index1[index]["title"]
 //        essayLabel.font = UIFont.systemFont(ofSize: CGFloat(titleFont3), weight: .bold)
 //        // 根据字符串长度赋予不同行数,最多为两行
@@ -686,13 +686,13 @@
 //            essayLabel.numberOfLines += 1
 //        }
 //        essayLabel.sizeToFit()
-//        essayLabel.frame.size.width = blurView.frame.width - Spaced.control() * 2
+//        essayLabel.frame.size.width = blurView.frame.width - JunSpaced.control() * 2
 //        essayLabel.isUserInteractionEnabled = false
 //        cellView.addSubview(essayLabel)
 //
 //        // 设置精选文章的作者名
 //        let essayLabel2 = UILabel()
-//        essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + Spaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - Spaced.control()) / 2 + essayLabel.frame.height * 2 + Spaced.control())
+//        essayLabel2.frame.origin = CGPoint(x: blurView.frame.origin.x + JunSpaced.control(), y: (blurView.frame.height - essayLabel.frame.height * 2 - essayLabel2.frame.height - JunSpaced.control()) / 2 + essayLabel.frame.height * 2 + JunSpaced.control())
 //        essayLabel2.text = index1[index]["author"]
 //        essayLabel2.font = font(.body)
 //        essayLabel2.sizeToFit()
@@ -735,3 +735,124 @@
 //searchControllerInstance.searchBar.searchTextField.backgroundColor = UIColor.systemGroupedBackground
 //definesPresentationContext = true
 //navigationItem.hidesSearchBarWhenScrolling = false
+
+
+
+
+
+
+
+//        let numberToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 54))
+//        numberToolbar.barStyle = .default
+//        let textFiled = InsetTextField()
+//        numberToolbar.items = [
+//            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+//            UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .done, target: self, action: #selector(doneWithNumberPad)),
+//        ]
+//        numberToolbar.sizeToFit()
+//        userNameBox.inputAccessoryView = numberToolbar
+
+
+//        // 通知观察者关联方法（账号状态修改）
+//        NotificationCenter.default.addObserver(self, selector: #selector(overloadViewDidLoad), name: emailVerifiedStatusChangeNotification, object: nil)
+
+
+
+
+
+
+
+//        let signInButton = UIButton()
+//        signInButton.backgroundColor = UIColor.brown.withAlphaComponent(0.5)
+//        signInButton.layer.cornerRadius = 15
+//        containerView.addSubview(signInButton)
+//        signInButton.snp.makeConstraints { make in
+//            make.top.equalTo(signButton.snp.bottom).offset(JunSpaced.control())
+//            make.left.equalTo(view.safeAreaLayoutGuide).offset(JunSpaced.screen())
+//            make.right.equalTo(view.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+//            make.height.equalTo(44)
+//        }
+//        signInButton.addTarget(self, action: #selector(clickedSignInButton), for: .touchUpInside)
+//}
+
+//    /// 👷创建模块6的方法
+//    func module6(_ snpTop: ConstraintRelatableTarget) {
+//
+//        let verifyEmailButton = UIButton()
+//        verifyEmailButton.backgroundColor = JunColor.learnTime1()
+//        verifyEmailButton.layer.cornerRadius = 15
+//        verifyEmailButton.setTitle("发送验证邮件", for: .normal)
+//        verifyEmailButton.setTitleColor(UIColor.black, for: .normal)
+//        containerView.addSubview(verifyEmailButton)
+//        verifyEmailButton.snp.makeConstraints { make in
+//            make.top.equalTo(snpTop).offset(JunSpaced.module())
+//            make.width.equalTo(containerView).multipliedBy(0.5).offset(-JunSpaced.screen())
+//            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+//            make.height.equalTo(44)
+//        }
+//        verifyEmailButton.addTarget(self, action: #selector(verifyEmailClicked), for: .touchUpInside)
+//
+//        /// 刷新当前邮箱验证状态的按钮
+//        let refreshButton = UIButton()
+//        refreshButton.setImage(UIImage(systemName: "arrow.triangle.2.circlepath"), for: .normal)
+//        refreshButton.imageView?.snp.makeConstraints { make in
+//            make.top.left.equalTo(3)
+//        }
+//        refreshButton.tintColor = UIColor.black
+//        refreshButton.layer.cornerRadius = 15
+//        containerView.addSubview(refreshButton)
+//        refreshButton.snp.makeConstraints { make in
+//            make.top.equalTo(snpTop).offset(JunSpaced.control())
+//            make.right.equalTo(verifyEmailButton.snp.left).offset(-JunSpaced.control())
+//            make.height.width.equalTo(44)
+//        }
+//
+//        /// 当前邮箱验证状态的显示框
+//        let statusView = UIButton()
+//        statusView.layer.cornerRadius = 15
+//        containerView.addSubview(statusView)
+//        statusView.snp.makeConstraints { make in
+//            make.top.equalTo(snpTop).offset(JunSpaced.control())
+//            make.right.equalTo(refreshButton.snp.left).offset(-JunSpaced.control())
+//            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+//            make.height.equalTo(44)
+//        }
+//
+//        statusView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+//        statusView.setTitle("未验证", for: .normal)
+//    }
+
+
+
+
+
+
+//    @objc func clickedSignInButton() {
+//        guard let username = userNameBox.text, let password = passwordBox.text, let email = emailBox.text, let phone = phoneBox.text else {
+//            // 处理用户名或密码为nil的情况
+//            return
+//        }
+//        _ = LCUser.logIn(username: username, password: password) { result in
+//            switch result {
+//            case .success(object: let user):
+//                print(user)
+//                NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
+//            case .failure(error: let error):
+//                print(error)
+//            }
+//        }
+//    }
+
+//    @objc func verifyEmailClicked() {
+//        guard let email = emailBox.text else { return }
+//        _ = LCUser.requestVerificationMail(email: email) { result in
+//            switch result {
+//            case .success: break
+//            case .failure(error: let error): print(error)
+//            }
+//        }
+//    }
+
+//    @objc func refreshEmailVerifyStatusClicked() {
+//        NotificationCenter.default.post(name: emailVerifiedStatusChangeNotification, object: nil)
+//    }

@@ -12,7 +12,7 @@ import UIKit
 func essayInterfaceBuild(_ essayData: String, _ VC: UIViewController) -> UIScrollView {
     let essayDataArray = essayData.components(separatedBy: "\n")
     // 设置最底层的滚动视图，用来承载界面内的所有元素
-    let underlyScrollView = UIScrollView(frame: Screen.bounds())
+    let underlyScrollView = UIScrollView(frame: JunScreen.bounds())
     underlyScrollView.alwaysBounceVertical = true
     VC.view.addSubview(underlyScrollView)
     
@@ -37,9 +37,9 @@ func essayInterfaceBuild(_ essayData: String, _ VC: UIViewController) -> UIScrol
             author = true
             pointY = authorModuleBuild(stringHandling(item), underlyScrollView)
             let horizontalLinePath = UIBezierPath()
-            let pointY = Spaced.module() * 2 - Spaced.control()
+            let pointY = JunSpaced.module() * 2 - JunSpaced.control()
             horizontalLinePath.move(to: CGPoint(x: 0, y: pointY))
-            horizontalLinePath.addLine(to: CGPoint(x: Screen.width(), y: pointY))
+            horizontalLinePath.addLine(to: CGPoint(x: JunScreen.width(), y: pointY))
             let horizontalLine = CAShapeLayer()
             horizontalLine.path = horizontalLinePath.cgPath
             horizontalLine.strokeColor = UserDefaults.SettingInfo.string(forKey: .essayTheme) == "gorgeous" ? UIColor.systemIndigo.withAlphaComponent(0.2).cgColor: UIColor.black.withAlphaComponent(0.2).cgColor
@@ -53,20 +53,20 @@ func essayInterfaceBuild(_ essayData: String, _ VC: UIViewController) -> UIScrol
     if !author {
         pointY = authorModuleBuild("未知", underlyScrollView)
         let horizontalLinePath = UIBezierPath()
-        let pointY0 = Spaced.module() + Spaced.control() / 2
+        let pointY0 = JunSpaced.module() + JunSpaced.control() / 2
         horizontalLinePath.move(to: CGPoint(x: 0, y: pointY0))
-        horizontalLinePath.addLine(to: CGPoint(x: Screen.width(), y: pointY0))
+        horizontalLinePath.addLine(to: CGPoint(x: JunScreen.width(), y: pointY0))
         let horizontalLine = CAShapeLayer()
         horizontalLine.path = horizontalLinePath.cgPath
         horizontalLine.strokeColor = UserDefaults.SettingInfo.string(forKey: .essayTheme) == "gorgeous" ? UIColor.systemIndigo.withAlphaComponent(0.3).cgColor: UIColor.black.withAlphaComponent(0.5).cgColor
         horizontalLine.lineWidth = 1
         underlyScrollView.layer.addSublayer(horizontalLine)
     }
-    pointY += Spaced.control() * 3
+    pointY += JunSpaced.control() * 3
     for item in essayDataArray {
         text = false
         if item.hasPrefix("# ") {
-            pointY = title1ModuleBuild(stringHandling(item), underlyScrollView, originY: control ? pointY: Spaced.module() + 10)
+            pointY = title1ModuleBuild(stringHandling(item), underlyScrollView, originY: control ? pointY: JunSpaced.module() + 10)
             control = true
         } else if item.hasPrefix("## ") {
             control = true
@@ -125,7 +125,7 @@ func essayInterfaceBuild(_ essayData: String, _ VC: UIViewController) -> UIScrol
             pointY = textModuleBuild(item, underlyScrollView, originY: pointY, paragraph: true)
         }
     }
-    underlyScrollView.contentSize = CGSize(width: Screen.width(), height: pointY + Spaced.module())
+    underlyScrollView.contentSize = CGSize(width: JunScreen.width(), height: pointY + JunSpaced.module())
     
     return underlyScrollView
 }
@@ -166,20 +166,20 @@ func stringHandling(_ string: String) -> String {
 /// - Parameter view: 底层视图
 func authorModuleBuild(_ string: String, _ view: UIView) -> CGFloat {
     let authorHeader = UILabel()
-    authorHeader.frame.size.width = Screen.basicWidth()
+    authorHeader.frame.size.width = JunScreen.basicWidth()
     authorHeader.text = "作者："
-    authorHeader.font = Font.text(.bold)
+    authorHeader.font = JunFont.text(.bold)
     authorHeader.sizeToFit()
-    authorHeader.frame.origin = CGPoint(x: Spaced.screenAuto(), y: Spaced.control() - 2)
+    authorHeader.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: JunSpaced.control() - 2)
     authorHeader.layer.cornerRadius = 5
     view.addSubview(authorHeader)
     
     let author = UILabel()
-    author.frame.size.width = Screen.basicWidth()
+    author.frame.size.width = JunScreen.basicWidth()
     author.text = string
-    author.font = Font.text(.medium)
+    author.font = JunFont.text(.medium)
     author.sizeToFit()
-    author.frame.origin = CGPoint(x: authorHeader.frame.maxX, y: Spaced.control() - 2)
+    author.frame.origin = CGPoint(x: authorHeader.frame.maxX, y: JunSpaced.control() - 2)
     author.layer.cornerRadius = 5
     author.frame.size.width += 7
     author.clipsToBounds = true
@@ -192,7 +192,7 @@ func authorModuleBuild(_ string: String, _ view: UIView) -> CGFloat {
         authorHeader.text = ""
         author.text = "作者：\(string)"
         author.sizeToFit()
-        author.frame.origin.x = Spaced.screenAuto()
+        author.frame.origin.x = JunSpaced.screenAuto()
         author.frame.size.width += 7
         author.textAlignment = .center
         author.backgroundColor = UIColor.systemGroupedBackground
@@ -204,8 +204,8 @@ func authorModuleBuild(_ string: String, _ view: UIView) -> CGFloat {
         author.frame.origin.x = authorHeader.frame.maxX
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: Spaced.screenAuto() + 3, y: author.frame.minY + 1))
-        path.addLine(to: CGPoint(x: Spaced.screenAuto() + 3, y: author.frame.maxY - 1))
+        path.move(to: CGPoint(x: JunSpaced.screenAuto() + 3, y: author.frame.minY + 1))
+        path.addLine(to: CGPoint(x: JunSpaced.screenAuto() + 3, y: author.frame.maxY - 1))
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.7).cgColor
@@ -227,20 +227,20 @@ func authorModuleBuild(_ string: String, _ view: UIView) -> CGFloat {
 func title1ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CGFloat {
     var newOriginY = originY
     let title2 = UILabel()
-    title2.frame.size.width = Screen.basicWidth()
+    title2.frame.size.width = JunScreen.basicWidth()
     title2.text = string
     title2.numberOfLines = 0
-    title2.font = Font.title1()
+    title2.font = JunFont.title1()
     title2.sizeToFit()
-    title2.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.module())
+    title2.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.module())
     view.addSubview(title2)
     newOriginY = title2.frame.maxY
     
     switch UserDefaults.SettingInfo.string(forKey: .essayTheme) {
     case "style":
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: Spaced.screenAuto(), y: title2.frame.maxY + 3))
-        path.addLine(to: CGPoint(x: Screen.width() - Spaced.screenAuto(), y: title2.frame.maxY + 3))
+        path.move(to: CGPoint(x: JunSpaced.screenAuto(), y: title2.frame.maxY + 3))
+        path.addLine(to: CGPoint(x: JunScreen.width() - JunSpaced.screenAuto(), y: title2.frame.maxY + 3))
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.black.withAlphaComponent(0.5).cgColor
@@ -249,11 +249,11 @@ func title1ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CG
         newOriginY += 5
     case "gorgeous":
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: Spaced.screenAuto(), y: title2.frame.maxY - 3))
+        path.move(to: CGPoint(x: JunSpaced.screenAuto(), y: title2.frame.maxY - 3))
         path.addLine(to: CGPoint(x: title2.frame.maxX, y: title2.frame.maxY - 3))
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.5).cgColor
+        shapeLayer.strokeColor = JunColor.learnTime0().cgColor
         shapeLayer.lineWidth = 9.0
         view.layer.addSublayer(shapeLayer)
         newOriginY += 6
@@ -274,11 +274,11 @@ func title1ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CG
 func title2ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CGFloat {
     var newOriginY = originY
     let title3 = UILabel()
-    title3.frame.size.width = Screen.basicWidth()
+    title3.frame.size.width = JunScreen.basicWidth()
     title3.text = "· \(string)"
-    title3.font = Font.title2()
+    title3.font = JunFont.title2()
     title3.sizeToFit()
-    title3.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.navigation())
+    title3.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.navigation())
     view.addSubview(title3)
     
     newOriginY = title3.frame.maxY
@@ -292,8 +292,8 @@ func title2ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CG
         title3.sizeToFit()
         title3.frame.origin.x += 13
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: Spaced.screenAuto() + 5, y: title3.frame.minY + 3))
-        path.addLine(to: CGPoint(x: Spaced.screenAuto() + 5, y: title3.frame.maxY - 3))
+        path.move(to: CGPoint(x: JunSpaced.screenAuto() + 5, y: title3.frame.minY + 3))
+        path.addLine(to: CGPoint(x: JunSpaced.screenAuto() + 5, y: title3.frame.maxY - 3))
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.4).cgColor
@@ -314,12 +314,12 @@ func title2ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CG
 /// - Note: 返回的Y轴坐标是用来给后续创建内容控件定位使用的，所以需要将返回值赋值给原Y轴坐标。
 func title3ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CGFloat {
     let title4 = UILabel()
-    title4.frame.size.width = Screen.basicWidth()
+    title4.frame.size.width = JunScreen.basicWidth()
     title4.text = string
-    title4.font = Font.title2()
+    title4.font = JunFont.title2()
     title4.textColor = UIColor.black.withAlphaComponent(0.8)
     title4.sizeToFit()
-    title4.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.navigation())
+    title4.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.navigation())
     view.addSubview(title4)
     return title4.frame.maxY
 }
@@ -373,7 +373,7 @@ func codeModuleBuild(_ stringArray: Array<String>, _ superView: UIView,_ pointY:
     }
     
     // 创建底层的代码框的UIScrollView
-    let codeScrollBox = UIScrollView(frame: CGRect(x: Spaced.screenAuto(), y: pointY + Spaced.control(), width: Screen.basicWidth(), height: 0))
+    let codeScrollBox = UIScrollView(frame: CGRect(x: JunSpaced.screenAuto(), y: pointY + JunSpaced.control(), width: JunScreen.basicWidth(), height: 0))
     superView.addSubview(codeScrollBox)
     
     // 创建代码行序号的容器和对应的高斯模糊
@@ -393,7 +393,7 @@ func codeModuleBuild(_ stringArray: Array<String>, _ superView: UIView,_ pointY:
     for i in 0 ..< codeStringArray.count {
         // 代码行部分
         let codeRow = UILabel()
-        codeRow.frame.origin.y = i == 0 ? 10: rowArray[(i - 1) * 2].frame.maxY + Spaced.codeRow()
+        codeRow.frame.origin.y = i == 0 ? 10: rowArray[(i - 1) * 2].frame.maxY + JunSpaced.codeRow()
         var newCodeString = NSMutableAttributedString(string: codeStringArray[i])
         switch codeLanguage {
         case "Swift": newCodeString = swiftCodeOptimize(attString: newCodeString)
@@ -402,7 +402,7 @@ func codeModuleBuild(_ stringArray: Array<String>, _ superView: UIView,_ pointY:
             break
         }
         codeRow.attributedText = newCodeString
-        codeRow.font = Font.code()
+        codeRow.font = JunFont.code()
         codeRow.sizeToFit()
         if codeRow.frame.maxX > codeRowMaxX {
             codeRowMaxX = codeRow.frame.maxX
@@ -413,7 +413,7 @@ func codeModuleBuild(_ stringArray: Array<String>, _ superView: UIView,_ pointY:
         /// 代码行的序号部分
         let rowNumber = UILabel()
         rowNumber.frame.origin = CGPoint(x: codeScrollBox.frame.origin.x, y: i == 0 ? 10 + codeScrollBox.frame.origin.y: codeRow.frame.origin.y + codeScrollBox.frame.origin.y)
-        rowNumber.font = Font.code()
+        rowNumber.font = JunFont.code()
         rowArray.append(rowNumber)
         if UserDefaults.SettingInfo.string(forKey: .essayCodeNumber)! == "true" {
             // 根据设置判断是否显示代码块序号的底层半透明框
@@ -723,7 +723,7 @@ func htmlCodeOptimize(attString: NSMutableAttributedString) -> NSMutableAttribut
 /// - Note: 返回的Y轴坐标是用来给后续创建内容控件定位使用的，所以需要将返回值赋值给原Y轴坐标。
 func textModuleBuild(_ string: String, _ view: UIView, originY: CGFloat, paragraph: Bool) -> CGFloat {
     let text = UILabel()
-    text.frame.size.width = Screen.basicWidth()
+    text.frame.size.width = JunScreen.basicWidth()
     text.text = string
     text.numberOfLines = 0
     if UserDefaults.SettingInfo.string(forKey: .essayTextRow) == "false" {
@@ -732,9 +732,9 @@ func textModuleBuild(_ string: String, _ view: UIView, originY: CGFloat, paragra
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = 7
     text.attributedText = NSAttributedString(string: text.text!, attributes: [.paragraphStyle: paragraphStyle])
-    text.font = Font.text()
+    text.font = JunFont.text()
     text.sizeToFit()
-    text.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + (paragraph ? Spaced.setting(): 0))
+    text.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + (paragraph ? JunSpaced.setting(): 0))
     view.addSubview(text)
     return text.frame.maxY
 }
@@ -753,9 +753,9 @@ func imageModuleBuild(_ imageName: String, _ view: UIView, originY: CGFloat) -> 
     imageView.contentMode = .scaleAspectFit
     imageView.sizeToFit()
     let proportion = imageView.frame.size.height / imageView.frame.size.width
-    imageView.frame.size.width = Screen.basicWidth()
+    imageView.frame.size.width = JunScreen.basicWidth()
     imageView.frame.size.height = imageView.frame.size.width * proportion
-    imageView.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.control())
+    imageView.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.control())
     view.addSubview(imageView)
     return imageView.frame.maxY
 }
@@ -787,7 +787,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
     underlyView.layer.cornerRadius = 4
     underlyView.backgroundColor = UIColor.systemGroupedBackground
     underlyView.bounces = false
-    underlyView.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.control() + 4)
+    underlyView.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.control() + 4)
     if UserDefaults.SettingInfo.string(forKey: .essayTheme) == "style" {
         underlyView.backgroundColor = UIColor.systemBackground
         underlyView.layer.borderColor = UIColor(red: 146/255.0, green: 146/255.0, blue: 148/255.0, alpha: 1.000).cgColor
@@ -829,7 +829,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
             let cellString = cellString1.trimmingCharacters(in: .whitespacesAndNewlines)
             let labelFrame = UILabel()
             labelFrame.text = cellString
-            labelFrame.font = Font.smallText()
+            labelFrame.font = JunFont.smallText()
             labelFrame.sizeToFit()
             if columnMaxWidth < labelFrame.frame.size.width {
                 columnMaxWidth = labelFrame.frame.size.width
@@ -847,9 +847,9 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
         frameOriginX.append(frameWidth + 5)
         frameWidth += columnMaxWidthArray[i] + 10
     }
-    if frameWidth < Screen.basicWidth() {
-        let difference = (Screen.basicWidth()) - frameWidth
-        frameWidth = Screen.basicWidth()
+    if frameWidth < JunScreen.basicWidth() {
+        let difference = (JunScreen.basicWidth()) - frameWidth
+        frameWidth = JunScreen.basicWidth()
         for i in 0 ..< columnCountMax {
             frameOriginX[i] += CGFloat(i * (Int(difference) / columnCountMax))
             columnMaxWidthArray[i] += difference / CGFloat(columnCountMax)
@@ -859,7 +859,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
     var cellViewArray: Array<UIView> = []
     for i in 0 ..< arrayData.count {
         let cellView = UIView(frame: CGRect(x: boardWidth - lineWidth / 2, y: boardWidth + rowHeight * CGFloat(i) - lineWidth / 2, width: frameWidth - boardWidth * 2, height: rowHeight))
-        if frameWidth == Screen.basicWidth(), UserDefaults.SettingInfo.string(forKey: .essayTheme) == "gorgeous", i % 2 == 1 {
+        if frameWidth == JunScreen.basicWidth(), UserDefaults.SettingInfo.string(forKey: .essayTheme) == "gorgeous", i % 2 == 1 {
             cellView.frame.size.width += lineWidth / 2
         }
         // 绘制表格水平方向的分割线
@@ -977,7 +977,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
                 } else {
                     label.text = trimmedString
                 }
-                label.font = Font.smallText()
+                label.font = JunFont.smallText()
                 label.frame.origin.y += (i == 0 ? boardWidth / 2: lineWidth / 2)
                 label.frame.size.height -= (i == 0 ? lineWidth / 2 + boardWidth / 2: lineWidth)
                 //                if UserDefaults.SettingInfo.string(forKey: .essayTheme) == "style" {
@@ -999,7 +999,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
         
         underlyView.addSubview(cellView)
     }
-    underlyView.frame.size = CGSize(width: Screen.basicWidth(), height: cellViewArray[arrayData.count - 1].frame.maxY + boardWidth - lineWidth / 2)
+    underlyView.frame.size = CGSize(width: JunScreen.basicWidth(), height: cellViewArray[arrayData.count - 1].frame.maxY + boardWidth - lineWidth / 2)
     underlyView.contentSize.width = frameWidth - lineWidth
     view.addSubview(underlyView)
     return underlyView.frame.maxY
@@ -1025,20 +1025,20 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //    ViewController.navigationItem.title = data["title"] as? String
 //
 //    let author0 = UILabel()
-//    author0.frame.size.width = Screen.basicWidth()
+//    author0.frame.size.width = JunScreen.basicWidth()
 //    author0.text = "作者："
 //    author0.font = font(.basic, weight: .bold)
 //    author0.sizeToFit()
-//    author0.frame.origin = CGPoint(x: Spaced.screenAuto(), y: Spaced.control() - 2)
+//    author0.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: JunSpaced.control() - 2)
 //    author0.layer.cornerRadius = 5
 //    underlyScrollView.addSubview(author0)
 //
 //    let author = UILabel()
-//    author.frame.size.width = Screen.basicWidth()
+//    author.frame.size.width = JunScreen.basicWidth()
 //    author.text = data["author"] as? String
 //    author.font = font(.basic, weight: .medium)
 //    author.sizeToFit()
-//    author.frame.origin = CGPoint(x: author0.frame.maxX, y: Spaced.control() - 2)
+//    author.frame.origin = CGPoint(x: author0.frame.maxX, y: JunSpaced.control() - 2)
 //    author.layer.cornerRadius = 5
 //    author.frame.size.width += 7
 //    author.clipsToBounds = true
@@ -1051,7 +1051,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //        author0.text = ""
 //        author.text = "作者：\(String(describing: data["author"]!))"
 //        author.sizeToFit()
-//        author.frame.origin.x = Spaced.screenAuto()
+//        author.frame.origin.x = JunSpaced.screenAuto()
 //        author.frame.size.width += 7
 //        author.textAlignment = .center
 //        author.backgroundColor = UIColor.systemGroupedBackground
@@ -1063,8 +1063,8 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //        author.frame.origin.x = author0.frame.maxX
 //
 //        let path = UIBezierPath()
-//        path.move(to: CGPoint(x: Spaced.screenAuto() + 3, y: author.frame.minY + 1))
-//        path.addLine(to: CGPoint(x: Spaced.screenAuto() + 3, y: author.frame.maxY - 1))
+//        path.move(to: CGPoint(x: JunSpaced.screenAuto() + 3, y: author.frame.minY + 1))
+//        path.addLine(to: CGPoint(x: JunSpaced.screenAuto() + 3, y: author.frame.maxY - 1))
 //        let shapeLayer = CAShapeLayer()
 //        shapeLayer.path = path.cgPath
 //        shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.7).cgColor
@@ -1078,20 +1078,20 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //        switch header[i] {
 //        case "title2":
 //            let title2 = UILabel()
-//            title2.frame.size.width = Screen.basicWidth()
+//            title2.frame.size.width = JunScreen.basicWidth()
 //            title2.text = content[i]
-//            title2.font = Font.title1()
-//            title2.font = Font.title1()
+//            title2.font = JunFont.title1()
+//            title2.font = JunFont.title1()
 //            title2.sizeToFit()
-//            title2.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.module())
+//            title2.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.module())
 //            underlyScrollView.addSubview(title2)
 //            originY = title2.frame.maxY
 //
 //            switch UserDefaults.SettingInfo.string(forKey: .essayTheme) {
 //            case "style":
 //                let path = UIBezierPath()
-//                path.move(to: CGPoint(x: Spaced.screenAuto(), y: title2.frame.maxY + 3))
-//                path.addLine(to: CGPoint(x: Screen.width() - Spaced.screenAuto(), y: title2.frame.maxY + 3))
+//                path.move(to: CGPoint(x: JunSpaced.screenAuto(), y: title2.frame.maxY + 3))
+//                path.addLine(to: CGPoint(x: JunScreen.width() - JunSpaced.screenAuto(), y: title2.frame.maxY + 3))
 //                let shapeLayer = CAShapeLayer()
 //                shapeLayer.path = path.cgPath
 //                shapeLayer.strokeColor = UIColor.black.withAlphaComponent(0.5).cgColor
@@ -1100,11 +1100,11 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //                originY += 5
 //            case "gorgeous":
 //                let path = UIBezierPath()
-//                path.move(to: CGPoint(x: Spaced.screenAuto(), y: title2.frame.maxY - 3))
+//                path.move(to: CGPoint(x: JunSpaced.screenAuto(), y: title2.frame.maxY - 3))
 //                path.addLine(to: CGPoint(x: title2.frame.maxX, y: title2.frame.maxY - 3))
 //                let shapeLayer = CAShapeLayer()
 //                shapeLayer.path = path.cgPath
-//                shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.5).cgColor
+//                shapeLayer.strokeColor = JunColor.learnTime0().cgColor
 //                shapeLayer.lineWidth = 9.0
 //                underlyScrollView.layer.addSublayer(shapeLayer)
 //                originY += 6
@@ -1112,11 +1112,11 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //            }
 //        case "title3":
 //            let title3 = UILabel()
-//            title3.frame.size.width = Screen.basicWidth()
+//            title3.frame.size.width = JunScreen.basicWidth()
 //            title3.text = "· \(content[i])"
 //            title3.font = font(title2)
 //            title3.sizeToFit()
-//            title3.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.navigation())
+//            title3.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.navigation())
 //            underlyScrollView.addSubview(title3)
 //
 //            originY = title3.frame.maxY
@@ -1130,8 +1130,8 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //                title3.sizeToFit()
 //                title3.frame.origin.x += 13
 //                let path = UIBezierPath()
-//                path.move(to: CGPoint(x: Spaced.screenAuto() + 5, y: title3.frame.minY + 3))
-//                path.addLine(to: CGPoint(x: Spaced.screenAuto() + 5, y: title3.frame.maxY - 3))
+//                path.move(to: CGPoint(x: JunSpaced.screenAuto() + 5, y: title3.frame.minY + 3))
+//                path.addLine(to: CGPoint(x: JunSpaced.screenAuto() + 5, y: title3.frame.maxY - 3))
 //                let shapeLayer = CAShapeLayer()
 //                shapeLayer.path = path.cgPath
 //                shapeLayer.strokeColor = UIColor.systemIndigo.withAlphaComponent(0.7).cgColor
@@ -1141,14 +1141,14 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //            }
 //        case "text":
 //            let text = UILabel()
-//            text.frame.size.width = Screen.basicWidth()
+//            text.frame.size.width = JunScreen.basicWidth()
 //            let string = content[i]
 //            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
 //            text.text = trimmed
 //            text.numberOfLines = 0
-//            text.font = Font.basic(.basic)
+//            text.font = JunFont.basic(.basic)
 //            text.sizeToFit()
-//            text.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.control())
+//            text.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.control())
 //            underlyScrollView.addSubview(text)
 //            originY = text.frame.maxY
 //        case "image":
@@ -1157,13 +1157,13 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //            imageView.contentMode = .scaleAspectFit
 //            imageView.sizeToFit()
 //            let proportion = imageView.frame.size.height / imageView.frame.size.width
-//            imageView.frame.size.width = Screen.basicWidth()
+//            imageView.frame.size.width = JunScreen.basicWidth()
 //            imageView.frame.size.height = imageView.frame.size.width * proportion
-//            imageView.frame.origin = CGPoint(x: Spaced.screenAuto(), y: originY + Spaced.control())
+//            imageView.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: originY + JunSpaced.control())
 //            underlyScrollView.addSubview(imageView)
 //            originY = imageView.frame.maxY
 //        case "code":
-//            let codeScroll = UIScrollView(frame: CGRect(x: Spaced.screenAuto(), y: originY + Spaced.control(), width: Screen.basicWidth(), height: 0))
+//            let codeScroll = UIScrollView(frame: CGRect(x: JunSpaced.screenAuto(), y: originY + JunSpaced.control(), width: JunScreen.basicWidth(), height: 0))
 //            codeScroll.backgroundColor = UIColor.systemFill
 //            codeScroll.layer.cornerRadius = 5
 //            codeScroll.alwaysBounceHorizontal = true
@@ -1225,7 +1225,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //                    }
 //                }
 //                code.attributedText = attString
-//                code.font = Font.code()
+//                code.font = JunFont.code()
 //                code.sizeToFit()
 //                if i != 0 {
 //                    code.frame.origin.y = codeArray[i - 1].frame.maxY + 4
@@ -1253,7 +1253,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //            }
 //        default: break
 //        }
-//        underlyScrollView.contentSize = CGSize(width: Screen.width(), height: originY + Spaced.screenAuto())
+//        underlyScrollView.contentSize = CGSize(width: JunScreen.width(), height: originY + JunSpaced.screenAuto())
 //    }
 //}
 

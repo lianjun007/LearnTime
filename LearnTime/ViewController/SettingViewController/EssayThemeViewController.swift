@@ -44,9 +44,9 @@ extension EssayThemeViewController {
                                             label: ["自定义设置"])
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(Spaced.navigation())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(JunSpaced.navigation())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         return ctrlDict["view"]!.snp.bottom
@@ -57,22 +57,22 @@ extension EssayThemeViewController {
         let title = UIButton().moduleTitleMode("文本相关", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
+            mark.top.equalTo(snpTop).offset(JunSpaced.module())
             mark.height.equalTo(title)
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 偏好设置（模块1）的设置控件（对应的字典）
         let ctrlDict = SettingControl.build(control: [.toggle, .forward],
                                             caption: "设置文本在单词还是字符之间换行",
                                             label: ["单词不分行显示", "设置行间距"])
-        ctrlDict["view"]!.frame.origin = CGPoint(x: Spaced.screenAuto(), y: title.frame.maxY + Spaced.control())
+        ctrlDict["view"]!.frame.origin = CGPoint(x: JunSpaced.screenAuto(), y: title.frame.maxY + JunSpaced.control())
         containerView.addSubview(ctrlDict["view"]!)
         ctrlDict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         (ctrlDict["control1"] as! UISwitch).isOn = (UserDefaults.SettingInfo.string(forKey: .essayTextRow)! == "true") ? true: false
         (ctrlDict["control1"] as! UISwitch).addTarget(self, action: #selector(module1Control1Row1Switch), for: .valueChanged)
@@ -87,9 +87,9 @@ extension EssayThemeViewController {
         let title = UIButton().moduleTitleMode("代码块相关", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { (mark) in
-            mark.top.equalTo(snpTop).offset(Spaced.module())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(snpTop).offset(JunSpaced.module())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         /// 代码块（模块1）的设置控件1（对应的字典）
@@ -98,9 +98,9 @@ extension EssayThemeViewController {
                                              label: ["序号条", "自动隐藏", "最大显示位数", "位数补全"])
         containerView.addSubview(ctrl1Dict["view"]!)
         ctrl1Dict["view"]!.snp.makeConstraints { (mark) in
-            mark.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            mark.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            mark.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            mark.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         // 配置每一行关联的方法
         (ctrl1Dict["control1"] as! UISwitch).isOn = (UserDefaults.SettingInfo.string(forKey: .essayCodeNumber)! == "true") ? true: false
@@ -111,10 +111,10 @@ extension EssayThemeViewController {
                                              label: ["去除前后空行", "自动换行", "语法高亮", "自定义高亮"])
         containerView.addSubview(ctrl2Dict["view"]!)
         ctrl2Dict["view"]!.snp.makeConstraints { make in
-            make.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(Spaced.setting())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-            make.bottom.equalToSuperview().offset(-Spaced.module() * 5)
+            make.top.equalTo(ctrl1Dict["view"]!.snp.bottom).offset(JunSpaced.setting())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.bottom.equalToSuperview().offset(-JunSpaced.module() * 5)
         }
         // 配置每一行关联的方法
         (ctrl2Dict["control1"] as! UISwitch).isOn = (UserDefaults.SettingInfo.string(forKey: .essayCodeFristAndList)! == "true") ? true: false
@@ -190,7 +190,7 @@ extension EssayThemeViewController {
 //        if offset.y < -44 {
 //            newOffset.y = -(self.navigationController?.navigationBar.frame.height)!
 //        } else if offset.y == -44 {
-//            newOffset.y = -((self.navigationController?.navigationBar.frame.height)! + Screen.safeAreaInsets().top)
+//            newOffset.y = -((self.navigationController?.navigationBar.frame.height)! + JunScreen.safeAreaInsets().top)
 //        }
 //        self.underlyView.setContentOffset(newOffset, animated: false)
 //    }

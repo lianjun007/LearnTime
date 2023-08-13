@@ -106,7 +106,7 @@ extension UIButton {
         /// 普通界面模块标题（一级标题）按钮的标题
         let titleLable = UILabel(frame: CGRectZero)
         titleLable.text = text
-        titleLable.font = Font.title1()
+        titleLable.font = JunFont.title1()
         titleLable.sizeToFit()
         titleButton.addSubview(titleLable)
         titleButton.frame.size.height = titleLable.frame.height

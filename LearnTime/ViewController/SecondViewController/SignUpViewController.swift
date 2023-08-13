@@ -1,15 +1,9 @@
-
 import UIKit
 import LeanCloud
 import SnapKit
 
+/// 账户注册界面的声明内容
 class SignUpViewController: UIViewController {
-
-    let userNameBox = InsetTextField()
-    let passwordBox = InsetTextField()
-    let emailBox = InsetTextField()
-    let phoneBox = InsetTextField()
-    
     /// 底层的滚动视图，最基础的界面
     let underlyView = UIScrollView()
     /// 底层滚动视图的内容视图
@@ -18,17 +12,26 @@ class SignUpViewController: UIViewController {
     /// 自动布局顶部参考，用来流式创建控件时定位
     var snpTop: ConstraintRelatableTarget!
     
+    /// 用户名输入框
+    let userNameInputBox = InsetTextField()
+    /// 密码输入框
+    let passwordInputBox = InsetTextField()
+    /// 邮箱地址输入框
+    let emailInputBox = InsetTextField()
+    /// 手机号输入框
+    let phoneInputBox = InsetTextField()
+}
+
+// ♻️控制器的生命周期方法
+extension SignUpViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Initialize.view(self, "注册账户", mode: .group)
-        userNameBox.delegate = self
-        passwordBox.delegate = self
-        emailBox.delegate = self
-        phoneBox.delegate = self
-        
-        let button = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(buttonTapped))
-        button.tintColor = UIColor.black
-        navigationItem.rightBarButtonItem = button
+        // 设置输入框的代理（UITextFieldDelegate）
+        userNameInputBox.delegate = self
+        passwordInputBox.delegate = self
+        emailInputBox.delegate = self
+        phoneInputBox.delegate = self
         
         // 设置底层视图和它的容器视图的自动布局
         view.addSubview(underlyView)
@@ -41,445 +44,438 @@ class SignUpViewController: UIViewController {
             make.width.equalTo(underlyView)
         }
         
-        // 模块1：搜索相关的筛选设置
+        // 导航栏：导航栏按钮
+        moduleNav()
+        // 模块1：输入用户名
         snpTop = module1()
-        // 模块2：搜索相关的筛选设置
+        // 模块2：输入密码
         snpTop = module2(snpTop)
+        // 模块3：输入邮箱地址
         snpTop = module3(snpTop)
+        // 模块4：输入手机号
         snpTop = module4(snpTop)
+        // 模块5：注册并且登录按钮
         module5(snpTop)
-
-//        // 通知观察者关联方法（账号状态修改）
-//        NotificationCenter.default.addObserver(self, selector: #selector(overloadViewDidLoad), name: emailVerifiedStatusChangeNotification, object: nil)
+        
+        // 键盘显示和隐藏时触发相关通知
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
-extension SignUpViewController: UITextFieldDelegate {
-    /// 👷创建模块1的方法
+// 📦分模块封装控件创建的方法
+extension SignUpViewController {
+    /// 创建导航栏按钮的方法
+    func moduleNav() {
+        /// 收起键盘的按钮
+        let keyboardHideButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(keyboardHide))
+        keyboardHideButton.tintColor = JunColor.learnTime1()
+        navigationItem.rightBarButtonItem = keyboardHideButton
+        
+        /// 收起此界面的按钮
+        let dismissVCButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(dismissVC))
+        dismissVCButton.tintColor = JunColor.learnTime1()
+        navigationItem.leftBarButtonItem = dismissVCButton
+    }
+    
+    /// 创建模块1的方法
     func module1() -> ConstraintRelatableTarget {
-        /// 模块标题`1`：偏好设置
+        /// 模块标题
         let title = UIButton().moduleTitleMode("用户名", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(Spaced.navigation())
+            make.top.equalTo(JunSpaced.navigation())
             make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        userNameBox.layer.borderWidth = 3
-        userNameBox.layer.borderColor = UIColor.red.withAlphaComponent(0.3).cgColor
-        userNameBox.backgroundColor = UIColor.white
-        userNameBox.layer.cornerRadius = 15
-        userNameBox.tintColor = UIColor.black.withAlphaComponent(0.6)
-        userNameBox.font = Font.title2()
-        userNameBox.textColor = UIColor.black.withAlphaComponent(0.6)
-        userNameBox.placeholder = "必填"
-        containerView.addSubview(userNameBox)
-        userNameBox.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        // 配置用户名输入框
+        userNameInputBox.layer.borderWidth = 3
+        userNameInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        userNameInputBox.backgroundColor = UIColor.white
+        userNameInputBox.layer.cornerRadius = 15
+        userNameInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
+        userNameInputBox.font = JunFont.title2()
+        userNameInputBox.textColor = UIColor.black.withAlphaComponent(0.6)
+        userNameInputBox.placeholder = "必填"
+        containerView.addSubview(userNameInputBox)
+        userNameInputBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(44)
         }
         
-        let tipsIcon = UIImageView(image: UIImage(systemName: "info.circle"))
-        tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
-        containerView.addSubview(tipsIcon)
-        tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(userNameBox.snp.bottom).offset(Spaced.control() - 1)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
+        /// 用户名输入框下方的提示控件的提示图标1
+        let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon1)
+        tipsIcon1.snp.makeConstraints { make in
+            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
-        /// 提示内容
-        let tipsLabel = UILabel().fontAdaptive("用户名的长度、内容、复杂度、字符类型不作限制，但是不建议太过于奇怪。", font: Font.tips())
-            tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
-            containerView.addSubview(tipsLabel)
-            tipsLabel.snp.makeConstraints { make in
-                make.top.equalTo(userNameBox.snp.bottom).offset(Spaced.control())
-                make.left.equalTo(tipsIcon.snp.right).offset(6)
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        /// 用户名输入框下方的提示控件的提示内容1
+        let tipsLabel1 = UILabel().fontAdaptive("用户名的长度、内容、复杂度、字符类型不作限制，但是不建议过于奇怪。", font: JunFont.tips())
+            tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel1)
+            tipsLabel1.snp.makeConstraints { make in
+                make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon1.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        return tipsLabel.snp.bottom
-    }
-    /// 👷创建模块2的方法（输入密码模块）
-    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
-        /// 模块标题：密码
-        let title = UIButton().moduleTitleMode("密码", mode: .basic)
-        containerView.addSubview(title)
-        title.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
-            make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-        }
-        
-        passwordBox.layer.borderWidth = 3
-        passwordBox.layer.borderColor = UIColor.red.withAlphaComponent(0.3).cgColor
-        passwordBox.backgroundColor = UIColor.white
-        passwordBox.layer.cornerRadius = 15
-        passwordBox.tintColor = UIColor.black.withAlphaComponent(0.6)
-        passwordBox.font = Font.title2()
-        passwordBox.textColor = UIColor.black.withAlphaComponent(0.6)
-        passwordBox.placeholder = "必填"
-        containerView.addSubview(passwordBox)
-        passwordBox.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-            make.height.equalTo(44)
-        }
-        
-        let tipsIcon = UIImageView(image: UIImage(systemName: "info.circle"))
-        tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
-        containerView.addSubview(tipsIcon)
-        tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(passwordBox.snp.bottom).offset(Spaced.control() - 1)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.height.width.equalTo(15)
-        }
-        
-        /// 提示内容
-        let tipsLabel = UILabel().fontAdaptive("密码的长度、内容、复杂度、字符类型不作限制，但是不建议太过于奇怪。", font: Font.tips())
-            tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
-            containerView.addSubview(tipsLabel)
-            tipsLabel.snp.makeConstraints { make in
-                make.top.equalTo(passwordBox.snp.bottom).offset(Spaced.control())
-                make.left.equalTo(tipsIcon.snp.right).offset(6)
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-        }
-        
+        /// 用户名输入框下方的提示控件的提示图标2
         let tipsIcon2 = UIImageView(image: UIImage(systemName: "info.circle"))
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel.snp.bottom).offset(Spaced.control() - 1)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
-        /// 提示内容
-        let tipsLabel2 = UILabel().fontAdaptive("密码是以明文方式通过 HTTPS 加密传输给云端，云端会以密文存储密码。换言之，用户的密码只可能用户本人知道，开发者不论是通过控制台还是 API 都是无法获取。详情请查阅 LeanCloud（docs.leancloud.cn）官方技术文档。", font: Font.tips())
+        /// 用户名输入框下方的提示控件的提示内容
+        let tipsLabel2 = UILabel().fontAdaptive("账户注册成功后用户名不可更改，所有账户的用户名都不可重复，未来将增加用户昵称功能。", font: JunFont.tips())
             tipsLabel2.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel2)
             tipsLabel2.snp.makeConstraints { make in
-                make.top.equalTo(tipsLabel.snp.bottom).offset(Spaced.control())
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
                 make.left.equalTo(tipsIcon2.snp.right).offset(6)
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
+        
         return tipsLabel2.snp.bottom
     }
     
-    /// 👷创建模块3的方法（输入邮箱）
+    /// 创建模块1的方法
+    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
+        /// 模块标题
+        let title = UIButton().moduleTitleMode("密码", mode: .basic)
+        containerView.addSubview(title)
+        title.snp.makeConstraints { make in
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.height.equalTo(title)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        // 配置密码输入框
+        passwordInputBox.layer.borderWidth = 3
+        passwordInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        passwordInputBox.backgroundColor = UIColor.white
+        passwordInputBox.layer.cornerRadius = 15
+        passwordInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
+        passwordInputBox.font = JunFont.title2()
+        passwordInputBox.textColor = UIColor.black.withAlphaComponent(0.6)
+        passwordInputBox.placeholder = "必填"
+        containerView.addSubview(passwordInputBox)
+        passwordInputBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.height.equalTo(44)
+        }
+        
+        /// 密码输入框下方的提示控件的提示图标1
+        let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon1)
+        tipsIcon1.snp.makeConstraints { make in
+            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.width.equalTo(15)
+        }
+        
+        /// 密码输入框下方的提示控件的提示内容1
+        let tipsLabel1 = UILabel().fontAdaptive("密码的长度、内容、复杂度、字符类型不作限制，但是不建议过于简单或奇怪。", font: JunFont.tips())
+            tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel1)
+            tipsLabel1.snp.makeConstraints { make in
+                make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon1.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        /// 密码输入框下方的提示控件的提示图标2
+        let tipsIcon2 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon2)
+        tipsIcon2.snp.makeConstraints { make in
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.width.equalTo(15)
+        }
+        
+        /// 密码输入框下方的提示控件的提示内容2
+        let tipsLabel2 = UILabel().fontAdaptive("密码是以明文方式通过 HTTPS 加密传输给云端，云端会以密文存储密码。换言之，用户的密码只可能用户本人知道，开发者是无法获取的。详情请查阅 LeanCloud（docs.leancloud.cn）官方技术文档。", font: JunFont.tips())
+            tipsLabel2.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel2)
+            tipsLabel2.snp.makeConstraints { make in
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon2.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        return tipsLabel2.snp.bottom
+    }
+    
+    /// 创建模块3的方法
     func module3(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
-        /// 模块标题：邮箱
+        /// 模块标题
         let title = UIButton().moduleTitleMode("邮箱地址", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
             make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        emailBox.layer.borderWidth = 3
-        emailBox.layer.borderColor = UIColor.red.withAlphaComponent(0.3).cgColor
-        emailBox.backgroundColor = UIColor.white
-        emailBox.layer.cornerRadius = 15
-        emailBox.tintColor = UIColor.black.withAlphaComponent(0.6)
-        emailBox.font = Font.title2()
-        emailBox.textColor = UIColor.black.withAlphaComponent(0.6)
-        emailBox.placeholder = "选填"
-        containerView.addSubview(emailBox)
-        emailBox.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        // 配置邮箱地址输入框
+        emailInputBox.layer.borderWidth = 3
+        emailInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        emailInputBox.backgroundColor = UIColor.white
+        emailInputBox.layer.cornerRadius = 15
+        emailInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
+        emailInputBox.font = JunFont.title2()
+        emailInputBox.textColor = UIColor.black.withAlphaComponent(0.6)
+        emailInputBox.placeholder = "选填"
+        containerView.addSubview(emailInputBox)
+        emailInputBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(44)
         }
         
-        let tipsIcon = UIImageView(image: UIImage(systemName: "info.circle"))
-        tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
-        containerView.addSubview(tipsIcon)
-        tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(emailBox.snp.bottom).offset(Spaced.control() - 1)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
+        /// 邮箱输入框下方的提示控件的提示图标
+        let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon1)
+        tipsIcon1.snp.makeConstraints { make in
+            make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
-        /// 提示内容
-        let tipsLabel = UILabel().fontAdaptive("如果输入了邮箱地址，在注册成功后此邮箱地址会收到一封验证邮件，验证成功后可以使用邮箱登录。你也可以在注册成功后再绑定账户的邮箱地址。", font: Font.tips())
-            tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
-            containerView.addSubview(tipsLabel)
-            tipsLabel.snp.makeConstraints { make in
-                make.top.equalTo(emailBox.snp.bottom).offset(Spaced.control())
-                make.left.equalTo(tipsIcon.snp.right).offset(6)
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        /// 邮箱输入框下方的提示控件的提示内容
+        let tipsLabel1 = UILabel().fontAdaptive("账户绑定邮箱地址时会收到一封验证邮件，验证成功后可以使用邮箱登录。你也可以在注册成功后再绑定邮箱地址。", font: JunFont.tips())
+            tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel1)
+            tipsLabel1.snp.makeConstraints { make in
+                make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon1.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        return tipsLabel.snp.bottom
+        /// 邮箱地址输入框下方的提示控件的提示图标
+        let tipsIcon2 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon2)
+        tipsIcon2.snp.makeConstraints { make in
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.width.equalTo(15)
+        }
+        
+        /// 邮箱地址输入框下方的提示控件的提示内容
+        let tipsLabel2 = UILabel().fontAdaptive("除此之外，邮箱地址还可以在“关于我的 > 用户名 > 验证邮箱地址”处进行验证，验证成功后可以使用邮箱地址和密码组合登录。", font: JunFont.tips())
+            tipsLabel2.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel2)
+            tipsLabel2.snp.makeConstraints { make in
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon2.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        return tipsLabel2.snp.bottom
     }
-    /// 👷创建模块4的方法（输入手机号模块）
+    
+    /// 创建模块4的方法
     func module4(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
-        /// 模块标题`1`：偏好设置
+        /// 模块标题
         let title = UIButton().moduleTitleMode("手机号", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
             make.height.equalTo(title)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        phoneBox.layer.borderWidth = 3
-        phoneBox.layer.borderColor = UIColor.red.withAlphaComponent(0.3).cgColor
-        phoneBox.backgroundColor = UIColor.white
-        phoneBox.layer.cornerRadius = 15
-        phoneBox.tintColor = UIColor.black.withAlphaComponent(0.6)
-        phoneBox.font = Font.title2()
-        phoneBox.textColor = UIColor.black.withAlphaComponent(0.6)
-        phoneBox.placeholder = "选填"
-        containerView.addSubview(phoneBox)
-        phoneBox.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(Spaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+        // 配置手机号输入框
+        phoneInputBox.layer.borderWidth = 3
+        phoneInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        phoneInputBox.backgroundColor = UIColor.white
+        phoneInputBox.layer.cornerRadius = 15
+        phoneInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
+        phoneInputBox.font = JunFont.title2()
+        phoneInputBox.textColor = UIColor.black.withAlphaComponent(0.6)
+        phoneInputBox.placeholder = "选填"
+        containerView.addSubview(phoneInputBox)
+        phoneInputBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(44)
         }
         
+        /// 手机号输入框下方的提示控件的提示图标
         let tipsIcon = UIImageView(image: UIImage(systemName: "info.circle"))
         tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon)
         tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(phoneBox.snp.bottom).offset(Spaced.control() - 1)
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
+            make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
-        /// 提示内容
-        let tipsLabel = UILabel().fontAdaptive("手机号可以在“关于我的 > 用户 你的用户名 > 验证手机号”处进行验证，验证成功后可以使用手机号短信登录。你也可以在注册成功后再绑定账户的手机号。", font: Font.tips())
+        /// 用户名输入框下方的提示控件的提示内容
+        let tipsLabel = UILabel().fontAdaptive("手机号可以在“关于我的 > 用户名 > 验证手机号”处进行验证，验证成功后可以使用手机号短信登录。你也可以在注册成功后再绑定手机号。", font: JunFont.tips())
             tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel)
             tipsLabel.snp.makeConstraints { make in
-                make.top.equalTo(phoneBox.snp.bottom).offset(Spaced.control())
+                make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control())
                 make.left.equalTo(tipsIcon.snp.right).offset(6)
-                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
         return tipsLabel.snp.bottom
     }
     
-    /// 👷创建模块5的方法
+    /// 创建模块5的方法
     func module5(_ snpTop: ConstraintRelatableTarget) {
-        
+        /// 注册并且登录的按钮
         let signButton = UIButton()
-        signButton.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        signButton.backgroundColor = JunColor.learnTime1()
         signButton.layer.cornerRadius = 20
-        signButton.setTitle("确认注册", for: .normal)
-        signButton.titleLabel?.font = Font.title2()
+        signButton.setTitle("注册并且登录", for: .normal)
+        signButton.titleLabel?.font = JunFont.title2()
         signButton.setTitleColor(UIColor.black, for: .normal)
         containerView.addSubview(signButton)
         signButton.snp.makeConstraints { make in
-            make.top.equalTo(snpTop).offset(Spaced.module())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(60)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-JunSpaced.module())
         }
-        signButton.addTarget(self, action: #selector(clickedSignButton), for: .touchUpInside)
-        
-//        let signInButton = UIButton()
-//        signInButton.backgroundColor = UIColor.brown.withAlphaComponent(0.5)
-//        signInButton.layer.cornerRadius = 15
-//        containerView.addSubview(signInButton)
-//        signInButton.snp.makeConstraints { make in
-//            make.top.equalTo(signButton.snp.bottom).offset(Spaced.control())
-//            make.left.equalTo(view.safeAreaLayoutGuide).offset(Spaced.screen())
-//            make.right.equalTo(view.safeAreaLayoutGuide).offset(-Spaced.screen())
-//            make.height.equalTo(44)
-//        }
-//        signInButton.addTarget(self, action: #selector(clickedSignInButton), for: .touchUpInside)
+        signButton.addTarget(self, action: #selector(clickedSignUpButton), for: .touchUpInside)
     }
-    
-//    /// 👷创建模块6的方法
-//    func module6(_ snpTop: ConstraintRelatableTarget) {
-//        
-//        let verifyEmailButton = UIButton()
-//        verifyEmailButton.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-//        verifyEmailButton.layer.cornerRadius = 15
-//        verifyEmailButton.setTitle("发送验证邮件", for: .normal)
-//        verifyEmailButton.setTitleColor(UIColor.black, for: .normal)
-//        containerView.addSubview(verifyEmailButton)
-//        verifyEmailButton.snp.makeConstraints { make in
-//            make.top.equalTo(snpTop).offset(Spaced.module())
-//            make.width.equalTo(containerView).multipliedBy(0.5).offset(-Spaced.screen())
-//            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-Spaced.screen())
-//            make.height.equalTo(44)
-//        }
-//        verifyEmailButton.addTarget(self, action: #selector(verifyEmailClicked), for: .touchUpInside)
-//        
-//        /// 刷新当前邮箱验证状态的按钮
-//        let refreshButton = UIButton()
-//        refreshButton.setImage(UIImage(systemName: "arrow.triangle.2.circlepath"), for: .normal)
-//        refreshButton.imageView?.snp.makeConstraints { make in
-//            make.top.left.equalTo(3)
-//        }
-//        refreshButton.tintColor = UIColor.black
-//        refreshButton.layer.cornerRadius = 15
-//        containerView.addSubview(refreshButton)
-//        refreshButton.snp.makeConstraints { make in
-//            make.top.equalTo(snpTop).offset(Spaced.control())
-//            make.right.equalTo(verifyEmailButton.snp.left).offset(-Spaced.control())
-//            make.height.width.equalTo(44)
-//        }
-//        
-//        /// 当前邮箱验证状态的显示框
-//        let statusView = UIButton()
-//        statusView.layer.cornerRadius = 15
-//        containerView.addSubview(statusView)
-//        statusView.snp.makeConstraints { make in
-//            make.top.equalTo(snpTop).offset(Spaced.control())
-//            make.right.equalTo(refreshButton.snp.left).offset(-Spaced.control())
-//            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(Spaced.screen())
-//            make.height.equalTo(44)
-//        }
-//
-//        statusView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-//        statusView.setTitle("未验证", for: .normal)
-//    }
 }
 
+// 🫳界面中其他交互触发的方法
 extension SignUpViewController {
-    
-    @objc func buttonTapped() {
-        view.endEditing(true)
+    /// 退出当前视图控制器
+    @objc func dismissVC() {
+        dismiss(animated: true, completion: nil)
     }
     
-    @objc func clickedSignButton() {
-        guard let username = userNameBox.text, let password = passwordBox.text else { return }
-        
+    /// 点击注册按钮后触发注册和登录相关的方法
+    @objc func clickedSignUpButton() {
+        guard let userName = userNameInputBox.text, let password = passwordInputBox.text else { return }
         do {
-            // 创建实例
+            /// 创建用户对象
             let user = LCUser()
-
-            // 等同于 user.set("username", value: "Tom")
-            user.username = LCString(username)
+            user.username = LCString(userName)
             user.password = LCString(password)
-            
-            if emailBox.text != "" {
-                print(emailBox.text)
-                user.email = LCString(emailBox.text!)
-            } else if phoneBox.text != "" {
-                user.mobilePhoneNumber = LCString(phoneBox.text!)
+            if emailInputBox.text != "" {
+                user.email = LCString(emailInputBox.text!)
+            } else if phoneInputBox.text != "" {
+                user.mobilePhoneNumber = LCString(phoneInputBox.text!)
             }
-
-            // 设置其他属性的方法跟 LCObject 一样
             try user.set("gender", value: "secret")
-
-            /// 初始化获取索引值的任务计数器
-            let indexGroup = DispatchGroup()
             
-            _ = user.signUp { (result) in
+            // 执行注册操作
+            _ = user.signUp { [self] (result) in
                 switch result {
                 case .success:
-                    indexGroup.enter()
-                    let alert = UIAlertController(title: "注册成功", message: "\(username)\n欢迎加入论坛（LearnTime）！", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "好的", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    indexGroup.leave()
-                    
-                    indexGroup.notify(queue: .main) {
-                        // 注册完立即登陆
-                        _ = LCUser.logIn(username: username, password: password) { result in
-                            print("nihao")
-                            switch result {
-                            case .success(object: let user):
-                                NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
-                            case .failure(error: let error):
-                                print(error)
+                    if emailInputBox.text != "" {
+                        view.makeToast("用户\(userName)注册成功\n验证邮件已发送至 \(emailInputBox.text!)", duration: 1.5, position: .top)
+                    } else {
+                        view.makeToast("用户 \(userName) 注册成功", duration: 1.5, position: .top)
+                    }
+                    // 注册完执行登录操作
+                    _ = LCUser.logIn(username: userName, password: password) { result in
+                        switch result {
+                        case .success(object: _):
+                            NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+                                view.makeToast("用户 \(userName) 登录成功", duration: 1, position: .top)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                                    dismiss(animated: true, completion: nil)
+                                }
                             }
+                        case .failure(error: let error):
+                            print(error)
                         }
                     }
-                    
-                    self.dismiss(animated: true, completion: nil)
                 case .failure(error: let error):
+                    // 处理错误信息
                     switch error.code {
-                    case 202:
-                        let alert = UIAlertController(title: "用户名已被注册", message: "请修改后再试一次", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    case 203:
-                        let alert = UIAlertController(title: "邮箱已被注册", message: "请修改或删除后再试一次", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    case 214:
-                        let alert = UIAlertController(title: "手机号已被注册", message: "请修改或删除后再试一次", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    case 218:
-                        let alert = UIAlertController(title: "密码不能为空", message: "请输入后再试一次", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
                     case 125:
-                        let alert = UIAlertController(title: "邮箱地址无效", message: "请修改或删除后再试一次", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        view.makeToast("邮箱地址无效", duration: 1.5, position: .top)
+                    case 202:
+                        view.makeToast("用户名已被注册", duration: 1.5, position: .top)
+                    case 203:
+                        view.makeToast("邮箱地址已被注册", duration: 1.5, position: .top)
+                    case 214:
+                        view.makeToast("手机号已被注册", duration: 1.5, position: .top)
+                    case 217:
+                        view.makeToast("用户名不能为空", duration: 1.5, position: .top)
+                    case 218:
+                        view.makeToast("密码不能为空", duration: 1.5, position: .top)
                     default:
-                        let alert = UIAlertController(title: "错误码\(error.code)", message: "描述：\(error.description)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        view.makeToast("错误码\(error.code)\n描述：\(error.description)", duration: 3, position: .top)
                     }
                 }
             }
         } catch {
-            print(error)
+            view.makeToast("\(error)", duration: 5, position: .top)
         }
     }
+}
+
+// ⌨️输入框键盘相关方法
+extension SignUpViewController: UITextFieldDelegate {
+    /// 键盘弹出时调用
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
+        underlyView.contentInset = contentInsets
+        underlyView.scrollIndicatorInsets = contentInsets
+        var aRect = self.view.frame
+        aRect.size.height -= keyboardFrame.size.height
+    }
     
-//    @objc func clickedSignInButton() {
-//        guard let username = userNameBox.text, let password = passwordBox.text, let email = emailBox.text, let phone = phoneBox.text else {
-//            // 处理用户名或密码为nil的情况
-//            return
-//        }
-//        _ = LCUser.logIn(username: username, password: password) { result in
-//            switch result {
-//            case .success(object: let user):
-//                print(user)
-//                NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
-//            case .failure(error: let error):
-//                print(error)
-//            }
-//        }
-//    }
+    /// 键盘隐藏时调用
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        underlyView.contentInset = contentInsets
+        underlyView.scrollIndicatorInsets = contentInsets
+    }
     
-//    @objc func verifyEmailClicked() {
-//        guard let email = emailBox.text else { return }
-//        _ = LCUser.requestVerificationMail(email: email) { result in
-//            switch result {
-//            case .success: break
-//            case .failure(error: let error): print(error)
-//            }
-//        }
-//    }
+    /// 收起键盘的方法
+    @objc func keyboardHide() {
+        view.endEditing(true)
+    }
     
-//    @objc func refreshEmailVerifyStatusClicked() {
-//        NotificationCenter.default.post(name: emailVerifiedStatusChangeNotification, object: nil)
-//    }
-    
-    
+    /// 回车自动切换输入框的方法
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameBox {
-            passwordBox.becomeFirstResponder()
-        } else if textField == passwordBox {
-            emailBox.becomeFirstResponder()
-        } else if textField == emailBox {
-            phoneBox.becomeFirstResponder()
+        if textField == userNameInputBox {
+            passwordInputBox.becomeFirstResponder()
+        } else if textField == passwordInputBox {
+            emailInputBox.becomeFirstResponder()
+        } else if textField == emailInputBox {
+            phoneInputBox.becomeFirstResponder()
         } else {
-            phoneBox.resignFirstResponder()
+            phoneInputBox.resignFirstResponder()
         }
         return true
     }
-
 }
