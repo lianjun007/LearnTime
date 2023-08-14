@@ -2,37 +2,6 @@ import UIKit
 import SnapKit
 import LeanCloud
 
-//import SwiftUI
-//
-//@available(iOS 13.0, *)
-//struct Login_Preview: PreviewProvider {
-//    static var previews: some View {
-//        ViewControllerPreview {
-//            UINavigationController(rootViewController: AccountViewController())
-//        }
-//    }
-//}
-//
-//struct ViewControllerPreview: UIViewControllerRepresentable {
-//    
-//    typealias UIViewControllerType = UIViewController
-//    
-//    let viewControllerBuilder: () -> UIViewControllerType
-// 
-//    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-//        self.viewControllerBuilder = viewControllerBuilder
-//    }
-//    
-//    @available(iOS 13.0.0, *)
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        viewControllerBuilder()
-//    }
-// 
-//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//    }
-//}
-
-
 /// 账户详细界面的声明内容
 class AccountViewController: UIViewController {
     /// 初始化用户对象，接收当前设备登录用户
@@ -542,7 +511,7 @@ extension AccountViewController {
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
-        /// 注册并且登录的按钮
+        
         let emailChangePassword = UIButton()
         let phoneChangePassword = UIButton()
         
@@ -634,6 +603,7 @@ extension AccountViewController {
             make.height.equalTo(60)
             make.bottom.equalToSuperview().offset(-JunSpaced.module())
         }
+        signOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
     }
 }
 
@@ -765,6 +735,12 @@ extension AccountViewController {
             return
         }
         view.makeToast("测试阶段短信验证重置密码功能暂未开启，敬请期待", duration: 2, position: .top)
+    }
+    
+    @objc func logOut() {
+        LCUser.logOut()
+        NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
+        dismissVC()
     }
 }
 

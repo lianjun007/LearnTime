@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA0253F72A85293D00D5FBFA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0253F62A85293D00D5FBFA /* SignUpViewController.swift */; };
+		DA0253F72A85293D00D5FBFA /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0253F62A85293D00D5FBFA /* SignUpVC.swift */; };
 		DA0C48472A7F179000658550 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = DA0C48462A7F179000658550 /* Yams */; };
 		DA13A48A2A2E5CE4002F44AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4892A2E5CE4002F44AB /* AppDelegate.swift */; };
 		DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A48B2A2E5CE4002F44AB /* SceneDelegate.swift */; };
@@ -16,9 +16,7 @@
 		DA13A4A42A2E5CE5002F44AB /* LearnTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4A32A2E5CE5002F44AB /* LearnTimeTests.swift */; };
 		DA13A4AE2A2E5CE5002F44AB /* LearnTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4AD2A2E5CE5002F44AB /* LearnTimeUITests.swift */; };
 		DA13A4B02A2E5CE5002F44AB /* LearnTimeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4AF2A2E5CE5002F44AB /* LearnTimeUITestsLaunchTests.swift */; };
-		DA13A4C42A2E5D52002F44AB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BD2A2E5D52002F44AB /* SettingViewController.swift */; };
-		DA13A4C52A2E5D52002F44AB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BD2A2E5D52002F44AB /* SettingViewController.swift */; };
-		DA13A4C62A2E5D52002F44AB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BD2A2E5D52002F44AB /* SettingViewController.swift */; };
+		DA13A4C42A2E5D52002F44AB /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BD2A2E5D52002F44AB /* SettingVC.swift */; };
 		DA13A4C72A2E5D52002F44AB /* DiscussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BE2A2E5D52002F44AB /* DiscussViewController.swift */; };
 		DA13A4C82A2E5D52002F44AB /* DiscussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BE2A2E5D52002F44AB /* DiscussViewController.swift */; };
 		DA13A4C92A2E5D52002F44AB /* DiscussViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4BE2A2E5D52002F44AB /* DiscussViewController.swift */; };
@@ -31,9 +29,7 @@
 		DA13A4D02A2E5D52002F44AB /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */; };
 		DA13A4D12A2E5D52002F44AB /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */; };
 		DA13A4D22A2E5D52002F44AB /* SuggestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */; };
-		DA13A4D32A2E5D52002F44AB /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C32A2E5D52002F44AB /* MineViewController.swift */; };
-		DA13A4D42A2E5D52002F44AB /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C32A2E5D52002F44AB /* MineViewController.swift */; };
-		DA13A4D52A2E5D52002F44AB /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C32A2E5D52002F44AB /* MineViewController.swift */; };
+		DA13A4D32A2E5D52002F44AB /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4C32A2E5D52002F44AB /* MineVC.swift */; };
 		DA13A4D72A2E5D66002F44AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4D62A2E5D66002F44AB /* Assets.xcassets */; };
 		DA13A4D82A2E5D66002F44AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4D62A2E5D66002F44AB /* Assets.xcassets */; };
 		DA13A4D92A2E5D66002F44AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4D62A2E5D66002F44AB /* Assets.xcassets */; };
@@ -70,14 +66,15 @@
 		DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */; };
 		DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */; };
 		DA6F428F2A7913DB00E9F8B4 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = DA6F428E2A7913DB00E9F8B4 /* loading.gif */; };
-		DA6FDED32A87EB8E00B18A0C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */; };
-		DA6FDED52A87EBC200B18A0C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */; };
+		DA6FDED32A87EB8E00B18A0C /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED22A87EB8D00B18A0C /* AccountVC.swift */; };
+		DA6FDED52A87EBC200B18A0C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FDED42A87EBC200B18A0C /* SignInVC.swift */; };
 		DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DA6FDEDB2A88583700B18A0C /* Toast */; };
 		DA7068612A7175C5000977E9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7068602A7175C5000977E9 /* UserDefaults.swift */; };
 		DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */ = {isa = PBXBuildFile; productRef = DA70AD142A8514A800CBB2FA /* LeanCloud */; };
 		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
 		DA8D71AB2A80540700566778 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71AA2A80540700566778 /* Trash.swift */; };
 		DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */; };
+		DAF20F0E2A8A786700506FFD /* CreateCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */; };
 		DAF514182A72A84C009EC9B1 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */; };
 		DAF5141A2A73CC68009EC9B1 /* ControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF514192A73CC68009EC9B1 /* ControlExtension.swift */; };
 		DAF5B1F92A8467200048B038 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = DAF5B1F82A8467200048B038 /* Ink */; };
@@ -101,7 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA0253F62A85293D00D5FBFA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DA0253F62A85293D00D5FBFA /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		DA13A4862A2E5CE4002F44AB /* LearnTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13A4892A2E5CE4002F44AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13A48B2A2E5CE4002F44AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,12 +110,12 @@
 		DA13A4A92A2E5CE5002F44AB /* LearnTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13A4AD2A2E5CE5002F44AB /* LearnTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnTimeUITests.swift; sourceTree = "<group>"; };
 		DA13A4AF2A2E5CE5002F44AB /* LearnTimeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnTimeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DA13A4BD2A2E5D52002F44AB /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DA13A4BD2A2E5D52002F44AB /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		DA13A4BE2A2E5D52002F44AB /* DiscussViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussViewController.swift; sourceTree = "<group>"; };
 		DA13A4C02A2E5D52002F44AB /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayViewController.swift; sourceTree = "<group>"; };
 		DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
-		DA13A4C32A2E5D52002F44AB /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		DA13A4C32A2E5D52002F44AB /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
 		DA13A4D62A2E5D66002F44AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13A4DA2A2E5D86002F44AB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA13A4DF2A2E5DAA002F44AB /* ContentImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ContentImage.xcassets; sourceTree = "<group>"; };
@@ -136,12 +133,13 @@
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
 		DA6F428E2A7913DB00E9F8B4 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
-		DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DA6FDED22A87EB8D00B18A0C /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		DA6FDED42A87EBC200B18A0C /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		DA8D71A82A802B2200566778 /* InfoViewControlle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControlle.swift; sourceTree = "<group>"; };
 		DA8D71AA2A80540700566778 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayThemeViewController.swift; sourceTree = "<group>"; };
+		DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionVC.swift; sourceTree = "<group>"; };
 		DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		DAF514192A73CC68009EC9B1 /* ControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,9 +200,9 @@
 				DA13A4F42A2E5DE4002F44AB /* FrameFile */,
 				DA13A4DE2A2E5DAA002F44AB /* DataFile */,
 				DA13A4BC2A2E5D52002F44AB /* ViewController */,
+				DA13A4DA2A2E5D86002F44AB /* ViewController.swift */,
 				DA13A4892A2E5CE4002F44AB /* AppDelegate.swift */,
 				DA13A48B2A2E5CE4002F44AB /* SceneDelegate.swift */,
-				DA13A4DA2A2E5D86002F44AB /* ViewController.swift */,
 				DA13A48F2A2E5CE4002F44AB /* Main.storyboard */,
 				DA13A4D62A2E5D66002F44AB /* Assets.xcassets */,
 				DA13A4972A2E5CE5002F44AB /* LaunchScreen.storyboard */,
@@ -233,12 +231,11 @@
 		DA13A4BC2A2E5D52002F44AB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DAEDDBCD2A7543010033C09C /* SettingViewController */,
+				DAF20F0C2A8A770800506FFD /* MineVC */,
+				DAEDDBCD2A7543010033C09C /* SettingVC */,
 				DA13A4BF2A2E5D52002F44AB /* SecondViewController */,
 				DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */,
 				DA13A4BE2A2E5D52002F44AB /* DiscussViewController.swift */,
-				DA13A4C32A2E5D52002F44AB /* MineViewController.swift */,
-				DA13A4BD2A2E5D52002F44AB /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -246,14 +243,10 @@
 		DA13A4BF2A2E5D52002F44AB /* SecondViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DA0253F62A85293D00D5FBFA /* SignUpViewController.swift */,
-				DA6FDED42A87EBC200B18A0C /* SignInViewController.swift */,
-				DA6FDED22A87EB8D00B18A0C /* AccountViewController.swift */,
+				DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */,
 				DA8D71A82A802B2200566778 /* InfoViewControlle.swift */,
 				DA13A4C02A2E5D52002F44AB /* CourseViewController.swift */,
 				DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */,
-				DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */,
-				DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */,
 			);
 			path = SecondViewController;
 			sourceTree = "<group>";
@@ -297,12 +290,26 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		DAEDDBCD2A7543010033C09C /* SettingViewController */ = {
+		DAEDDBCD2A7543010033C09C /* SettingVC */ = {
 			isa = PBXGroup;
 			children = (
+				DA13A4BD2A2E5D52002F44AB /* SettingVC.swift */,
+				DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */,
 				DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */,
 			);
-			path = SettingViewController;
+			path = SettingVC;
+			sourceTree = "<group>";
+		};
+		DAF20F0C2A8A770800506FFD /* MineVC */ = {
+			isa = PBXGroup;
+			children = (
+				DA13A4C32A2E5D52002F44AB /* MineVC.swift */,
+				DA6FDED22A87EB8D00B18A0C /* AccountVC.swift */,
+				DA0253F62A85293D00D5FBFA /* SignUpVC.swift */,
+				DA6FDED42A87EBC200B18A0C /* SignInVC.swift */,
+				DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */,
+			);
+			path = MineVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,18 +477,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA13A4C42A2E5D52002F44AB /* SettingViewController.swift in Sources */,
+				DA13A4C42A2E5D52002F44AB /* SettingVC.swift in Sources */,
 				DA13A4FE2A2E5DE4002F44AB /* DataInvoke.swift in Sources */,
 				DA13A48A2A2E5CE4002F44AB /* AppDelegate.swift in Sources */,
 				DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */,
 				DA13A4D02A2E5D52002F44AB /* SuggestViewController.swift in Sources */,
 				DAF514182A72A84C009EC9B1 /* PreferencesViewController.swift in Sources */,
 				DA7068612A7175C5000977E9 /* UserDefaults.swift in Sources */,
-				DA0253F72A85293D00D5FBFA /* SignUpViewController.swift in Sources */,
+				DA0253F72A85293D00D5FBFA /* SignUpVC.swift in Sources */,
 				DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */,
 				DA13A4DB2A2E5D86002F44AB /* ViewController.swift in Sources */,
-				DA6FDED32A87EB8E00B18A0C /* AccountViewController.swift in Sources */,
-				DA13A4D32A2E5D52002F44AB /* MineViewController.swift in Sources */,
+				DA6FDED32A87EB8E00B18A0C /* AccountVC.swift in Sources */,
+				DA13A4D32A2E5D52002F44AB /* MineVC.swift in Sources */,
 				DAF5141A2A73CC68009EC9B1 /* ControlExtension.swift in Sources */,
 				DA13A4CD2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 				DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */,
@@ -490,8 +497,9 @@
 				DA8D71AB2A80540700566778 /* Trash.swift in Sources */,
 				DA13A4C72A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
 				DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */,
+				DAF20F0E2A8A786700506FFD /* CreateCollectionVC.swift in Sources */,
 				DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */,
-				DA6FDED52A87EBC200B18A0C /* SignInViewController.swift in Sources */,
+				DA6FDED52A87EBC200B18A0C /* SignInVC.swift in Sources */,
 				DA13A4CA2A2E5D52002F44AB /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,8 +513,6 @@
 				DA13A4C82A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
 				DA13A4F92A2E5DE4002F44AB /* BasicData.swift in Sources */,
 				DA13A4CB2A2E5D52002F44AB /* CourseViewController.swift in Sources */,
-				DA13A4C52A2E5D52002F44AB /* SettingViewController.swift in Sources */,
-				DA13A4D42A2E5D52002F44AB /* MineViewController.swift in Sources */,
 				DA13A4A42A2E5CE5002F44AB /* LearnTimeTests.swift in Sources */,
 				DA13A4DC2A2E5D86002F44AB /* ViewController.swift in Sources */,
 				DA13A4FC2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
@@ -519,13 +525,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA13A4FA2A2E5DE4002F44AB /* BasicData.swift in Sources */,
-				DA13A4C62A2E5D52002F44AB /* SettingViewController.swift in Sources */,
 				DA13A4CF2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 				DA13A4D22A2E5D52002F44AB /* SuggestViewController.swift in Sources */,
 				DA13A4DD2A2E5D86002F44AB /* ViewController.swift in Sources */,
 				DA13A4FD2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
 				DA13A4B02A2E5CE5002F44AB /* LearnTimeUITestsLaunchTests.swift in Sources */,
-				DA13A4D52A2E5D52002F44AB /* MineViewController.swift in Sources */,
 				DA13A4AE2A2E5CE5002F44AB /* LearnTimeUITests.swift in Sources */,
 				DA13A5002A2E5DE4002F44AB /* DataInvoke.swift in Sources */,
 				DA13A4CC2A2E5D52002F44AB /* CourseViewController.swift in Sources */,

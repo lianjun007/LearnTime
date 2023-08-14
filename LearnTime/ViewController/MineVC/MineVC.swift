@@ -1,6 +1,36 @@
 import UIKit
 import LeanCloud
 import SnapKit
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct Login_Preview: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            UINavigationController(rootViewController: MineViewController())
+        }
+    }
+}
+
+struct ViewControllerPreview: UIViewControllerRepresentable {
+    
+    typealias UIViewControllerType = UIViewController
+    
+    let viewControllerBuilder: () -> UIViewControllerType
+    
+    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+        self.viewControllerBuilder = viewControllerBuilder
+    }
+    
+    @available(iOS 13.0.0, *)
+    func makeUIViewController(context: Context) -> UIViewController {
+        viewControllerBuilder()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    }
+}
+
 
 /// 账户注册界面的声明内容
 class MineViewController: UIViewController {
@@ -8,6 +38,8 @@ class MineViewController: UIViewController {
     let underlyView = UIScrollView()
     /// 底层滚动视图的内容视图
     let containerView = UIView()
+    
+    var myCollection: [LCObject] = []
     
     /// 自动布局顶部参考，用来流式创建控件时定位
     var snpTop: ConstraintRelatableTarget!
@@ -31,6 +63,7 @@ extension MineViewController {
             make.width.equalTo(underlyView)
         }
 
+        moduleRefresh()
         // 模块0：登录注册或用户信息模块
         snpTop = module0()
         // 模块1：我的创作模块
@@ -43,6 +76,21 @@ extension MineViewController {
 
 // 📦👷封装界面中各个模块创建的方法
 extension MineViewController {
+    func moduleRefresh () {
+        // 将刷新控件添加到UIScrollView对象中
+        underlyView.refreshControl = UIRefreshControl()
+        underlyView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc func handleRefreshControl() {
+        overloadViewDidLoad()
+        // 更新内容...
+        // 关闭刷新控件
+        DispatchQueue.main.async {
+            self.underlyView.refreshControl?.endRefreshing()
+        }
+    }
+
     /// 创建模块0的方法
     func module0() -> ConstraintRelatableTarget {
         /// 账号相关的设置控件（对应的字典）
@@ -62,8 +110,8 @@ extension MineViewController {
 
     /// 创建模块1的方法
     func module1(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
-        /// 模块标题`1`：偏好设置
-        let title = UIButton().moduleTitleMode("我的创作", mode: .arrow)
+        /// 模块标题
+        let title = UIButton().moduleTitleMode("我的合集", mode: .arrow)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
             make.top.equalTo(snpTop).offset(JunSpaced.module())
@@ -73,19 +121,75 @@ extension MineViewController {
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
-        /// 偏好设置（模块`1`）的设置控件（对应的字典）
-        let ctrlDict = SettingControl.build(control: [.custom3, .custom4, .custom4, .custom4],
-                                                            caption: "设置阅读文章时的主题风格",
-                                            label: ["创建合集", "", "", ""])
-        containerView.addSubview(ctrlDict["view"]!)
-        ctrlDict["view"]!.snp.makeConstraints { make in
+        let collectionBox = UIView()
+        containerView.addSubview(collectionBox)
+        collectionBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
-            make.bottom.equalToSuperview()
+            make.height.equalTo(180 + JunSpaced.control() * 2)
+            make.bottom.equalToSuperview().offset(-1000)// ⚠️
         }
         
-        return ctrlDict["view"]!.snp.bottom
+        let coverLoad = DispatchGroup()
+        coverLoad.enter()
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
+        let query = LCQuery(className: "Collection")
+        query.whereKey("authorObjectId", .equalTo(userObjectId))
+        _ = query.find { result in
+            switch result {
+            case .success(objects: let students):
+                self.myCollection = []
+                self.myCollection = students
+                print(students)
+                coverLoad.leave()
+            case .failure(error: let error): errorLeanCloud(error, view: self.view)
+            }
+        }
+        
+        coverLoad.notify(queue: .main) { [self] in
+            for i in 0 ..< myCollection.count {
+                let cover = UIImageView()
+                
+                guard let coverURLString = (myCollection[i].get("cover")?.lcValue.jsonValue as! Dictionary<String, Any>)["url"] as? String else { return }
+                    
+                let httpsCoverURLString = coverURLString.replacingOccurrences(of: "http", with: "https")
+                
+                guard let coverURL = URL(string: httpsCoverURLString) else { return }
+                print(coverURL)
+                URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
+                    if let data = data {
+                        let coverImage = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            if let coverImage = coverImage {
+                                cover.image = coverImage
+                                print(coverImage)
+                            }
+                        }
+                    }
+                }.resume()
+                collectionBox.addSubview(cover)
+                cover.contentMode = .scaleAspectFill
+                cover.layer.cornerRadius = 5
+                cover.layer.masksToBounds = true
+                cover.snp.makeConstraints { make in
+                    make.top.equalTo(0).offset(i * (60 + Int(JunSpaced.control())))
+                    make.left.equalTo(0)
+                    make.height.width.equalTo(60)
+                }
+                
+                let collectionTitle = UILabel()
+                collectionBox.addSubview(collectionTitle)
+                collectionTitle.text = myCollection[i].get("title")?.stringValue
+                collectionTitle.snp.makeConstraints { make in
+                    make.top.equalTo(cover)
+                    make.left.equalTo(cover.snp.right).offset(JunSpaced.control())
+                    make.height.width.equalTo(60)
+                }
+            }
+        }
+        
+        return collectionBox.snp.bottom
     }
 }
 
@@ -124,6 +228,13 @@ extension MineViewController {
         }
         self.viewDidLoad()
     }
+    
+    /// 跳转到创建合集界面
+    @objc func clickCreateCollection() {
+        let VC = CreateCollectionViewController()
+        let NavC = UINavigationController(rootViewController: VC)
+        present(NavC, animated: true)
+    }
 }
 
 // 📦🫳封装界面中自定义控件的方法
@@ -133,30 +244,60 @@ extension MineViewController {
         // 判断当前设备上是否有已登录的账户
         if let user = LCApplication.default.currentUser {
             /// 显示当前账户用户名的标签
-            let userNameLabel = UIButton().moduleTitleMode("\(user.username!.stringValue!)", mode: .arrow)
-            superView.addSubview(userNameLabel)
-            userNameLabel.snp.makeConstraints { make in
+            let title = UIButton().moduleTitleMode("\(user.username!.stringValue!)", mode: .arrow)
+            superView.addSubview(title)
+            title.snp.makeConstraints { make in
                 make.top.equalTo(0)
-                make.height.equalTo(userNameLabel)
+                make.height.equalTo(title)
                 make.right.left.equalTo(0)
             }
-            userNameLabel.addTarget(self, action: #selector(userNameTitleCilcked), for: .touchUpInside)
+            title.addTarget(self, action: #selector(userNameTitleCilcked), for: .touchUpInside)
             
-            /// 登出当前账户的按钮
-            let signOutButton = UIButton()
-            signOutButton.backgroundColor = JunColor.learnTime0()
-            signOutButton.layer.cornerRadius = 10
-            signOutButton.tag = 3
-            signOutButton.setImage(UIImage(systemName: "person.badge.minus"), for: .normal)
-            signOutButton.tintColor = UIColor.black
-            signOutButton.setTitle("登出账户", for: .normal)
-            signOutButton.setTitleColor(UIColor.black, for: .normal)
-            superView.addSubview(signOutButton)
-            signOutButton.snp.makeConstraints { make in
-                make.top.equalTo(userNameLabel.snp.bottom).offset(JunSpaced.control())
-                make.right.left.bottom.equalTo(0)
+            let createCollectionButton = UIButton()
+            let createEssayButton = UIButton()
+            
+            createCollectionButton.backgroundColor = JunColor.learnTime1()
+            createCollectionButton.layer.cornerRadius = 12
+            createCollectionButton.setTitle("创建合集", for: .normal)
+            createCollectionButton.titleLabel?.font = JunFont.title2()
+            createCollectionButton.setTitleColor(UIColor.black, for: .normal)
+            containerView.addSubview(createCollectionButton)
+            createCollectionButton.snp.makeConstraints { make in
+                make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+                make.width.equalTo(containerView.safeAreaLayoutGuide).multipliedBy(0.5).offset(-JunSpaced.screen() - JunSpaced.control() / 2)
+                make.height.equalTo(36)
             }
-            signOutButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
+            createCollectionButton.addTarget(self, action: #selector(clickCreateCollection), for: .touchUpInside)
+            
+            createEssayButton.backgroundColor = JunColor.learnTime0()
+            createEssayButton.layer.cornerRadius = 12
+            createEssayButton.setTitle("创建文章", for: .normal)
+            createEssayButton.titleLabel?.font = JunFont.title2()
+            createEssayButton.setTitleColor(UIColor.black, for: .normal)
+            containerView.addSubview(createEssayButton)
+            createEssayButton.snp.makeConstraints { make in
+                make.top.equalTo(createCollectionButton)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+                make.width.equalTo(containerView.safeAreaLayoutGuide).multipliedBy(0.5).offset(-JunSpaced.screen() - JunSpaced.control() / 2)
+                make.height.equalTo(createCollectionButton)
+            }
+            
+//            /// 登出当前账户的按钮
+//            let signOutButton = UIButton()
+//            signOutButton.backgroundColor = JunColor.learnTime0()
+//            signOutButton.layer.cornerRadius = 10
+//            signOutButton.tag = 3
+//            signOutButton.setImage(UIImage(systemName: "person.badge.minus"), for: .normal)
+//            signOutButton.tintColor = UIColor.black
+//            signOutButton.setTitle("登出账户", for: .normal)
+//            signOutButton.setTitleColor(UIColor.black, for: .normal)
+//            superView.addSubview(signOutButton)
+//            signOutButton.snp.makeConstraints { make in
+//                make.top.equalTo(userNameLabel.snp.bottom).offset(JunSpaced.control())
+//                make.right.left.bottom.equalTo(0)
+//            }
+//            signOutButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
         } else {
             /// 登录账户的按钮
             let signInButton = UIButton()
@@ -173,6 +314,7 @@ extension MineViewController {
             }
             signInButton.tintColor = UIColor.black
             signInButton.setTitle("登录", for: .normal)
+            signInButton.setTitleColor(UIColor.black, for: .normal)
             signInButton.setTitleColor(UIColor.black, for: .normal)
             signInButton.titleLabel?.font = JunFont.title2()
             superView.addSubview(signInButton)
