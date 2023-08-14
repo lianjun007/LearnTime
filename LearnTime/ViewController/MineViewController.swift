@@ -18,7 +18,7 @@ extension MineViewController {
     /// 初始化界面的枢纽
     override func viewDidLoad() {
         super.viewDidLoad()
-        Initialize.view(self, "关于我的", mode: .group)
+        Initialize.view(self, "关于我的", mode: .basic)
         
         // 设置底层视图和它的容器视图的自动布局
         view.addSubview(underlyView)

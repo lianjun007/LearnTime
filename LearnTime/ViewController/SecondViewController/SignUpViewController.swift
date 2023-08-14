@@ -112,7 +112,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -132,7 +132,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -184,7 +184,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -204,7 +204,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -256,13 +256,13 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
         /// 邮箱输入框下方的提示控件的提示内容
-        let tipsLabel1 = UILabel().fontAdaptive("账户绑定邮箱地址时会收到一封验证邮件，验证成功后可以使用邮箱登录。你也可以在注册成功后再绑定邮箱地址。", font: JunFont.tips())
+        let tipsLabel1 = UILabel().fontAdaptive("账户绑定邮箱地址时会收到一封验证邮件，验证成功后可以使用邮箱地址和密码组合登录、邮件验证重置密码等功能。", font: JunFont.tips())
             tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel1)
             tipsLabel1.snp.makeConstraints { make in
@@ -276,13 +276,13 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
         /// 邮箱地址输入框下方的提示控件的提示内容
-        let tipsLabel2 = UILabel().fontAdaptive("除此之外，邮箱地址还可以在“关于我的 > 用户名 > 验证邮箱地址”处进行验证，验证成功后可以使用邮箱地址和密码组合登录。", font: JunFont.tips())
+        let tipsLabel2 = UILabel().fontAdaptive("除此之外，邮箱地址还可以在“关于我的 > 用户名 > 邮箱地址”处进行绑定和验证操作。", font: JunFont.tips())
             tipsLabel2.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel2)
             tipsLabel2.snp.makeConstraints { make in
@@ -323,27 +323,47 @@ extension SignUpViewController {
             make.height.equalTo(44)
         }
         
-        /// 手机号输入框下方的提示控件的提示图标
-        let tipsIcon = UIImageView(image: UIImage(systemName: "info.circle"))
-        tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
-        containerView.addSubview(tipsIcon)
-        tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+        /// 手机号输入框下方的提示控件的提示图标1
+        let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon1)
+        tipsIcon1.snp.makeConstraints { make in
+            make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
         
-        /// 用户名输入框下方的提示控件的提示内容
-        let tipsLabel = UILabel().fontAdaptive("手机号可以在“关于我的 > 用户名 > 验证手机号”处进行验证，验证成功后可以使用手机号短信登录。你也可以在注册成功后再绑定手机号。", font: JunFont.tips())
-            tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
-            containerView.addSubview(tipsLabel)
-            tipsLabel.snp.makeConstraints { make in
+        /// 用户名输入框下方的提示控件的提示内容1
+        let tipsLabel1 = UILabel().fontAdaptive("账户绑定手机号时会收到一条短信验证码，可以在“关于我的 > 用户名 > 手机号”处进行验证，验证成功后可以使用手机号和密码组合登录、短信验证登录、短信验证重置密码等功能。", font: JunFont.tips())
+            tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel1)
+            tipsLabel1.snp.makeConstraints { make in
                 make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control())
-                make.left.equalTo(tipsIcon.snp.right).offset(6)
+                make.left.equalTo(tipsIcon1.snp.right).offset(6)
                 make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        return tipsLabel.snp.bottom
+        /// 手机号输入框下方的提示控件的提示图标2
+        let tipsIcon2 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon2)
+        tipsIcon2.snp.makeConstraints { make in
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.width.equalTo(15)
+        }
+        
+        /// 手机号输入框下方的提示控件的提示内容2
+        let tipsLabel2 = UILabel().fontAdaptive("除此之外，手机号还可以在“关于我的 > 用户名 > 手机号”处进行绑定和验证操作。", font: JunFont.tips())
+            tipsLabel2.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel2)
+            tipsLabel2.snp.makeConstraints { make in
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon2.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        return tipsLabel2.snp.bottom
     }
     
     /// 创建模块5的方法
@@ -369,72 +389,62 @@ extension SignUpViewController {
 
 // 🫳界面中其他交互触发的方法
 extension SignUpViewController {
-    /// 退出当前视图控制器
+    /// 退出当前模态视图
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
     
     /// 点击注册按钮后触发注册和登录相关的方法
     @objc func clickedSignUpButton() {
-        guard let userName = userNameInputBox.text, let password = passwordInputBox.text else { return }
+        guard let userNameText = userNameInputBox.text, let passwordText = passwordInputBox.text else { return }
         do {
             /// 创建用户对象
             let user = LCUser()
-            user.username = LCString(userName)
-            user.password = LCString(password)
-            if emailInputBox.text != "" {
-                user.email = LCString(emailInputBox.text!)
-            } else if phoneInputBox.text != "" {
-                user.mobilePhoneNumber = LCString(phoneInputBox.text!)
-            }
+            user.username = LCString(userNameText)
+            user.password = LCString(passwordText)
+            if emailInputBox.text != "" { user.email = LCString(emailInputBox.text!) }
+            else if phoneInputBox.text != "" { user.mobilePhoneNumber = LCString(phoneInputBox.text!) }
             try user.set("gender", value: "secret")
             
             // 执行注册操作
-            _ = user.signUp { [self] (result) in
+            _ = user.signUp { [self] result in
                 switch result {
                 case .success:
-                    if emailInputBox.text != "" {
-                        view.makeToast("用户\(userName)注册成功\n验证邮件已发送至 \(emailInputBox.text!)", duration: 1.5, position: .top)
+                    // 根据输入项目的不同弹出不同的提示
+                    if emailInputBox.text != "", phoneInputBox.text != "" {
+                        view.makeToast("用户\(userNameText)注册成功\n验证邮件已发送至 \(emailInputBox.text!)\n测试阶段短信验证功能暂未开启，敬请期待", duration: 2, position: .top)
+                    } else if emailInputBox.text != "" {
+                        view.makeToast("用户\(userNameText)注册成功\n验证邮件已发送至 \(emailInputBox.text!)", duration: 2, position: .top)
+                    } else if phoneInputBox.text != "" {
+                        view.makeToast("用户\(userNameText)注册成功\n短信验证码已发送至 \(phoneInputBox.text!)", duration: 2, position: .top)
                     } else {
-                        view.makeToast("用户 \(userName) 注册成功", duration: 1.5, position: .top)
+                        view.makeToast("用户 \(userNameText) 注册成功", duration: 2, position: .top)
                     }
                     // 注册完执行登录操作
-                    _ = LCUser.logIn(username: userName, password: password) { result in
+                    _ = LCUser.logIn(username: userNameText, password: passwordText) { [self] result in
                         switch result {
                         case .success(object: _):
                             NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                                view.makeToast("用户 \(userName) 登录成功", duration: 1, position: .top)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+                                view.makeToast("用户 \(userNameText) 登录成功", duration: 1, position: .top)
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
                                     dismiss(animated: true, completion: nil)
                                 }
                             }
-                        case .failure(error: let error):
-                            print(error)
+                        case .failure(error: let error): errorLeanCloud(error, view: view)
                         }
                     }
                 case .failure(error: let error):
-                    // 处理错误信息
-                    switch error.code {
-                    case 125:
-                        view.makeToast("邮箱地址无效", duration: 1.5, position: .top)
-                    case 202:
-                        view.makeToast("用户名已被注册", duration: 1.5, position: .top)
-                    case 203:
-                        view.makeToast("邮箱地址已被注册", duration: 1.5, position: .top)
-                    case 214:
-                        view.makeToast("手机号已被注册", duration: 1.5, position: .top)
-                    case 217:
-                        view.makeToast("用户名不能为空", duration: 1.5, position: .top)
-                    case 218:
-                        view.makeToast("密码不能为空", duration: 1.5, position: .top)
-                    default:
-                        view.makeToast("错误码\(error.code)\n描述：\(error.description)", duration: 3, position: .top)
-                    }
+                    if error.code == 605 {
+                        view.makeToast("用户 \(userNameText) 注册成功\n测试阶段短信验证功能暂未开启，敬请期待", duration: 2, position: .top)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [self] in
+                            dismiss(animated: true, completion: nil)
+                        }
+                    } else { errorLeanCloud(error, view: view) }
                 }
             }
         } catch {
-            view.makeToast("\(error)", duration: 5, position: .top)
+            view.makeToast("\(error)\n建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 5, position: .top)
         }
     }
 }

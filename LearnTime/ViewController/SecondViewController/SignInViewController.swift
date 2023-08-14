@@ -103,7 +103,7 @@ extension SignInViewController {
         tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon)
         tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -155,7 +155,7 @@ extension SignInViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -175,7 +175,7 @@ extension SignInViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 1)
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -216,35 +216,24 @@ extension SignInViewController {
 
 // 🫳界面中其他交互触发的方法
 extension SignInViewController {
-    /// 退出当前视图控制器
+    /// 退出当前模态视图
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
 
     /// 点击登录按钮后触发登录相关的方法
     @objc func clickedSignInButton() {
-        guard let userName = userNameInputBox.text, let password = passwordInputBox.text else { return }
+        guard let userNameText = userNameInputBox.text, let passwordText = passwordInputBox.text else { return }
         // 执行登录操作
-        _ = LCUser.logIn(username: userName, password: password) { [self] result in
+        _ = LCUser.logIn(username: userNameText, password: passwordText) { [self] result in
             switch result {
             case .success(object: _):
-                view.makeToast("用户 \(userName) 登录成功", duration: 1.5, position: .top)
+                view.makeToast("用户 \(userNameText) 登录成功", duration: 1.5, position: .top)
                 NotificationCenter.default.post(name: accountStatusChangeNotification, object: nil)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.dismiss(animated: true, completion: nil)
                 }
-            case .failure(error: let error):
-                // 处理错误信息
-                switch error.code {
-                case 1:
-                    view.makeToast("用户名为 \(userName) 的账户已被锁定，请稍后再试", duration: 2, position: .top)
-                case 201:
-                    view.makeToast("用户名和密码不匹配", duration: 1.5, position: .top)
-                case 211:
-                    view.makeToast("用户名不存在", duration: 1.5, position: .top)
-                default:
-                    view.makeToast("错误码\(error.code)\n描述：\(error.description)", duration: 3, position: .top)
-                }
+            case .failure(error: let error): errorLeanCloud(error, view: view)
             }
         }
     }

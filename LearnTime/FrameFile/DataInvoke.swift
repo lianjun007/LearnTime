@@ -1,5 +1,6 @@
 
 import Foundation
+import LeanCloud
 
 func dataInvoke(css style: String, html body: String = "", info: [String]) -> String {
 """

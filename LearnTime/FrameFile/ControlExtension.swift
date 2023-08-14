@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 import ObjectiveC
+import LeanCloud
 
 private var infoStringKey: UInt8 = 0
 //private var coverDataKey: Data = Data()
@@ -138,3 +139,39 @@ class InsetTextField: UITextField {
     }
 }
 
+func errorLeanCloud(_ error: LCError, view: UIView) {
+    switch error.code {
+    case 1:
+        view.makeToast("\(error.description)", duration: 3, position: .top)
+    case 119:
+        view.makeToast("\(error.description)", duration: 3, position: .top)
+    case 125:
+        view.makeToast("邮箱地址无效", duration: 1.5, position: .top)
+    case 127:
+        view.makeToast("手机号无效", duration: 1.5, position: .top)
+    case 201:
+        view.makeToast("用户名和密码不匹配", duration: 1.5, position: .top)
+    case 202:
+        view.makeToast("用户名已被注册", duration: 1.5, position: .top)
+    case 203:
+        view.makeToast("邮箱地址已被注册", duration: 1.5, position: .top)
+    case 206:
+        view.makeToast("登录失效，请退出当前账户后重新登录", duration: 1.5, position: .top)
+    case 211:
+        view.makeToast("账户不存在", duration: 1.5, position: .top)
+    case 214:
+        view.makeToast("手机号已被注册", duration: 1.5, position: .top)
+    case 217:
+        view.makeToast("用户名不能为空", duration: 1.5, position: .top)
+    case 218:
+        view.makeToast("密码不能为空", duration: 1.5, position: .top)
+    case 219:
+        view.makeToast("此用户名对应的账户已被锁定，请稍后再试", duration: 1.5, position: .top)
+    case 603:
+        view.makeToast("短信验证码无效", duration: 1.5, position: .top)
+    case 605:
+        view.makeToast("测试阶段短信验证功能暂未开启，敬请期待", duration: 1.5, position: .top)
+    default:
+        view.makeToast("错误码\(error.code)\n描述：\(error.description)\n建议截图前往“软件设置 > 反馈问题 > 显示错误码”处反馈", duration: 4, position: .top)
+    }
+}
