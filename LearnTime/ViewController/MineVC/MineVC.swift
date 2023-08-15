@@ -39,7 +39,10 @@ class MineViewController: UIViewController {
     /// 底层滚动视图的内容视图
     let containerView = UIView()
     
+    ///
     var myCollection: [LCObject] = []
+    ///
+    var myCollectionBoxButtonArray: [UIButton] = []
     
     /// 自动布局顶部参考，用来流式创建控件时定位
     var snpTop: ConstraintRelatableTarget!
@@ -121,7 +124,9 @@ extension MineViewController {
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
-        let collectionBox = UIView()
+        let collectionBox = UIScrollView()
+        collectionBox.isPagingEnabled = true
+        collectionBox.showsHorizontalScrollIndicator = false
         containerView.addSubview(collectionBox)
         collectionBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
@@ -131,60 +136,87 @@ extension MineViewController {
             make.bottom.equalToSuperview().offset(-1000)// ⚠️
         }
         
+        let collectionBoxContentView = UIView()
+        collectionBox.addSubview(collectionBoxContentView)
+        collectionBoxContentView.snp.makeConstraints { make in
+            make.edges.equalTo(collectionBox)
+            make.height.equalTo(collectionBox)
+        }
+        
         let coverLoad = DispatchGroup()
         coverLoad.enter()
         guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
         let query = LCQuery(className: "Collection")
         query.whereKey("authorObjectId", .equalTo(userObjectId))
-        _ = query.find { result in
+        _ = query.find { [self] result in
             switch result {
             case .success(objects: let students):
-                self.myCollection = []
-                self.myCollection = students
-                print(students)
+                myCollection = []
+                myCollection = students
                 coverLoad.leave()
-            case .failure(error: let error): errorLeanCloud(error, view: self.view)
+            case .failure(error: let error): errorLeanCloud(error, view: view)
             }
         }
         
+        myCollectionBoxButtonArray = []
         coverLoad.notify(queue: .main) { [self] in
             for i in 0 ..< myCollection.count {
-                let cover = UIImageView()
-                
-                guard let coverURLString = (myCollection[i].get("cover")?.lcValue.jsonValue as! Dictionary<String, Any>)["url"] as? String else { return }
+                /// 装单个合集的框子
+                let collectionBoxButton = UIButton()
+                collectionBoxContentView.addSubview(collectionBoxButton)
+                myCollectionBoxButtonArray.append(collectionBoxButton)
+                collectionBoxButton.snp.makeConstraints { make in
                     
+                    make.width.equalTo(collectionBox).multipliedBy(0.5).offset(-JunSpaced.control() / 2)
+                    make.height.equalTo(60)
+                    if i > 2 {
+                        make.left.equalTo(myCollectionBoxButtonArray[i - 3].snp.right).offset(JunSpaced.control())
+                        make.top.equalTo(myCollectionBoxButtonArray[i - 3].snp.top)
+                    } else {
+                        make.left.equalTo(0)
+                        make.top.equalTo(0).offset(i * (60 + Int(JunSpaced.control())))
+                    }
+                    if i == myCollection.count - 1 { make.right.equalToSuperview() }
+                }
+                
+                let coverView = UIImageView()
+                print(myCollection[i].get("cover"))
+                
+                guard let coverURLString = (myCollection[i].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+
                 let httpsCoverURLString = coverURLString.replacingOccurrences(of: "http", with: "https")
                 
                 guard let coverURL = URL(string: httpsCoverURLString) else { return }
-                print(coverURL)
+                print(coverURLString)
                 URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
                     if let data = data {
                         let coverImage = UIImage(data: data)
                         DispatchQueue.main.async {
                             if let coverImage = coverImage {
-                                cover.image = coverImage
-                                print(coverImage)
+                                coverView.image = coverImage
                             }
                         }
                     }
                 }.resume()
-                collectionBox.addSubview(cover)
-                cover.contentMode = .scaleAspectFill
-                cover.layer.cornerRadius = 5
-                cover.layer.masksToBounds = true
-                cover.snp.makeConstraints { make in
-                    make.top.equalTo(0).offset(i * (60 + Int(JunSpaced.control())))
+                
+                coverView.contentMode = .scaleAspectFill
+                coverView.layer.cornerRadius = 5
+                coverView.layer.masksToBounds = true
+                collectionBoxButton.addSubview(coverView)
+                coverView.snp.makeConstraints { make in
+                    make.top.equalTo(0)
                     make.left.equalTo(0)
                     make.height.width.equalTo(60)
                 }
                 
-                let collectionTitle = UILabel()
-                collectionBox.addSubview(collectionTitle)
-                collectionTitle.text = myCollection[i].get("title")?.stringValue
+                guard let collectionTitleText = myCollection[i].get("title")?.stringValue else { return }
+                let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
+                collectionBoxButton.addSubview(collectionTitle)
                 collectionTitle.snp.makeConstraints { make in
-                    make.top.equalTo(cover)
-                    make.left.equalTo(cover.snp.right).offset(JunSpaced.control())
-                    make.height.width.equalTo(60)
+                    make.top.equalTo(5)
+                    make.height.equalTo(collectionTitle)
+                    make.left.equalTo(coverView.snp.right).offset(JunSpaced.control())
+                    make.right.equalTo(0)
                 }
             }
         }
