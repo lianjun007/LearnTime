@@ -296,7 +296,7 @@ extension AccountViewController {
     
     /// 创建模块2的方法
     func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
-        
+        /// 模块标题
         let title = UIButton().moduleTitleMode("手机号", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in

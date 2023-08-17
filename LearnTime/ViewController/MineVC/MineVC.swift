@@ -1,36 +1,6 @@
 import UIKit
 import LeanCloud
 import SnapKit
-import SwiftUI
-
-@available(iOS 13.0, *)
-struct Login_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            UINavigationController(rootViewController: MineViewController())
-        }
-    }
-}
-
-struct ViewControllerPreview: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = UIViewController
-    
-    let viewControllerBuilder: () -> UIViewControllerType
-    
-    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-        self.viewControllerBuilder = viewControllerBuilder
-    }
-    
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        viewControllerBuilder()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-    }
-}
-
 
 /// 账户注册界面的声明内容
 class MineViewController: UIViewController {
@@ -160,64 +130,8 @@ extension MineViewController {
         
         myCollectionBoxButtonArray = []
         coverLoad.notify(queue: .main) { [self] in
-            for i in 0 ..< myCollection.count {
-                /// 装单个合集的框子
-                let collectionBoxButton = UIButton()
-                collectionBoxContentView.addSubview(collectionBoxButton)
-                myCollectionBoxButtonArray.append(collectionBoxButton)
-                collectionBoxButton.snp.makeConstraints { make in
-                    
-                    make.width.equalTo(collectionBox).multipliedBy(0.5).offset(-JunSpaced.control() / 2)
-                    make.height.equalTo(60)
-                    if i > 2 {
-                        make.left.equalTo(myCollectionBoxButtonArray[i - 3].snp.right).offset(JunSpaced.control())
-                        make.top.equalTo(myCollectionBoxButtonArray[i - 3].snp.top)
-                    } else {
-                        make.left.equalTo(0)
-                        make.top.equalTo(0).offset(i * (60 + Int(JunSpaced.control())))
-                    }
-                    if i == myCollection.count - 1 { make.right.equalToSuperview() }
-                }
-                
-                let coverView = UIImageView()
-                print(myCollection[i].get("cover"))
-                
-                guard let coverURLString = (myCollection[i].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
-
-                let httpsCoverURLString = coverURLString.replacingOccurrences(of: "http", with: "https")
-                
-                guard let coverURL = URL(string: httpsCoverURLString) else { return }
-                print(coverURLString)
-                URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
-                    if let data = data {
-                        let coverImage = UIImage(data: data)
-                        DispatchQueue.main.async {
-                            if let coverImage = coverImage {
-                                coverView.image = coverImage
-                            }
-                        }
-                    }
-                }.resume()
-                
-                coverView.contentMode = .scaleAspectFill
-                coverView.layer.cornerRadius = 5
-                coverView.layer.masksToBounds = true
-                collectionBoxButton.addSubview(coverView)
-                coverView.snp.makeConstraints { make in
-                    make.top.equalTo(0)
-                    make.left.equalTo(0)
-                    make.height.width.equalTo(60)
-                }
-                
-                guard let collectionTitleText = myCollection[i].get("title")?.stringValue else { return }
-                let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
-                collectionBoxButton.addSubview(collectionTitle)
-                collectionTitle.snp.makeConstraints { make in
-                    make.top.equalTo(5)
-                    make.height.equalTo(collectionTitle)
-                    make.left.equalTo(coverView.snp.right).offset(JunSpaced.control())
-                    make.right.equalTo(0)
-                }
+            for index in 0 ..< myCollection.count {
+                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
             }
         }
         
@@ -406,6 +320,64 @@ extension MineViewController {
                 make.width.equalTo(temporaryAccountButton)
             }
             signUpButton.addTarget(self, action: #selector(accountModuleCilcked), for: .touchUpInside)
+        }
+    }
+    
+    func myCollectionBuild(_ index: Int, superView: UIView, superViewContent: UIView) {
+        /// 装单个合集的框子
+        let collectionBoxButton = UIButton()
+        superViewContent.addSubview(collectionBoxButton)
+        myCollectionBoxButtonArray.append(collectionBoxButton)
+        collectionBoxButton.snp.makeConstraints { make in
+            make.width.equalTo(superView).multipliedBy(0.5).offset(-JunSpaced.control() / 2)
+            make.height.equalTo(60)
+            if index > 2 {
+                make.left.equalTo(myCollectionBoxButtonArray[index - 3].snp.right).offset(JunSpaced.control()) // ⚠️
+                make.top.equalTo(myCollectionBoxButtonArray[index - 3].snp.top)
+            } else {
+                make.left.equalTo(0)
+                make.top.equalTo(0).offset(index * (60 + Int(JunSpaced.control())))
+            }
+            if index == myCollection.count - 1 { make.right.equalToSuperview() }
+        }
+        
+        let coverView = UIImageView()
+        
+        guard let coverURLString = (myCollection[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+
+        let httpsCoverURLString = coverURLString.replacingOccurrences(of: "http", with: "https")
+        
+        guard let coverURL = URL(string: httpsCoverURLString) else { return }
+        print(coverURLString)
+        URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
+            if let data = data {
+                let coverImage = UIImage(data: data)
+                DispatchQueue.main.async {
+                    if let coverImage = coverImage {
+                        coverView.image = coverImage
+                    }
+                }
+            }
+        }.resume()
+        
+        coverView.contentMode = .scaleAspectFill
+        coverView.layer.cornerRadius = 5
+        coverView.layer.masksToBounds = true
+        collectionBoxButton.addSubview(coverView)
+        coverView.snp.makeConstraints { make in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.height.width.equalTo(60)
+        }
+        
+        guard let collectionTitleText = myCollection[index].get("title")?.stringValue else { return }
+        let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
+        collectionBoxButton.addSubview(collectionTitle)
+        collectionTitle.snp.makeConstraints { make in
+            make.top.equalTo(5)
+            make.height.equalTo(collectionTitle)
+            make.left.equalTo(coverView.snp.right).offset(JunSpaced.control())
+            make.right.equalTo(0)
         }
     }
 }

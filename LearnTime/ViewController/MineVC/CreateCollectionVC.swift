@@ -1,6 +1,35 @@
 import UIKit
 import LeanCloud
 import SnapKit
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct Login_Preview: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            UINavigationController(rootViewController: CreateCollectionViewController())
+        }
+    }
+}
+
+struct ViewControllerPreview: UIViewControllerRepresentable {
+    
+    typealias UIViewControllerType = UIViewController
+    
+    let viewControllerBuilder: () -> UIViewControllerType
+    
+    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+        self.viewControllerBuilder = viewControllerBuilder
+    }
+    
+    @available(iOS 13.0.0, *)
+    func makeUIViewController(context: Context) -> UIViewController {
+        viewControllerBuilder()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    }
+}
 
 /// 创建合集界面的声明内容
 class CreateCollectionViewController: UIViewController, UINavigationControllerDelegate {
@@ -16,6 +45,8 @@ class CreateCollectionViewController: UIViewController, UINavigationControllerDe
     var collectionCoverBox = UIButton()
     /// 合集标题输入框
     let titieInputBox = InsetTextField()
+    let permissionButton = UIButton()
+    let partitionButton = UIButton()
     /// 密码输入框
     let passwordInputBox = InsetTextField()
     /// 邮箱地址输入框
@@ -51,8 +82,8 @@ extension CreateCollectionViewController {
         snpTop = module0()
         // 模块1：输入合集标题
         snpTop = module1(snpTop)
-//        // 模块2：输入密码
-//        snpTop = module2(snpTop)
+        // 模块2：选择分区和类型
+        snpTop = module2(snpTop)
 //        // 模块3：输入邮箱地址
 //        snpTop = module3(snpTop)
 //        // 模块4：输入手机号
@@ -98,6 +129,7 @@ extension CreateCollectionViewController {
         
         /// 控件显示内容部分的高斯模糊
         let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blurView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
         collectionCoverBox.addSubview(blurView)
         blurView.snp.makeConstraints { make in
             make.left.right.equalTo(0)
@@ -165,6 +197,92 @@ extension CreateCollectionViewController {
                 make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
+        return tipsIcon1.snp.bottom
+    }
+    
+    /// 创建模块2的方法
+    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
+        /// 模块标题
+        let title = UIButton().moduleTitleMode("分区和类型", mode: .basic)
+        containerView.addSubview(title)
+        title.snp.makeConstraints { make in
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.height.equalTo(title)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
+        let label1 = UILabel().fontAdaptive("权限", font: JunFont.title2())
+        let label2 = UILabel().fontAdaptive("分区", font: JunFont.title2())
+        
+        containerView.addSubview(label1)
+        label1.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.equalTo(40)
+            make.width.equalTo(50)
+        }
+        
+        // 配置用户名输入框
+        permissionButton.layer.borderWidth = 3
+        permissionButton.layer.borderColor = JunColor.learnTime1().cgColor
+        permissionButton.backgroundColor = UIColor.white
+        permissionButton.layer.cornerRadius = 13
+        permissionButton.tintColor = UIColor.black.withAlphaComponent(0.6)
+        permissionButton.setTitle("必选", for: .normal)
+        permissionButton.setTitleColor(UIColor.black, for: .normal)
+        containerView.addSubview(permissionButton)
+        permissionButton.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(label1.snp.right)
+            make.width.equalTo(containerView.safeAreaLayoutGuide).multipliedBy(0.5).offset(-JunSpaced.screen() - JunSpaced.control() / 2 - 50)
+            make.height.equalTo(label1)
+        }
+        
+        containerView.addSubview(label2)
+        label2.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(permissionButton.snp.right).offset(JunSpaced.control())
+            make.height.equalTo(label1)
+            make.width.equalTo(label1)
+        }
+        
+        // 配置用户名输入框
+        partitionButton.layer.borderWidth = 3
+        partitionButton.layer.borderColor = JunColor.learnTime1().cgColor
+        partitionButton.backgroundColor = UIColor.white
+        partitionButton.layer.cornerRadius = 13
+        partitionButton.tintColor = UIColor.black.withAlphaComponent(0.6)
+        partitionButton.setTitle("必选", for: .normal)
+        partitionButton.setTitleColor(UIColor.black, for: .normal)
+        containerView.addSubview(partitionButton)
+        partitionButton.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(label2.snp.right)
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.height.equalTo(label1)
+        }
+        
+        /// 用户名输入框下方的提示控件的提示图标1
+        let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
+        tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
+        containerView.addSubview(tipsIcon1)
+        tipsIcon1.snp.makeConstraints { make in
+            make.top.equalTo(permissionButton.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.height.width.equalTo(15)
+        }
+        
+        /// 用户名输入框下方的提示控件的提示内容1
+        let tipsLabel1 = UILabel().fontAdaptive("合集标题的长度、内容、复杂度、字符类型不作限制，但是不建议过于奇怪。", font: JunFont.tips())
+            tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
+            containerView.addSubview(tipsLabel1)
+            tipsLabel1.snp.makeConstraints { make in
+                make.top.equalTo(permissionButton.snp.bottom).offset(JunSpaced.control())
+                make.left.equalTo(tipsIcon1.snp.right).offset(6)
+                make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+        
         return tipsLabel1.snp.bottom
     }
     
@@ -183,7 +301,7 @@ extension CreateCollectionViewController {
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-JunSpaced.module())
+            make.bottom.equalToSuperview().offset(-JunSpaced.screen())
         }
         createButton.addTarget(self, action: #selector(clickedCreateCollectionButton), for: .touchUpInside)
     }
@@ -225,7 +343,7 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
             case .success:
                 if let value = coverFile.url?.value {
                     coverURL = LCFile(url: value)
-                    print("文件保存完成。URL: \(value)")
+                    self.view.makeToast("图片上传成功，可以前往“关于我的 > 我的文件”查看", duration: 1.5, position: .top)
                     coverLoad.leave()
                 }
             case .failure(error: let error): errorLeanCloud(error, view: self.view)
