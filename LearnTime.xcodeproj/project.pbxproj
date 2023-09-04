@@ -73,6 +73,7 @@
 		DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */ = {isa = PBXBuildFile; productRef = DA70AD142A8514A800CBB2FA /* LeanCloud */; };
 		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
 		DA8D71AB2A80540700566778 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71AA2A80540700566778 /* Trash.swift */; };
+		DAB0F6FF2AA57F5A0079FE3A /* UIView-Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */; };
 		DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */; };
 		DAF20F0E2A8A786700506FFD /* CreateCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */; };
 		DAF514182A72A84C009EC9B1 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */; };
@@ -115,7 +116,7 @@
 		DA13A4C02A2E5D52002F44AB /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
 		DA13A4C12A2E5D52002F44AB /* EssayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayViewController.swift; sourceTree = "<group>"; };
 		DA13A4C22A2E5D52002F44AB /* SuggestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestViewController.swift; sourceTree = "<group>"; };
-		DA13A4C32A2E5D52002F44AB /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
+		DA13A4C32A2E5D52002F44AB /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DA13A4D62A2E5D66002F44AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13A4DA2A2E5D86002F44AB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA13A4DF2A2E5DAA002F44AB /* ContentImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ContentImage.xcassets; sourceTree = "<group>"; };
@@ -135,7 +136,7 @@
 		DA6F428E2A7913DB00E9F8B4 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		DA6FDED22A87EB8D00B18A0C /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		DA6FDED42A87EBC200B18A0C /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
-		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DA8D71A82A802B2200566778 /* InfoViewControlle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControlle.swift; sourceTree = "<group>"; };
 		DA8D71AA2A80540700566778 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayThemeViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */,
+				DAB0F6FF2AA57F5A0079FE3A /* UIView-Shimmer in Frameworks */,
 				DAF5B1F92A8467200048B038 /* Ink in Frameworks */,
 				DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */,
 				DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */,
@@ -334,6 +336,7 @@
 				DAF5B1F82A8467200048B038 /* Ink */,
 				DA70AD142A8514A800CBB2FA /* LeanCloud */,
 				DA6FDEDB2A88583700B18A0C /* Toast */,
+				DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */,
 			);
 			productName = LearnTime;
 			productReference = DA13A4862A2E5CE4002F44AB /* LearnTime.app */;
@@ -413,6 +416,7 @@
 				DAF5B1F72A8467200048B038 /* XCRemoteSwiftPackageReference "Ink" */,
 				DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */,
 				DA6FDEDA2A88583600B18A0C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				DAB0F6FD2AA57F5A0079FE3A /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
 			);
 			productRefGroup = DA13A4872A2E5CE4002F44AB /* Products */;
 			projectDirPath = "";
@@ -898,6 +902,14 @@
 				minimumVersion = 17.11.0;
 			};
 		};
+		DAB0F6FD2AA57F5A0079FE3A /* XCRemoteSwiftPackageReference "UIView-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omerfarukozturk/UIView-Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 		DAF5B1F72A8467200048B038 /* XCRemoteSwiftPackageReference "Ink" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Ink.git";
@@ -928,6 +940,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */;
 			productName = LeanCloud;
+		};
+		DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAB0F6FD2AA57F5A0079FE3A /* XCRemoteSwiftPackageReference "UIView-Shimmer" */;
+			productName = "UIView-Shimmer";
 		};
 		DAF5B1F82A8467200048B038 /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,8 +1,42 @@
+// 关于我的界面
 import UIKit
 import LeanCloud
 import SnapKit
+import Toast
+import UIView_Shimmer
 
-/// 账户注册界面的声明内容
+//import SwiftUI
+//
+//@available(iOS 13.0, *)
+//struct Login_Preview: PreviewProvider {
+//    static var previews: some View {
+//        ViewControllerPreview {
+//            UINavigationController(rootViewController: MineViewController())
+//        }
+//    }
+//}
+//
+//struct ViewControllerPreview: UIViewControllerRepresentable {
+//
+//    typealias UIViewControllerType = UIViewController
+//
+//    let viewControllerBuilder: () -> UIViewControllerType
+//
+//    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+//        self.viewControllerBuilder = viewControllerBuilder
+//    }
+//
+//    @available(iOS 13.0.0, *)
+//    func makeUIViewController(context: Context) -> UIViewController {
+//        viewControllerBuilder()
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//    }
+//}
+
+
+/// 界面的声明内容
 class MineViewController: UIViewController {
     /// 底层的滚动视图，最基础的界面
     let underlyView = UIScrollView()
@@ -39,8 +73,23 @@ extension MineViewController {
         moduleRefresh()
         // 模块0：登录注册或用户信息模块
         snpTop = module0()
-        // 模块1：我的创作模块
+        // 模块1：我的合集模块
         snpTop = module1(snpTop)
+        // 模块2：我的文章模块
+        snpTop = module2(snpTop)
+        // 模块3：我的文件模块
+        module3(snpTop)
+        
+        if let sessionToken = LCApplication.default.currentUser?.sessionToken?.value {
+            _ = LCUser.logIn(sessionToken: sessionToken) { (result) in
+                if result.isSuccess {
+                    // session token 有效
+                } else {
+                    self.view.makeToast("登录失效，请重新登录", duration: 1.5, position: .top)
+                    LCUser.logOut()
+                }
+            }
+        }
         
         // 账号登录状态修改时触发相关通知
         NotificationCenter.default.addObserver(self, selector: #selector(overloadViewDidLoad), name: accountStatusChangeNotification, object: nil)
@@ -120,9 +169,9 @@ extension MineViewController {
         query.whereKey("authorObjectId", .equalTo(userObjectId))
         _ = query.find { [self] result in
             switch result {
-            case .success(objects: let students):
+            case .success(objects: let item):
                 myCollection = []
-                myCollection = students
+                myCollection = item
                 coverLoad.leave()
             case .failure(error: let error): errorLeanCloud(error, view: view)
             }
@@ -136,6 +185,116 @@ extension MineViewController {
         }
         
         return collectionBox.snp.bottom
+    }
+    
+    /// 创建模块2的方法
+    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget  {
+        /// 模块标题
+        let title = UIButton().moduleTitleMode("我的文章", mode: .arrow)
+        containerView.addSubview(title)
+        title.snp.makeConstraints { make in
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.height.equalTo(title)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+//        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
+        
+        let collectionBox = UIScrollView()
+        collectionBox.isPagingEnabled = true
+        collectionBox.showsHorizontalScrollIndicator = false
+        containerView.addSubview(collectionBox)
+        collectionBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.height.equalTo(180 + JunSpaced.control() * 2)
+        }
+        
+        let collectionBoxContentView = UIView()
+        collectionBox.addSubview(collectionBoxContentView)
+        collectionBoxContentView.snp.makeConstraints { make in
+            make.edges.equalTo(collectionBox)
+            make.height.equalTo(collectionBox)
+        }
+        
+        let coverLoad = DispatchGroup()
+        coverLoad.enter()
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
+        let query = LCQuery(className: "Collection")
+        query.whereKey("authorObjectId", .equalTo(userObjectId))
+        _ = query.find { [self] result in
+            switch result {
+            case .success(objects: let item):
+                myCollection = []
+                myCollection = item
+                coverLoad.leave()
+            case .failure(error: let error): errorLeanCloud(error, view: view)
+            }
+        }
+        
+        myCollectionBoxButtonArray = []
+        coverLoad.notify(queue: .main) { [self] in
+            for index in 0 ..< myCollection.count {
+                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
+            }
+        }
+        
+        return collectionBox.snp.bottom
+    }
+    
+    /// 创建模块3的方法
+    func module3(_ snpTop: ConstraintRelatableTarget) {
+        /// 模块标题
+        let title = UIButton().moduleTitleMode("我的文件", mode: .arrow)
+        containerView.addSubview(title)
+        title.snp.makeConstraints { make in
+            make.top.equalTo(snpTop).offset(JunSpaced.module())
+            make.height.equalTo(title)
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+        }
+//        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
+        
+        let collectionBox = UIScrollView()
+        collectionBox.isPagingEnabled = true
+        collectionBox.showsHorizontalScrollIndicator = false
+        containerView.addSubview(collectionBox)
+        collectionBox.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
+            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.height.equalTo(180 + JunSpaced.control() * 2)
+        }
+        
+        let collectionBoxContentView = UIView()
+        collectionBox.addSubview(collectionBoxContentView)
+        collectionBoxContentView.snp.makeConstraints { make in
+            make.edges.equalTo(collectionBox)
+            make.height.equalTo(collectionBox)
+        }
+        
+        let coverLoad = DispatchGroup()
+        coverLoad.enter()
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return }
+        let query = LCQuery(className: "Collection")
+        query.whereKey("authorObjectId", .equalTo(userObjectId))
+        _ = query.find { [self] result in
+            switch result {
+            case .success(objects: let item):
+                myCollection = []
+                myCollection = item
+                coverLoad.leave()
+            case .failure(error: let error): errorLeanCloud(error, view: view)
+            }
+        }
+        
+        myCollectionBoxButtonArray = []
+        coverLoad.notify(queue: .main) { [self] in
+            for index in 0 ..< myCollection.count {
+                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
+            }
+        }
     }
 }
 
@@ -159,7 +318,7 @@ extension MineViewController {
         }
     }
     
-    /// 重新加载viewDidLoad方法以刷新界面
+    /// 跳转到用户详情页界面
     @objc func userNameTitleCilcked() {
         let VC = AccountViewController()
         let NavC = UINavigationController(rootViewController: VC)
@@ -344,11 +503,8 @@ extension MineViewController {
         let coverView = UIImageView()
         
         guard let coverURLString = (myCollection[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
-
-        let httpsCoverURLString = coverURLString.replacingOccurrences(of: "http", with: "https")
         
-        guard let coverURL = URL(string: httpsCoverURLString) else { return }
-        print(coverURLString)
+        guard let coverURL = URL(string: coverURLString) else { return }
         URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
             if let data = data {
                 let coverImage = UIImage(data: data)

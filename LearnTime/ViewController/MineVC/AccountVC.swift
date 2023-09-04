@@ -1,8 +1,9 @@
+// 账户详细界面
 import UIKit
 import SnapKit
 import LeanCloud
 
-/// 账户详细界面的声明内容
+/// 界面的声明内容
 class AccountViewController: UIViewController {
     /// 初始化用户对象，接收当前设备登录用户
     var user = LCUser()

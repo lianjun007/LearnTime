@@ -1,6 +1,7 @@
 import UIKit
 import LeanCloud
 import SnapKit
+
 import SwiftUI
 
 @available(iOS 13.0, *)
@@ -13,20 +14,20 @@ struct Login_Preview: PreviewProvider {
 }
 
 struct ViewControllerPreview: UIViewControllerRepresentable {
-    
+
     typealias UIViewControllerType = UIViewController
-    
+
     let viewControllerBuilder: () -> UIViewControllerType
-    
+
     init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
         self.viewControllerBuilder = viewControllerBuilder
     }
-    
+
     @available(iOS 13.0.0, *)
     func makeUIViewController(context: Context) -> UIViewController {
         viewControllerBuilder()
     }
-    
+
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
     }
 }
@@ -45,14 +46,20 @@ class CreateCollectionViewController: UIViewController, UINavigationControllerDe
     var collectionCoverBox = UIButton()
     /// 合集标题输入框
     let titieInputBox = InsetTextField()
-    let permissionButton = UIButton()
     let partitionButton = UIButton()
+    let tagButton = UIButton()
     /// 密码输入框
     let passwordInputBox = InsetTextField()
     /// 邮箱地址输入框
     let emailInputBox = InsetTextField()
     /// 手机号输入框
     let phoneInputBox = InsetTextField()
+    
+    let partition: String = "暂无"
+    let tag: String = ""
+    
+    var partitionArray: [LCObject] = []
+    let tagArray: [String] = []
 }
 
 // ♻️控制器的生命周期方法
@@ -203,7 +210,7 @@ extension CreateCollectionViewController {
     /// 创建模块2的方法
     func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
         /// 模块标题
-        let title = UIButton().moduleTitleMode("分区和类型", mode: .basic)
+        let title = UIButton().moduleTitleMode("分区和标签", mode: .basic)
         containerView.addSubview(title)
         title.snp.makeConstraints { make in
             make.top.equalTo(snpTop).offset(JunSpaced.module())
@@ -212,8 +219,8 @@ extension CreateCollectionViewController {
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        let label1 = UILabel().fontAdaptive("权限", font: JunFont.title2())
-        let label2 = UILabel().fontAdaptive("分区", font: JunFont.title2())
+        let label1 = UILabel().fontAdaptive("分区", font: JunFont.title2())
+        let label2 = UILabel().fontAdaptive("标签", font: JunFont.title2())
         
         containerView.addSubview(label1)
         label1.snp.makeConstraints { make in
@@ -223,52 +230,67 @@ extension CreateCollectionViewController {
             make.width.equalTo(50)
         }
         
-        // 配置用户名输入框
-        permissionButton.layer.borderWidth = 3
-        permissionButton.layer.borderColor = JunColor.learnTime1().cgColor
-        permissionButton.backgroundColor = UIColor.white
-        permissionButton.layer.cornerRadius = 13
-        permissionButton.tintColor = UIColor.black.withAlphaComponent(0.6)
-        permissionButton.setTitle("必选", for: .normal)
-        permissionButton.setTitleColor(UIColor.black, for: .normal)
-        containerView.addSubview(permissionButton)
-        permissionButton.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
-            make.left.equalTo(label1.snp.right)
-            make.width.equalTo(containerView.safeAreaLayoutGuide).multipliedBy(0.5).offset(-JunSpaced.screen() - JunSpaced.control() / 2 - 50)
-            make.height.equalTo(label1)
-        }
-        
-        containerView.addSubview(label2)
-        label2.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
-            make.left.equalTo(permissionButton.snp.right).offset(JunSpaced.control())
-            make.height.equalTo(label1)
-            make.width.equalTo(label1)
-        }
-        
-        // 配置用户名输入框
+        // 分区选择按钮
+        partitionButton.tag = 0
         partitionButton.layer.borderWidth = 3
         partitionButton.layer.borderColor = JunColor.learnTime1().cgColor
         partitionButton.backgroundColor = UIColor.white
         partitionButton.layer.cornerRadius = 13
         partitionButton.tintColor = UIColor.black.withAlphaComponent(0.6)
-        partitionButton.setTitle("必选", for: .normal)
+        partitionButton.setTitle("点击选择", for: .normal)
         partitionButton.setTitleColor(UIColor.black, for: .normal)
         containerView.addSubview(partitionButton)
         partitionButton.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(label1.snp.right)
+            make.width.equalTo(containerView.safeAreaLayoutGuide).multipliedBy(0.5).offset(-JunSpaced.screen() - JunSpaced.control() / 2 - 50)
+            make.height.equalTo(label1)
+        }
+        if #available(iOS 14.0, *) {
+            let partitionQuery = LCQuery(className: "Partition")
+            _ = partitionQuery.find { [self] result in
+                switch result {
+                case .success(objects: let item): partitionArray = item
+                case .failure(error: let error): errorLeanCloud(error, view: view)
+                }
+            }
+            partitionButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
+        }
+        else { partitionButton.addTarget(self, action: #selector(oldShowMenu), for: .touchUpInside) }
+        
+        containerView.addSubview(label2)
+        label2.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
+            make.left.equalTo(partitionButton.snp.right).offset(JunSpaced.control())
+            make.height.equalTo(label1)
+            make.width.equalTo(label1)
+        }
+        
+        // 标签选择按钮
+        tagButton.tag = 1
+        tagButton.layer.borderWidth = 3
+        tagButton.layer.borderColor = JunColor.learnTime1().cgColor
+        tagButton.backgroundColor = UIColor.white
+        tagButton.layer.cornerRadius = 13
+        tagButton.tintColor = UIColor.black.withAlphaComponent(0.6)
+        tagButton.setTitle("先选择分区", for: .normal)
+        tagButton.setTitleColor(UIColor.black, for: .normal)
+        containerView.addSubview(tagButton)
+        tagButton.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(label2.snp.right)
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(label1)
         }
+        if #available(iOS 14.0, *) { tagButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside) }
+        else { tagButton.addTarget(self, action: #selector(oldShowMenu), for: .touchUpInside) }
         
         /// 用户名输入框下方的提示控件的提示图标1
         let tipsIcon1 = UIImageView(image: UIImage(systemName: "info.circle"))
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(permissionButton.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(partitionButton.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -278,7 +300,7 @@ extension CreateCollectionViewController {
             tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel1)
             tipsLabel1.snp.makeConstraints { make in
-                make.top.equalTo(permissionButton.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(partitionButton.snp.bottom).offset(JunSpaced.control())
                 make.left.equalTo(tipsIcon1.snp.right).offset(6)
                 make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
@@ -338,6 +360,8 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
         let coverLoad = DispatchGroup()
         
         coverLoad.enter()
+        
+        // 保存图片到服务器
         _ = coverFile.save { result in
             switch result {
             case .success:
@@ -350,10 +374,11 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
             }
         }
         
-        guard let titleText = titieInputBox.text else { return }
-        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return }
+        guard let titleText = titieInputBox.text else { return } // 获取输入框内的合集标题字符串
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return } // 获取当前用户的ObjectID
         
-        coverLoad.notify(queue: .main) {
+        // 将前置数据汇总创建合集
+        coverLoad.notify(queue: .main) { [self] in
             do {
                 // 构建对象
                 let todo = LCObject(className: "Collection")
@@ -361,6 +386,7 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
                 // 为属性赋值
                 try todo.set("title", value: titleText)
                 try todo.set("cover", value: coverURL)
+                if partition != "暂无" { try todo.set("tag", value: partition) }
                 try todo.set("authorObjectId", value: userObjectId)
                 
                 // 将对象保存到云端
@@ -377,6 +403,46 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
             } catch {
                 self.view.makeToast("\(error)\n建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 5, position: .top)
             }
+        }
+    }
+    
+    // 定义一个显示菜单的方法
+    @objc func oldShowMenu(_ sender: UIButton) {
+//        // 创建一个UIAlertController对象，设置样式为actionSheet
+//        if sender.tag == 0 {
+//            let alertController = UIAlertController(title: "选择合集的分区", message: nil, preferredStyle: .actionSheet)
+//        }
+//        // 创建两个UIAlertAction对象
+//        for (index, item) in partitionArray.enumerated() {
+//            let action1 = UIAlertAction(title: (item.get("name") as! LCString).stringValue, style: .default) { action in
+//                print("You selected option 1")
+//            }
+//        }
+//        
+//        // 将两个UIAlertAction对象添加到UIAlertController对象中
+//        alertController.addAction(action1)
+//        alertController.addAction(action2)
+//        
+//        // 显示UIAlertController对象
+//        self.present(alertController, animated: true, completion: nil)
+    }
+
+    // 定义一个显示菜单的方法
+    @objc func showMenu(_ sender: UIButton) {
+        // 创建一个UIAlertController对象，设置样式为actionSheet
+        if sender.tag == 0, #available(iOS 14.0, *) {
+            var actionArray: [UIAction] = []
+            let alertController = UIAlertController(title: "选择合集的分区", message: nil, preferredStyle: .actionSheet)
+            // 创建两个UIAlertAction对象
+            for (index, item) in partitionArray.enumerated() {
+                let action = UIAction(title: (item.get("name") as! LCString).stringValue!, image: UIImage(systemName: "greetingcard"), identifier: nil, attributes: [], handler: { action in
+                    print("Hello")
+                })
+                actionArray.append(action)
+            }
+            let menu = UIMenu(title: "选择分区", children: actionArray)
+            partitionButton.showsMenuAsPrimaryAction = true
+            partitionButton.menu = menu
         }
     }
 }

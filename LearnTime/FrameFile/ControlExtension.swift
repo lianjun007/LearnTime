@@ -16,14 +16,6 @@ extension UIButton {
             objc_setAssociatedObject(self, &infoStringKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-//    var coverData: Data? {
-//        get {
-//            return objc_getAssociatedObject(self, &coverDataKey) as? Data
-//        }
-//        set {
-//            objc_setAssociatedObject(self, &coverDataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        }
-//    }
 }
 
 // 扩展UILable的随字体大小自适应尺寸方法

@@ -1,14 +1,6 @@
 import Foundation
 import UIKit
 
-//let url = URL(string: "https://www.baidu.com")!
-//let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//    guard let data = data,
-//          let string = String(data: data, encoding: .utf8) else {
-//        return
-//    }
-//}
-
 func essayInterfaceBuild(_ essayData: String, _ VC: UIViewController) -> UIScrollView {
     let essayDataArray = essayData.components(separatedBy: "\n")
     // 设置最底层的滚动视图，用来承载界面内的所有元素

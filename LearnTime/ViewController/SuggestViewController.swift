@@ -6,7 +6,7 @@ class SuggestViewController: UIViewController {
     // 发送精选课程的随机数据（废弃⚠️）
     var featuredCollectionsRandomDataArray = arrayRandom(number: 7, array: featuredCollectionsDataArray) as! Array<Dictionary<String, String>>
     
-    //
+    // 后续会用到的暂存变量
     var essayRowArray: Array<UIButton> = []
     var essayRowtitleArray: Array<UILabel> = []
     var essayRowtextArray: Array<UILabel> = []

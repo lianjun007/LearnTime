@@ -1,9 +1,9 @@
+// 注册界面
 import UIKit
 import LeanCloud
 import SnapKit
-import Toast
 
-/// 账户登录界面的声明内容
+/// 界面的声明内容
 class SignInViewController: UIViewController {
     /// 底层的滚动视图，最基础的界面
     let underlyView = UIScrollView()
