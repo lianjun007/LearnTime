@@ -245,7 +245,7 @@ func title1ModuleBuild(_ string: String, _ view: UIView, originY: CGFloat) -> CG
         path.addLine(to: CGPoint(x: title2.frame.maxX, y: title2.frame.maxY - 3))
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = JunColor.learnTime0().cgColor
+        shapeLayer.strokeColor = JunColor.LearnTime0().cgColor
         shapeLayer.lineWidth = 9.0
         view.layer.addSublayer(shapeLayer)
         newOriginY += 6
@@ -1096,7 +1096,7 @@ func tableModuleBuild(_ array: Array<String>, _ view: UIView, originY: CGFloat, 
 //                path.addLine(to: CGPoint(x: title2.frame.maxX, y: title2.frame.maxY - 3))
 //                let shapeLayer = CAShapeLayer()
 //                shapeLayer.path = path.cgPath
-//                shapeLayer.strokeColor = JunColor.learnTime0().cgColor
+//                shapeLayer.strokeColor = JunColor.LearnTime0().cgColor
 //                shapeLayer.lineWidth = 9.0
 //                underlyScrollView.layer.addSublayer(shapeLayer)
 //                originY += 6

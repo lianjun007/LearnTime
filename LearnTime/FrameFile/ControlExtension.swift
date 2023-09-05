@@ -131,6 +131,25 @@ class InsetTextField: UITextField {
     }
 }
 
+class CustomTextView: UITextView {
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        self.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        self.contentInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+    }
+}
+
+
 func errorLeanCloud(_ error: LCError, view: UIView) {
     switch error.code {
     case 1:

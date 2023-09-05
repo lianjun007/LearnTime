@@ -361,7 +361,7 @@ extension MineViewController {
             let createCollectionButton = UIButton()
             let createEssayButton = UIButton()
             
-            createCollectionButton.backgroundColor = JunColor.learnTime1()
+            createCollectionButton.backgroundColor = JunColor.LearnTime1()
             createCollectionButton.layer.cornerRadius = 12
             createCollectionButton.setTitle("创建合集", for: .normal)
             createCollectionButton.titleLabel?.font = JunFont.title2()
@@ -375,7 +375,7 @@ extension MineViewController {
             }
             createCollectionButton.addTarget(self, action: #selector(clickCreateCollection), for: .touchUpInside)
             
-            createEssayButton.backgroundColor = JunColor.learnTime0()
+            createEssayButton.backgroundColor = JunColor.LearnTime0()
             createEssayButton.layer.cornerRadius = 12
             createEssayButton.setTitle("创建文章", for: .normal)
             createEssayButton.titleLabel?.font = JunFont.title2()
@@ -390,7 +390,7 @@ extension MineViewController {
             
 //            /// 登出当前账户的按钮
 //            let signOutButton = UIButton()
-//            signOutButton.backgroundColor = JunColor.learnTime0()
+//            signOutButton.backgroundColor = JunColor.LearnTime0()
 //            signOutButton.layer.cornerRadius = 10
 //            signOutButton.tag = 3
 //            signOutButton.setImage(UIImage(systemName: "person.badge.minus"), for: .normal)
@@ -406,7 +406,7 @@ extension MineViewController {
         } else {
             /// 登录账户的按钮
             let signInButton = UIButton()
-            signInButton.backgroundColor = JunColor.learnTime0()
+            signInButton.backgroundColor = JunColor.LearnTime0()
             signInButton.layer.cornerRadius = 15
             signInButton.tag = 0
             signInButton.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
@@ -455,7 +455,7 @@ extension MineViewController {
             
             /// 注册账户的按钮
             let signUpButton = UIButton()
-            signUpButton.backgroundColor = JunColor.learnTime1()
+            signUpButton.backgroundColor = JunColor.LearnTime1()
             signUpButton.layer.cornerRadius = 15
             signUpButton.tag = 1
             signUpButton.setImage(UIImage(systemName: "person.badge.key"), for: .normal)

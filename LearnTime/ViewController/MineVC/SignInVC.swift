@@ -60,12 +60,12 @@ extension SignInViewController {
     func moduleNav() {
         /// 收起键盘的按钮
         let keyboardHideButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(keyboardHide))
-        keyboardHideButton.tintColor = JunColor.learnTime0()
+        keyboardHideButton.tintColor = JunColor.LearnTime0()
         navigationItem.rightBarButtonItem = keyboardHideButton
         
         /// 收起此界面的按钮
         let dismissVCButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(dismissVC))
-        dismissVCButton.tintColor = JunColor.learnTime0()
+        dismissVCButton.tintColor = JunColor.LearnTime0()
         navigationItem.leftBarButtonItem = dismissVCButton
     }
     
@@ -83,7 +83,7 @@ extension SignInViewController {
         
         // 配置用户名输入框
         userNameInputBox.layer.borderWidth = 3
-        userNameInputBox.layer.borderColor = JunColor.learnTime0().cgColor
+        userNameInputBox.layer.borderColor = JunColor.LearnTime0().cgColor
         userNameInputBox.backgroundColor = UIColor.white
         userNameInputBox.layer.cornerRadius = 15
         userNameInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -103,7 +103,7 @@ extension SignInViewController {
         tipsIcon.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon)
         tipsIcon.snp.makeConstraints { make in
-            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -135,7 +135,7 @@ extension SignInViewController {
         
         // 配置密码输入框
         passwordInputBox.layer.borderWidth = 3
-        passwordInputBox.layer.borderColor = JunColor.learnTime0().cgColor
+        passwordInputBox.layer.borderColor = JunColor.LearnTime0().cgColor
         passwordInputBox.backgroundColor = UIColor.white
         passwordInputBox.layer.cornerRadius = 15
         passwordInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -155,7 +155,7 @@ extension SignInViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -175,7 +175,7 @@ extension SignInViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -197,7 +197,7 @@ extension SignInViewController {
     func module3(_ snpTop: ConstraintRelatableTarget) {
         /// 登录的按钮
         let signButton = UIButton()
-        signButton.backgroundColor = JunColor.learnTime0()
+        signButton.backgroundColor = JunColor.LearnTime0()
         signButton.layer.cornerRadius = 20
         signButton.setTitle("登录", for: .normal)
         signButton.titleLabel?.font = JunFont.title2()

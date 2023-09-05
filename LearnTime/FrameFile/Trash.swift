@@ -779,7 +779,7 @@
 //    func module6(_ snpTop: ConstraintRelatableTarget) {
 //
 //        let verifyEmailButton = UIButton()
-//        verifyEmailButton.backgroundColor = JunColor.learnTime1()
+//        verifyEmailButton.backgroundColor = JunColor.LearnTime1()
 //        verifyEmailButton.layer.cornerRadius = 15
 //        verifyEmailButton.setTitle("发送验证邮件", for: .normal)
 //        verifyEmailButton.setTitleColor(UIColor.black, for: .normal)

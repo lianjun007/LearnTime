@@ -70,12 +70,12 @@ extension SignUpViewController {
     func moduleNav() {
         /// 收起键盘的按钮
         let keyboardHideButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(keyboardHide))
-        keyboardHideButton.tintColor = JunColor.learnTime1()
+        keyboardHideButton.tintColor = JunColor.LearnTime1()
         navigationItem.rightBarButtonItem = keyboardHideButton
         
         /// 收起此界面的按钮
         let dismissVCButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(dismissVC))
-        dismissVCButton.tintColor = JunColor.learnTime1()
+        dismissVCButton.tintColor = JunColor.LearnTime1()
         navigationItem.leftBarButtonItem = dismissVCButton
     }
     
@@ -93,7 +93,7 @@ extension SignUpViewController {
         
         // 配置用户名输入框
         userNameInputBox.layer.borderWidth = 3
-        userNameInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        userNameInputBox.layer.borderColor = JunColor.LearnTime1().cgColor
         userNameInputBox.backgroundColor = UIColor.white
         userNameInputBox.layer.cornerRadius = 15
         userNameInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -113,7 +113,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(userNameInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -133,7 +133,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -165,7 +165,7 @@ extension SignUpViewController {
         
         // 配置密码输入框
         passwordInputBox.layer.borderWidth = 3
-        passwordInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        passwordInputBox.layer.borderColor = JunColor.LearnTime1().cgColor
         passwordInputBox.backgroundColor = UIColor.white
         passwordInputBox.layer.cornerRadius = 15
         passwordInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -185,7 +185,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(passwordInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -205,7 +205,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -237,7 +237,7 @@ extension SignUpViewController {
         
         // 配置邮箱地址输入框
         emailInputBox.layer.borderWidth = 3
-        emailInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        emailInputBox.layer.borderColor = JunColor.LearnTime1().cgColor
         emailInputBox.backgroundColor = UIColor.white
         emailInputBox.layer.cornerRadius = 15
         emailInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -257,7 +257,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(emailInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -277,7 +277,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -309,7 +309,7 @@ extension SignUpViewController {
         
         // 配置手机号输入框
         phoneInputBox.layer.borderWidth = 3
-        phoneInputBox.layer.borderColor = JunColor.learnTime1().cgColor
+        phoneInputBox.layer.borderColor = JunColor.LearnTime1().cgColor
         phoneInputBox.backgroundColor = UIColor.white
         phoneInputBox.layer.cornerRadius = 15
         phoneInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -329,7 +329,7 @@ extension SignUpViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(phoneInputBox.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -349,7 +349,7 @@ extension SignUpViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -371,7 +371,7 @@ extension SignUpViewController {
     func module5(_ snpTop: ConstraintRelatableTarget) {
         /// 注册并且登录的按钮
         let signButton = UIButton()
-        signButton.backgroundColor = JunColor.learnTime1()
+        signButton.backgroundColor = JunColor.LearnTime1()
         signButton.layer.cornerRadius = 20
         signButton.setTitle("注册并且登录", for: .normal)
         signButton.titleLabel?.font = JunFont.title2()

@@ -75,19 +75,19 @@ extension AccountViewController {
     func moduleNav() {
         /// 收起键盘的按钮
         let keyboardHideButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"), style: .plain, target: self, action: #selector(keyboardHide))
-        keyboardHideButton.tintColor = JunColor.learnTime0()
+        keyboardHideButton.tintColor = JunColor.LearnTime0()
         navigationItem.rightBarButtonItem = keyboardHideButton
         
         /// 收起此界面的按钮
         let dismissVCButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(dismissVC))
-        dismissVCButton.tintColor = JunColor.learnTime0()
+        dismissVCButton.tintColor = JunColor.LearnTime0()
         navigationItem.leftBarButtonItem = dismissVCButton
     }
     
     /// 创建模块0的方法
     func module0() -> ConstraintRelatableTarget {
         /// 账户封面（头像）显示的容器
-        userCoverBox = UIImageView(image: UIImage(named: "aaa"))
+        userCoverBox = UIImageView(image: UIImage(named: "LearnTime"))
         userCoverBox.layer.cornerRadius = 15
         userCoverBox.layer.masksToBounds = true
         userCoverBox.contentMode = .scaleAspectFill
@@ -130,7 +130,7 @@ extension AccountViewController {
         }
         
         emailInputLabel.layer.borderWidth = 3
-        emailInputLabel.layer.borderColor = JunColor.learnTime0().cgColor
+        emailInputLabel.layer.borderColor = JunColor.LearnTime0().cgColor
         emailInputLabel.backgroundColor = UIColor.white
         emailInputLabel.layer.cornerRadius = 15
         emailInputLabel.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -154,7 +154,7 @@ extension AccountViewController {
         
         if user.email?.stringValue == nil || user.email?.stringValue?.count == 0 {
             emailChange.setTitle("绑定", for: .normal)
-            emailChange.backgroundColor = JunColor.learnTime0()
+            emailChange.backgroundColor = JunColor.LearnTime0()
             emailChange.setTitleColor(UIColor.black, for: .normal)
             emailChange.titleLabel?.font = JunFont.title3()
             emailChange.layer.cornerRadius = 15
@@ -172,7 +172,7 @@ extension AccountViewController {
             tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon1)
             tipsIcon1.snp.makeConstraints { make in
-                make.top.equalTo(emailChange.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(emailChange.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -192,7 +192,7 @@ extension AccountViewController {
             tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon2)
             tipsIcon2.snp.makeConstraints { make in
-                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -210,7 +210,7 @@ extension AccountViewController {
             return tipsLabel2.snp.bottom
         } else {
             emailChange.setTitle("修改", for: .normal)
-            emailChange.backgroundColor = JunColor.learnTime0()
+            emailChange.backgroundColor = JunColor.LearnTime0()
             emailChange.setTitleColor(UIColor.black, for: .normal)
             emailChange.titleLabel?.font = JunFont.title3()
             emailChange.layer.cornerRadius = 15
@@ -238,7 +238,7 @@ extension AccountViewController {
             
             let emailVerified = UIButton()
             emailVerified.setTitle(" 发送验证邮件 ", for: .normal)
-            emailVerified.backgroundColor = JunColor.learnTime0()
+            emailVerified.backgroundColor = JunColor.LearnTime0()
             emailVerified.setTitleColor(UIColor.black, for: .normal)
             emailVerified.titleLabel?.font = JunFont.title3()
             emailVerified.layer.cornerRadius = 12
@@ -256,7 +256,7 @@ extension AccountViewController {
             tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon1)
             tipsIcon1.snp.makeConstraints { make in
-                make.top.equalTo(emailVerified.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(emailVerified.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -276,7 +276,7 @@ extension AccountViewController {
             tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon2)
             tipsIcon2.snp.makeConstraints { make in
-                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -308,7 +308,7 @@ extension AccountViewController {
         }
         
         phoneInputLabel.layer.borderWidth = 3
-        phoneInputLabel.layer.borderColor = JunColor.learnTime0().cgColor
+        phoneInputLabel.layer.borderColor = JunColor.LearnTime0().cgColor
         phoneInputLabel.backgroundColor = UIColor.white
         phoneInputLabel.layer.cornerRadius = 15
         phoneInputLabel.tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -333,7 +333,7 @@ extension AccountViewController {
         
         if user.mobilePhoneNumber?.stringValue == nil || user.mobilePhoneNumber?.stringValue?.count == 0 {
             phoneChange.setTitle("绑定", for: .normal)
-            phoneChange.backgroundColor = JunColor.learnTime0()
+            phoneChange.backgroundColor = JunColor.LearnTime0()
             phoneChange.setTitleColor(UIColor.black, for: .normal)
             phoneChange.titleLabel?.font = JunFont.title3()
             phoneChange.layer.cornerRadius = 15
@@ -351,7 +351,7 @@ extension AccountViewController {
             tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon1)
             tipsIcon1.snp.makeConstraints { make in
-                make.top.equalTo(phoneChange.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(phoneChange.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -371,7 +371,7 @@ extension AccountViewController {
             tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon2)
             tipsIcon2.snp.makeConstraints { make in
-                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -389,7 +389,7 @@ extension AccountViewController {
             return tipsLabel2.snp.bottom
         } else {
             phoneChange.setTitle("修改", for: .normal)
-            phoneChange.backgroundColor = JunColor.learnTime0()
+            phoneChange.backgroundColor = JunColor.LearnTime0()
             phoneChange.setTitleColor(UIColor.black, for: .normal)
             phoneChange.titleLabel?.font = JunFont.title3()
             phoneChange.layer.cornerRadius = 15
@@ -413,7 +413,7 @@ extension AccountViewController {
             
             let phoneVerified = UIButton()
             phoneVerified.setTitle("  发送验证短信  ", for: .normal)
-            phoneVerified.backgroundColor = JunColor.learnTime0()
+            phoneVerified.backgroundColor = JunColor.LearnTime0()
             phoneVerified.setTitleColor(UIColor.black, for: .normal)
             phoneVerified.titleLabel?.font = JunFont.title3()
             phoneVerified.layer.cornerRadius = 12
@@ -428,7 +428,7 @@ extension AccountViewController {
             
             for i in 0 ... 5 {
                 phoneVerifyInputBoxArray[i].layer.borderWidth = 3
-                phoneVerifyInputBoxArray[i].layer.borderColor = JunColor.learnTime0().cgColor
+                phoneVerifyInputBoxArray[i].layer.borderColor = JunColor.LearnTime0().cgColor
                 phoneVerifyInputBoxArray[i].backgroundColor = UIColor.white
                 phoneVerifyInputBoxArray[i].layer.cornerRadius = 12
                 phoneVerifyInputBoxArray[i].tintColor = UIColor.black.withAlphaComponent(0.6)
@@ -444,7 +444,7 @@ extension AccountViewController {
             }
             
             phoneVerifyButton.setTitle("验证", for: .normal)
-            phoneVerifyButton.backgroundColor = JunColor.learnTime0()
+            phoneVerifyButton.backgroundColor = JunColor.LearnTime0()
             phoneVerifyButton.setTitleColor(UIColor.black, for: .normal)
             phoneVerifyButton.titleLabel?.font = JunFont.title3()
             phoneVerifyButton.layer.cornerRadius = 12
@@ -462,7 +462,7 @@ extension AccountViewController {
             tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon1)
             tipsIcon1.snp.makeConstraints { make in
-                make.top.equalTo(phoneVerifyInputBoxArray[0].snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(phoneVerifyInputBoxArray[0].snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -482,7 +482,7 @@ extension AccountViewController {
             tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsIcon2)
             tipsIcon2.snp.makeConstraints { make in
-                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+                make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
                 make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
                 make.height.width.equalTo(15)
             }
@@ -516,7 +516,7 @@ extension AccountViewController {
         let emailChangePassword = UIButton()
         let phoneChangePassword = UIButton()
         
-        emailChangePassword.backgroundColor = JunColor.learnTime0()
+        emailChangePassword.backgroundColor = JunColor.LearnTime0()
         emailChangePassword.layer.cornerRadius = 12
         emailChangePassword.setTitle("邮件验证", for: .normal)
         emailChangePassword.titleLabel?.font = JunFont.title2()
@@ -530,7 +530,7 @@ extension AccountViewController {
         }
         emailChangePassword.addTarget(self, action: #selector(emailPasswordChange), for: .touchUpInside)
         
-        phoneChangePassword.backgroundColor = JunColor.learnTime0()
+        phoneChangePassword.backgroundColor = JunColor.LearnTime0()
         phoneChangePassword.layer.cornerRadius = 12
         phoneChangePassword.setTitle("短信验证", for: .normal)
         phoneChangePassword.titleLabel?.font = JunFont.title2()
@@ -549,7 +549,7 @@ extension AccountViewController {
         tipsIcon1.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon1)
         tipsIcon1.snp.makeConstraints { make in
-            make.top.equalTo(phoneChangePassword.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(phoneChangePassword.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -569,7 +569,7 @@ extension AccountViewController {
         tipsIcon2.tintColor = UIColor.black.withAlphaComponent(0.6)
         containerView.addSubview(tipsIcon2)
         tipsIcon2.snp.makeConstraints { make in
-            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(tipsLabel1.snp.bottom).offset(JunSpaced.control() - 0.7)
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.height.width.equalTo(15)
         }
@@ -591,7 +591,7 @@ extension AccountViewController {
     func module4(_ snpTop: ConstraintRelatableTarget) {
         /// 注册并且登录的按钮
         let signOutButton = UIButton()
-        signOutButton.backgroundColor = JunColor.learnTime0()
+        signOutButton.backgroundColor = JunColor.LearnTime0()
         signOutButton.layer.cornerRadius = 20
         signOutButton.setTitle("退出登录", for: .normal)
         signOutButton.titleLabel?.font = JunFont.title2()

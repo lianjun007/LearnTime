@@ -216,11 +216,11 @@ struct JunColor {
         UIColor.black.withAlphaComponent(0.2)
     }
     /// 主题色（紫）
-    static func learnTime0() -> UIColor {
+    static func LearnTime0() -> UIColor {
         UIColor(red: 165/255.0, green: 164/255.0, blue: 231/255.0, alpha: 1.000)
     }
     /// 主题色（红）
-    static func learnTime1() -> UIColor {
+    static func LearnTime1() -> UIColor {
         UIColor(red: 246/255.0, green: 169/255.0, blue: 173/255.0, alpha: 1.000)
     }
 }

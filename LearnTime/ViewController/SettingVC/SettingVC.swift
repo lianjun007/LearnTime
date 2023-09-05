@@ -274,7 +274,7 @@ extension SettingViewController {
             }
             
             let button3 = UIButton()
-            button3.backgroundColor = JunColor.learnTime0()
+            button3.backgroundColor = JunColor.LearnTime0()
             button3.layer.cornerRadius = 10
             button3.tag = 3
             button3.setImage(UIImage(systemName: "person.badge.minusperson.badge.minus"), for: .normal)
@@ -291,7 +291,7 @@ extension SettingViewController {
             button3.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
         } else {
             let button0 = UIButton()
-            button0.backgroundColor = JunColor.learnTime0()
+            button0.backgroundColor = JunColor.LearnTime0()
             button0.layer.cornerRadius = 10
             button0.tag = 0
             button0.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
@@ -321,7 +321,7 @@ extension SettingViewController {
             button2.addTarget(self, action: #selector(signClicked), for: .touchUpInside)
 
             let button1 = UIButton()
-            button1.backgroundColor = JunColor.learnTime1()
+            button1.backgroundColor = JunColor.LearnTime1()
             button1.layer.cornerRadius = 10
             button1.tag = 1
             button1.setImage(UIImage(systemName: "person.badge.key"), for: .normal)
