@@ -14,9 +14,9 @@ class SignInViewController: UIViewController {
     var snpTop: ConstraintRelatableTarget!
     
     /// 用户名输入框
-    let userNameInputBox = InsetTextField()
+    let userNameInputBox = UICustomTextField()
     /// 密码输入框
-    let passwordInputBox = InsetTextField()
+    let passwordInputBox = UICustomTextField()
 }
 
 // ♻️控制器的生命周期方法

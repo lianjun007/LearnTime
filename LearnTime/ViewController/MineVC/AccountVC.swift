@@ -19,11 +19,11 @@ class AccountViewController: UIViewController {
     /// 用户封面图的载体
     var userCoverBox = UIImageView()
     /// 邮箱地址输入和显示标签
-    let emailInputLabel = InsetTextField()
+    let emailInputLabel = UICustomTextField()
     /// 手机号输入和显示标签
-    let phoneInputLabel = InsetTextField()
+    let phoneInputLabel = UICustomTextField()
     /// 手机号验证码输入框
-    let phoneVerifyInputBoxArray: [InsetTextField] = [InsetTextField(), InsetTextField(), InsetTextField(), InsetTextField(), InsetTextField(), InsetTextField()]
+    let phoneVerifyInputBoxArray: [UICustomTextField] = [UICustomTextField(), UICustomTextField(), UICustomTextField(), UICustomTextField(), UICustomTextField(), UICustomTextField()]
 }
 
 // ♻️控制器的生命周期方法

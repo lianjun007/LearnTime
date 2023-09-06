@@ -5,35 +5,35 @@ import SnapKit
 import Toast
 import UIView_Shimmer
 
-//import SwiftUI
-//
-//@available(iOS 13.0, *)
-//struct Login_Preview: PreviewProvider {
-//    static var previews: some View {
-//        ViewControllerPreview {
-//            UINavigationController(rootViewController: MineViewController())
-//        }
-//    }
-//}
-//
-//struct ViewControllerPreview: UIViewControllerRepresentable {
-//
-//    typealias UIViewControllerType = UIViewController
-//
-//    let viewControllerBuilder: () -> UIViewControllerType
-//
-//    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-//        self.viewControllerBuilder = viewControllerBuilder
-//    }
-//
-//    @available(iOS 13.0.0, *)
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        viewControllerBuilder()
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//    }
-//}
+import SwiftUI
+
+@available(iOS 13.0, *)
+struct Login_Preview: PreviewProvider {
+    static var previews: some View {
+        ViewControllerPreview {
+            UINavigationController(rootViewController: MineViewController())
+        }
+    }
+}
+
+struct ViewControllerPreview: UIViewControllerRepresentable {
+
+    typealias UIViewControllerType = UIViewController
+
+    let viewControllerBuilder: () -> UIViewControllerType
+
+    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+        self.viewControllerBuilder = viewControllerBuilder
+    }
+
+    @available(iOS 13.0.0, *)
+    func makeUIViewController(context: Context) -> UIViewController {
+        viewControllerBuilder()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    }
+}
 
 
 /// 界面的声明内容
@@ -143,6 +143,22 @@ extension MineViewController {
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
+        /// 创建合集的按钮
+        let titleButton = UIButton()
+        titleButton.setImage(UIImage(systemName: "rectangle.stack.badge.plus"), for: .normal)
+        titleButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+        titleButton.imageView?.contentMode = .scaleAspectFit
+        titleButton.tintColor = UIColor.black
+        titleButton.imageView?.snp.makeConstraints { make in
+            make.top.right.equalTo(0)
+        }
+        containerView.addSubview(titleButton)
+        titleButton.snp.makeConstraints { make in
+            make.top.right.bottom.equalTo(title)
+            make.width.equalTo(38)
+        }
+        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
+        
         let collectionBox = UIScrollView()
         collectionBox.isPagingEnabled = true
         collectionBox.showsHorizontalScrollIndicator = false
@@ -152,7 +168,6 @@ extension MineViewController {
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(180 + JunSpaced.control() * 2)
-            make.bottom.equalToSuperview().offset(-1000)// ⚠️
         }
         
         let collectionBoxContentView = UIView()
@@ -199,6 +214,22 @@ extension MineViewController {
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
+        
+        /// 创建文章的按钮
+        let titleButton = UIButton()
+        titleButton.setImage(UIImage(systemName: "plus.rectangle.on.rectangle"), for: .normal)
+        titleButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+        titleButton.imageView?.contentMode = .scaleAspectFit
+        titleButton.tintColor = UIColor.black
+        titleButton.imageView?.snp.makeConstraints { make in
+            make.top.right.equalTo(0)
+        }
+        containerView.addSubview(titleButton)
+        titleButton.snp.makeConstraints { make in
+            make.top.right.bottom.equalTo(title)
+            make.width.equalTo(38)
+        }
+        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
         
         let collectionBox = UIScrollView()
         collectionBox.isPagingEnabled = true
@@ -256,15 +287,34 @@ extension MineViewController {
         }
 //        title.addTarget(self, action: #selector(moduleTitle2Jumps), for: .touchUpInside)
         
+        /// 添加文件的按钮
+        let titleButton = UIButton()
+        titleButton.setImage(UIImage(systemName: "folder.badge.plus"), for: .normal)
+        titleButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .bold), forImageIn: .normal)
+        titleButton.imageView?.contentMode = .scaleAspectFit
+        titleButton.tintColor = UIColor.black
+        titleButton.imageView?.snp.makeConstraints { make in
+            make.top.right.equalTo(0)
+        }
+        containerView.addSubview(titleButton)
+        titleButton.snp.makeConstraints { make in
+            make.top.right.bottom.equalTo(title)
+            make.width.equalTo(38)
+        }
+        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
+        
         let collectionBox = UIScrollView()
         collectionBox.isPagingEnabled = true
         collectionBox.showsHorizontalScrollIndicator = false
+        collectionBox.backgroundColor = UIColor.systemFill
+        collectionBox.layer.cornerRadius = 15
         containerView.addSubview(collectionBox)
         collectionBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
-            make.height.equalTo(180 + JunSpaced.control() * 2)
+            make.height.equalTo(100)
+            make.bottom.equalToSuperview().offset(-JunSpaced.module())
         }
         
         let collectionBoxContentView = UIView()
@@ -336,6 +386,13 @@ extension MineViewController {
     
     /// 跳转到创建合集界面
     @objc func clickCreateCollection() {
+        let VC = CreateCollectionViewController()
+        let NavC = UINavigationController(rootViewController: VC)
+        present(NavC, animated: true)
+    }
+    
+    /// 跳转到创建文件界面
+    @objc func addMyFileClicked() {
         let VC = CreateCollectionViewController()
         let NavC = UINavigationController(rootViewController: VC)
         present(NavC, animated: true)

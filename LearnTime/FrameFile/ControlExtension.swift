@@ -121,7 +121,7 @@ extension UIButton {
     }
 }
 
-class InsetTextField: UITextField {
+class UICustomTextField: UITextField {
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 12, dy: 10)
     }
@@ -131,8 +131,7 @@ class InsetTextField: UITextField {
     }
 }
 
-class CustomTextView: UITextView {
-    
+class UICustomTextView: UITextView {
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         commonInit()
@@ -144,11 +143,9 @@ class CustomTextView: UITextView {
     }
     
     private func commonInit() {
-        self.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
-        self.contentInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        self.textContainerInset = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
     }
 }
-
 
 func errorLeanCloud(_ error: LCError, view: UIView) {
     switch error.code {

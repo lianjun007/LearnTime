@@ -2,35 +2,35 @@ import UIKit
 import LeanCloud
 import SnapKit
 
-import SwiftUI
-
-@available(iOS 13.0, *)
-struct Login_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            UINavigationController(rootViewController: CreateCollectionViewController())
-        }
-    }
-}
-
-struct ViewControllerPreview: UIViewControllerRepresentable {
-
-    typealias UIViewControllerType = UIViewController
-
-    let viewControllerBuilder: () -> UIViewControllerType
-
-    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-        self.viewControllerBuilder = viewControllerBuilder
-    }
-
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        viewControllerBuilder()
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-    }
-}
+//import SwiftUI
+//
+//@available(iOS 13.0, *)
+//struct Login_Preview: PreviewProvider {
+//    static var previews: some View {
+//        ViewControllerPreview {
+//            UINavigationController(rootViewController: CreateCollectionViewController())
+//        }
+//    }
+//}
+//
+//struct ViewControllerPreview: UIViewControllerRepresentable {
+//
+//    typealias UIViewControllerType = UIViewController
+//
+//    let viewControllerBuilder: () -> UIViewControllerType
+//
+//    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+//        self.viewControllerBuilder = viewControllerBuilder
+//    }
+//
+//    @available(iOS 13.0.0, *)
+//    func makeUIViewController(context: Context) -> UIViewController {
+//        viewControllerBuilder()
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//    }
+//}
 
 /// 创建合集界面的声明内容
 class CreateCollectionViewController: UIViewController, UINavigationControllerDelegate {
@@ -45,11 +45,11 @@ class CreateCollectionViewController: UIViewController, UINavigationControllerDe
     /// 用户封面图的载体
     var collectionCoverBox = UIButton()
     /// 合集标题输入框
-    let titieInputBox = InsetTextField()
+    let titieInputBox = UICustomTextField()
     let partitionButton = UIButton()
     let tagButton = UIButton()
     /// 简介输入框
-    let profileInputBox = UITextView()
+    let profileInputBox = UICustomTextView()
     
     let partitionGroup = DispatchGroup()
     
@@ -198,7 +198,7 @@ extension CreateCollectionViewController {
         }
         
         /// 用户名输入框下方的提示控件的提示内容1
-        let tipsLabel1 = UILabel().fontAdaptive("合集标题不可为空且不可全部由空格组成，可以包含汉字、字母、阿拉伯数字、部分符号、Emoji。", font: JunFont.tips())
+        let tipsLabel1 = UILabel().fontAdaptive("合集标题不可为空且不可全部由空格组成，可以包含汉字、字母、阿拉伯数字、部分符号。", font: JunFont.tips())
             tipsLabel1.textColor = UIColor.black.withAlphaComponent(0.6)
             containerView.addSubview(tipsLabel1)
             tipsLabel1.snp.makeConstraints { make in
@@ -207,7 +207,7 @@ extension CreateCollectionViewController {
                 make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
         }
         
-        return tipsIcon1.snp.bottom
+        return tipsLabel1.snp.bottom
     }
     
     /// 创建模块2的方法
@@ -325,7 +325,6 @@ extension CreateCollectionViewController {
         profileInputBox.tintColor = UIColor.black.withAlphaComponent(0.6)
         profileInputBox.font = JunFont.title2()
         profileInputBox.textColor = UIColor.black.withAlphaComponent(0.6)
-        profileInputBox.text = "合集标题不可为空"
         containerView.addSubview(profileInputBox)
         profileInputBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
@@ -415,43 +414,66 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
     @objc func clickedCreateCollectionButton() {
         guard let coverImage = collectionCoverBox.backgroundImage(for: .normal) else { return }
         guard let coverData = coverImage.pngData() else { return }
+        guard let titleText = titieInputBox.text else { return } // 获取输入框内的合集标题字符串
+        guard let profileText = profileInputBox.text else { return } // 获取输入框内的合集简介字符串
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return } // 获取当前用户的ObjectID
         let coverFile = LCFile(payload: .data(data: coverData))
-        var coverURL = LCFile(url: "")
+        
+        if titleText == "" || partitionTag == "" || partitionTag == "请先选择分区" {
+            self.view.makeToast("合集标题和分区标签不可为空", duration: 1.5, position: .top)
+            return
+        }
         
         let coverLoad = DispatchGroup()
         
+        coverLoad.enter()
         coverLoad.enter()
         
         // 保存图片到服务器
         _ = coverFile.save { result in
             switch result {
             case .success:
+                let coverURL = ""
                 if let value = coverFile.url?.value {
-                    coverURL = LCFile(url: value)
+                    // 获取文件的 object id
+                    let coverURL = coverFile.url?.value
                     self.view.makeToast("图片上传成功，可以前往“关于我的 > 我的文件”查看", duration: 1.5, position: .top)
                     coverLoad.leave()
                 }
+                
+                // 将封面图片URL关联到我的文件中
+                do {
+                    let myFlie = LCObject(className: "FlieIndex")
+                    try myFlie.set("contentOrURL", value: coverURL)
+                    try myFlie.set("type", value: "image")
+                    try myFlie.set("profile", value: "合集<\(titleText)>的封面")
+                    _ = myFlie.save { [self] result in
+                        switch result {
+                        case .success:
+                            view.makeToast("合集 \(titleText) 创建成功", duration: 1.5, position: .top)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+                                dismiss(animated: true, completion: nil)
+                            }
+                        case .failure(error: let error): errorLeanCloud(error, view: view)
+                        }
+                    }
+                    coverLoad.leave()
+                } catch { self.view.makeToast("\(error)\n建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 5, position: .top) }
             case .failure(error: let error): errorLeanCloud(error, view: self.view)
             }
         }
         
-        guard let titleText = titieInputBox.text else { return } // 获取输入框内的合集标题字符串
-        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return } // 获取当前用户的ObjectID
-        
         // 将前置数据汇总创建合集
         coverLoad.notify(queue: .main) { [self] in
             do {
-                // 构建对象
-                let todo = LCObject(className: "Collection")
-                
-                // 为属性赋值
-                if partitionName != "" { try todo.set("title", value: titleText) }
-                try todo.set("cover", value: coverURL)
-                if partitionName != "暂无" { try todo.set("tag", value: partitionTag) }
-                try todo.set("authorObjectId", value: userObjectId)
-                
-                // 将对象保存到云端
-                _ = todo.save { [self] result in
+                let myCollection = LCObject(className: "Collection")
+                try myCollection.set("title", value: titleText)
+                try myCollection.set("cover", value: coverFile)
+                try myCollection.set("tag", value: partitionTag)
+                if profileText != "" { try myCollection.set("profile", value: profileText) }
+                else { try myCollection.set("profile", value: "暂无简介") }
+                try myCollection.set("authorObjectId", value: userObjectId)
+                _ = myCollection.save { [self] result in
                     switch result {
                     case .success:
                         view.makeToast("合集 \(titleText) 创建成功", duration: 1.5, position: .top)
@@ -461,9 +483,7 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
                     case .failure(error: let error): errorLeanCloud(error, view: view)
                     }
                 }
-            } catch {
-                self.view.makeToast("\(error)\n建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 5, position: .top)
-            }
+            } catch { self.view.makeToast("\(error)\n建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 5, position: .top) }
         }
     }
 
@@ -477,6 +497,7 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
                         self.partitionName = item.key
                         self.partitionButton.setTitle(self.partitionName, for: .normal)
                         self.tagButton.setTitle("点击选择", for: .normal)
+                        self.partitionTag = ""
                         self.tagAddMenu()
                     })
                     actionArray.append(action)
@@ -589,9 +610,6 @@ extension CreateCollectionViewController: UITextFieldDelegate, UITextViewDelegat
     
     // 当textView的文本改变时，调用这个方法
     func textViewDidChange(_ textView: UITextView) {
-        // 获取textView的文本内容
-        let text = profileInputBox.text ?? ""
-        
         // 计算textView根据文本内容需要的实际高度
         let size = CGSize(width: profileInputBox.frame.width, height: .infinity)
         let actualHeight = profileInputBox.sizeThatFits(size).height

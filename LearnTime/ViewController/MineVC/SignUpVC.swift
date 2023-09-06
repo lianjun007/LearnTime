@@ -14,13 +14,13 @@ class SignUpViewController: UIViewController {
     var snpTop: ConstraintRelatableTarget!
     
     /// 用户名输入框
-    let userNameInputBox = InsetTextField()
+    let userNameInputBox = UICustomTextField()
     /// 密码输入框
-    let passwordInputBox = InsetTextField()
+    let passwordInputBox = UICustomTextField()
     /// 邮箱地址输入框
-    let emailInputBox = InsetTextField()
+    let emailInputBox = UICustomTextField()
     /// 手机号输入框
-    let phoneInputBox = InsetTextField()
+    let phoneInputBox = UICustomTextField()
 }
 
 // ♻️控制器的生命周期方法

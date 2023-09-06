@@ -130,6 +130,7 @@
 		DA182AB82A357E3D009F73EE /* ContentFile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentFile.plist; sourceTree = "<group>"; };
 		DA3BE8A22A7DB97D001B4D94 /* basic.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = basic.css; sourceTree = "<group>"; };
 		DA3BE8A42A7DFC9B001B4D94 /* Test.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Test.md; sourceTree = "<group>"; };
+		DA54BBB42AA8AB3B00ECD648 /* 狐妖小红娘 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "狐妖小红娘"; sourceTree = "<group>"; };
 		DA54BBC92A46109D0009BF68 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 		DA13A4A22A2E5CE5002F44AB /* LearnTimeTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA54BBB42AA8AB3B00ECD648 /* 狐妖小红娘 */,
 				DA13A4A32A2E5CE5002F44AB /* LearnTimeTests.swift */,
 			);
 			path = LearnTimeTests;
@@ -626,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -680,7 +682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
