@@ -44,9 +44,13 @@ class MineViewController: UIViewController {
     let containerView = UIView()
     
     ///
-    var myCollection: [LCObject] = []
+    var myCollectionArray: [LCObject] = []
     ///
     var myCollectionBoxButtonArray: [UIButton] = []
+    ///
+    var myFileArray: [LCObject] = []
+    ///
+    var myFileBoxButtonArray: [UIButton] = []
     
     /// 自动布局顶部参考，用来流式创建控件时定位
     var snpTop: ConstraintRelatableTarget!
@@ -177,27 +181,27 @@ extension MineViewController {
             make.height.equalTo(collectionBox)
         }
         
-        let coverLoad = DispatchGroup()
-        coverLoad.enter()
-        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
-        let query = LCQuery(className: "Collection")
-        query.whereKey("authorObjectId", .equalTo(userObjectId))
-        _ = query.find { [self] result in
-            switch result {
-            case .success(objects: let item):
-                myCollection = []
-                myCollection = item
-                coverLoad.leave()
-            case .failure(error: let error): errorLeanCloud(error, view: view)
-            }
-        }
-        
-        myCollectionBoxButtonArray = []
-        coverLoad.notify(queue: .main) { [self] in
-            for index in 0 ..< myCollection.count {
-                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
-            }
-        }
+//        let coverLoad = DispatchGroup()
+//        coverLoad.enter()
+//        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
+//        let query = LCQuery(className: "Collection")
+//        query.whereKey("authorObjectId", .equalTo(userObjectId))
+//        _ = query.find { [self] result in
+//            switch result {
+//            case .success(objects: let item):
+//                myCollection = []
+//                myCollection = item
+//                coverLoad.leave()
+//            case .failure(error: let error): errorLeanCloud(error, view: view)
+//            }
+//        }
+//        
+//        myCollectionBoxButtonArray = []
+//        coverLoad.notify(queue: .main) { [self] in
+//            for index in 0 ..< myCollection.count {
+//                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
+//            }
+//        }
         
         return collectionBox.snp.bottom
     }
@@ -257,8 +261,8 @@ extension MineViewController {
         _ = query.find { [self] result in
             switch result {
             case .success(objects: let item):
-                myCollection = []
-                myCollection = item
+                myCollectionArray = []
+                myCollectionArray = item
                 coverLoad.leave()
             case .failure(error: let error): errorLeanCloud(error, view: view)
             }
@@ -266,9 +270,7 @@ extension MineViewController {
         
         myCollectionBoxButtonArray = []
         coverLoad.notify(queue: .main) { [self] in
-            for index in 0 ..< myCollection.count {
-                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
-            }
+            for index in 0 ..< myCollectionArray.count { myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView) }
         }
         
         return collectionBox.snp.bottom
@@ -303,47 +305,45 @@ extension MineViewController {
         }
         titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
         
-        let collectionBox = UIScrollView()
-        collectionBox.isPagingEnabled = true
-        collectionBox.showsHorizontalScrollIndicator = false
-        collectionBox.backgroundColor = UIColor.systemFill
-        collectionBox.layer.cornerRadius = 15
-        containerView.addSubview(collectionBox)
-        collectionBox.snp.makeConstraints { make in
+        let fileBox = UIScrollView()
+        fileBox.isPagingEnabled = true
+        fileBox.showsHorizontalScrollIndicator = false
+        fileBox.backgroundColor = UIColor.systemFill
+        fileBox.layer.cornerRadius = 15
+        containerView.addSubview(fileBox)
+        fileBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
-            make.height.equalTo(100)
             make.bottom.equalToSuperview().offset(-JunSpaced.module())
+            make.height.equalTo(112.5)
         }
         
-        let collectionBoxContentView = UIView()
-        collectionBox.addSubview(collectionBoxContentView)
-        collectionBoxContentView.snp.makeConstraints { make in
-            make.edges.equalTo(collectionBox)
-            make.height.equalTo(collectionBox)
+        let fileBoxContentView = UIView()
+        fileBox.addSubview(fileBoxContentView)
+        fileBoxContentView.snp.makeConstraints { make in
+            make.edges.equalTo(fileBox)
+            make.height.equalTo(fileBox)
         }
         
-        let coverLoad = DispatchGroup()
-        coverLoad.enter()
+        let myFileLoadGroup = DispatchGroup()
+        myFileLoadGroup.enter()
         guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return }
-        let query = LCQuery(className: "Collection")
+        let query = LCQuery(className: "FileIndex")
         query.whereKey("authorObjectId", .equalTo(userObjectId))
         _ = query.find { [self] result in
             switch result {
             case .success(objects: let item):
-                myCollection = []
-                myCollection = item
-                coverLoad.leave()
+                myFileArray = []
+                myFileArray = item
+                myFileLoadGroup.leave()
             case .failure(error: let error): errorLeanCloud(error, view: view)
             }
         }
         
-        myCollectionBoxButtonArray = []
-        coverLoad.notify(queue: .main) { [self] in
-            for index in 0 ..< myCollection.count {
-                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
-            }
+        myFileBoxButtonArray = []
+        myFileLoadGroup.notify(queue: .main) { [self] in
+            for index in 0 ..< myFileArray.count { myFileBuild(index, superView: fileBox, superViewContent: fileBoxContentView) }
         }
     }
 }
@@ -554,12 +554,12 @@ extension MineViewController {
                 make.left.equalTo(0)
                 make.top.equalTo(0).offset(index * (60 + Int(JunSpaced.control())))
             }
-            if index == myCollection.count - 1 { make.right.equalToSuperview() }
+            if index == myCollectionArray.count - 1 { make.right.equalToSuperview() }
         }
         
         let coverView = UIImageView()
         
-        guard let coverURLString = (myCollection[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+        guard let coverURLString = (myCollectionArray[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
         
         guard let coverURL = URL(string: coverURLString) else { return }
         URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
@@ -583,7 +583,7 @@ extension MineViewController {
             make.height.width.equalTo(60)
         }
         
-        guard let collectionTitleText = myCollection[index].get("title")?.stringValue else { return }
+        guard let collectionTitleText = myCollectionArray[index].get("title")?.stringValue else { return }
         let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
         collectionBoxButton.addSubview(collectionTitle)
         collectionTitle.snp.makeConstraints { make in
@@ -591,6 +591,50 @@ extension MineViewController {
             make.height.equalTo(collectionTitle)
             make.left.equalTo(coverView.snp.right).offset(JunSpaced.control())
             make.right.equalTo(0)
+        }
+    }
+    
+    func myFileBuild(_ index: Int, superView: UIView, superViewContent: UIView) {
+        /// 装单个合集的框子
+        let fileBoxButton = UIButton()
+        superViewContent.addSubview(fileBoxButton)
+        myFileBoxButtonArray.append(fileBoxButton)
+        fileBoxButton.snp.makeConstraints { make in
+            make.width.equalTo(superView).multipliedBy(0.25).offset(-JunSpaced.control() * 3 / 4)
+            make.top.equalTo(JunSpaced.control())
+            if index > 0 { make.left.equalTo(myFileBoxButtonArray[index - 1].snp.right).offset(JunSpaced.control())}
+                else { make.left.equalTo(JunSpaced.control()) }
+            if index == myFileArray.count - 1 { make.right.equalToSuperview() }
+        }
+        
+        let coverView = UIImageView()
+        
+        guard let coverURL = URL(string: (myFileArray[index].get("imageURL") as! LCString).stringValue!) else { return }
+        URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
+            if let data = data {
+                let coverImage = UIImage(data: data)
+                DispatchQueue.main.async { if let coverImage = coverImage { coverView.image = coverImage } }
+            }
+        }.resume()
+        
+        coverView.contentMode = .scaleAspectFill
+        coverView.layer.cornerRadius = 10
+        coverView.layer.masksToBounds = true
+        fileBoxButton.addSubview(coverView)
+        coverView.snp.makeConstraints { make in
+            make.top.equalTo(0)
+            make.center.equalTo(fileBoxButton)
+            make.height.width.equalTo(60)
+        }
+        
+        guard let fileProfileText = myFileArray[index].get("profile")?.stringValue else { return }
+        let fileProfile = UILabel().fontAdaptive(fileProfileText, font: JunFont.tips())
+        fileProfile.textAlignment = .center
+        fileProfile.numberOfLines = 2
+        fileBoxButton.addSubview(fileProfile)
+        fileProfile.snp.makeConstraints { make in
+            make.top.equalTo(coverView.snp.bottom).offset(5)
+            make.left.width.equalTo(fileBoxButton)
         }
     }
 }

@@ -429,25 +429,36 @@ extension CreateCollectionViewController: UIImagePickerControllerDelegate {
         coverLoad.enter()
         coverLoad.enter()
         
+        var coverURL = ""
+        var coverURL2 = ""
+        
         // 保存图片到服务器
         _ = coverFile.save { result in
             switch result {
             case .success:
-                let coverURL = ""
+                
                 if let value = coverFile.url?.value {
                     // 获取文件的 object id
-                    let coverURL = coverFile.url?.value
-                    self.view.makeToast("图片上传成功，可以前往“关于我的 > 我的文件”查看", duration: 1.5, position: .top)
+                    if let value = coverFile.url?.value {
+                        coverURL = value
+                        coverURL2 = coverFile.thumbnailURL(.size(width: 180, height: 180))!.absoluteString
+                        self.view.makeToast("图片上传成功，可以前往“关于我的 > 我的文件”查看", duration: 1.5, position: .top)
+                    } else {
+                        coverURL = "errorURL"
+                        self.view.makeToast("图片上传成功但关联文件失败，建议截图前往“软件设置 > 反馈问题 > 特殊错误”处反馈", duration: 1.5, position: .top)
+                    }
                     coverLoad.leave()
                 }
                 
                 // 将封面图片URL关联到我的文件中
                 do {
-                    let myFlie = LCObject(className: "FlieIndex")
-                    try myFlie.set("contentOrURL", value: coverURL)
-                    try myFlie.set("type", value: "image")
-                    try myFlie.set("profile", value: "合集<\(titleText)>的封面")
-                    _ = myFlie.save { [self] result in
+                    let myFile = LCObject(className: "FileIndex")
+                    try myFile.set("contentOrURL", value: coverURL)
+                    try myFile.set("imageURL", value: coverURL2)
+                    try myFile.set("type", value: "image")
+                    try myFile.set("profile", value: "合集<\(titleText)>的封面")
+                    try myFile.set("authorObjectId", value: userObjectId)
+                    _ = myFile.save { [self] result in
                         switch result {
                         case .success:
                             view.makeToast("合集 \(titleText) 创建成功", duration: 1.5, position: .top)

@@ -62,6 +62,7 @@
 		DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA29D27A2A7C1BE30002D162 /* SnapKit */; };
 		DA3BE8A32A7DB97D001B4D94 /* basic.css in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A22A7DB97D001B4D94 /* basic.css */; };
 		DA3BE8A52A7E044B001B4D94 /* Test.md in Resources */ = {isa = PBXBuildFile; fileRef = DA3BE8A42A7DFC9B001B4D94 /* Test.md */; };
+		DA54BBB62AA8C23800ECD648 /* 狐妖小红娘 in Resources */ = {isa = PBXBuildFile; fileRef = DA54BBB52AA8C23800ECD648 /* 狐妖小红娘 */; };
 		DA54BBCA2A46109D0009BF68 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA54BBC92A46109D0009BF68 /* Media.xcassets */; };
 		DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */; };
 		DA6ED6A42A5B997200FB3524 /* SelectedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */; };
@@ -130,7 +131,7 @@
 		DA182AB82A357E3D009F73EE /* ContentFile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentFile.plist; sourceTree = "<group>"; };
 		DA3BE8A22A7DB97D001B4D94 /* basic.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = basic.css; sourceTree = "<group>"; };
 		DA3BE8A42A7DFC9B001B4D94 /* Test.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Test.md; sourceTree = "<group>"; };
-		DA54BBB42AA8AB3B00ECD648 /* 狐妖小红娘 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "狐妖小红娘"; sourceTree = "<group>"; };
+		DA54BBB52AA8C23800ECD648 /* 狐妖小红娘 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "狐妖小红娘"; path = "../../../TMM刮削临时文件夹/狐妖小红娘"; sourceTree = "<group>"; };
 		DA54BBC92A46109D0009BF68 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EssayControl copy.swift"; sourceTree = "<group>"; };
 		DA6ED6A32A5B997200FB3524 /* SelectedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		DA13A4882A2E5CE4002F44AB /* LearnTime */ = {
 			isa = PBXGroup;
 			children = (
+				DA54BBB52AA8C23800ECD648 /* 狐妖小红娘 */,
 				DA13A4F42A2E5DE4002F44AB /* FrameFile */,
 				DA13A4DE2A2E5DAA002F44AB /* DataFile */,
 				DA13A4BC2A2E5D52002F44AB /* ViewController */,
@@ -217,7 +219,6 @@
 		DA13A4A22A2E5CE5002F44AB /* LearnTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA54BBB42AA8AB3B00ECD648 /* 狐妖小红娘 */,
 				DA13A4A32A2E5CE5002F44AB /* LearnTimeTests.swift */,
 			);
 			path = LearnTimeTests;
@@ -446,6 +447,7 @@
 				DA54BBCA2A46109D0009BF68 /* Media.xcassets in Resources */,
 				DA13A4E52A2E5DAA002F44AB /* ContentImage.xcassets in Resources */,
 				DA13A4F12A2E5DAA002F44AB /* Cover.xcassets in Resources */,
+				DA54BBB62AA8C23800ECD648 /* 狐妖小红娘 in Resources */,
 				DA13A4912A2E5CE4002F44AB /* Main.storyboard in Resources */,
 				DA182AB92A357E3D009F73EE /* ContentFile.plist in Resources */,
 				DA13A4EB2A2E5DAA002F44AB /* FeaturedPaperData.plist in Resources */,
