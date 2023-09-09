@@ -183,7 +183,6 @@ class DiscussViewController: UIViewController {
 ////        } else {
 ////            scrollViewNav.frame.origin.y = 44
 ////        }
-////        print(a, collectionView.contentOffset.y, (navigationController?.navigationBar.frame.height)!, scrollViewNav.frame.origin.y)
 ////
 ////    }
 //    

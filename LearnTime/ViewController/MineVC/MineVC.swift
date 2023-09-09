@@ -43,13 +43,13 @@ class MineViewController: UIViewController {
     /// 底层滚动视图的内容视图
     let containerView = UIView()
     
-    ///
     var myCollectionArray: [LCObject] = []
-    ///
     var myCollectionBoxButtonArray: [UIButton] = []
-    ///
+
+    var myEssayArray: [LCObject] = []
+    var myEssayBoxButtonArray: [UIButton] = []
+    
     var myFileArray: [LCObject] = []
-    ///
     var myFileBoxButtonArray: [UIButton] = []
     
     /// 自动布局顶部参考，用来流式创建控件时定位
@@ -181,33 +181,29 @@ extension MineViewController {
             make.height.equalTo(collectionBox)
         }
         
-//        let coverLoad = DispatchGroup()
-//        coverLoad.enter()
-//        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
-//        let query = LCQuery(className: "Collection")
-//        query.whereKey("authorObjectId", .equalTo(userObjectId))
-//        _ = query.find { [self] result in
-//            switch result {
-//            case .success(objects: let item):
-//                myCollection = []
-//                myCollection = item
-//                coverLoad.leave()
-//            case .failure(error: let error): errorLeanCloud(error, view: view)
-//            }
-//        }
-//        
-//        myCollectionBoxButtonArray = []
-//        coverLoad.notify(queue: .main) { [self] in
-//            for index in 0 ..< myCollection.count {
-//                myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView)
-//            }
-//        }
+        let coverLoad = DispatchGroup()
+        coverLoad.enter()
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
+        let query = LCQuery(className: "Collection")
+        query.whereKey("authorObjectId", .equalTo(userObjectId))
+        _ = query.find { [self] result in
+            switch result {
+            case .success(objects: let item):
+                myCollectionArray = []
+                myCollectionArray = item
+                coverLoad.leave()
+            case .failure(error: let error): errorLeanCloud(error, view: view)
+            }
+        }
+        
+        myCollectionBoxButtonArray = []
+        coverLoad.notify(queue: .main) { [self] in for index in 0 ..< myCollectionArray.count { myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView) } }
         
         return collectionBox.snp.bottom
     }
     
     /// 创建模块2的方法
-    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget  {
+    func module2(_ snpTop: ConstraintRelatableTarget) -> ConstraintRelatableTarget {
         /// 模块标题
         let title = UIButton().moduleTitleMode("我的文章", mode: .arrow)
         containerView.addSubview(title)
@@ -235,45 +231,45 @@ extension MineViewController {
         }
         titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
         
-        let collectionBox = UIScrollView()
-        collectionBox.isPagingEnabled = true
-        collectionBox.showsHorizontalScrollIndicator = false
-        containerView.addSubview(collectionBox)
-        collectionBox.snp.makeConstraints { make in
+        let essayBox = UIScrollView()
+        essayBox.isPagingEnabled = true
+        essayBox.showsHorizontalScrollIndicator = false
+        containerView.addSubview(essayBox)
+        essayBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
             make.height.equalTo(180 + JunSpaced.control() * 2)
         }
         
-        let collectionBoxContentView = UIView()
-        collectionBox.addSubview(collectionBoxContentView)
-        collectionBoxContentView.snp.makeConstraints { make in
-            make.edges.equalTo(collectionBox)
-            make.height.equalTo(collectionBox)
+        let essayBoxContentView = UIView()
+        essayBox.addSubview(essayBoxContentView)
+        essayBoxContentView.snp.makeConstraints { make in
+            make.edges.equalTo(essayBox)
+            make.height.equalTo(essayBox)
         }
         
         let coverLoad = DispatchGroup()
         coverLoad.enter()
-        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return collectionBox.snp.bottom }
+        guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return essayBox.snp.bottom }
         let query = LCQuery(className: "Collection")
         query.whereKey("authorObjectId", .equalTo(userObjectId))
         _ = query.find { [self] result in
             switch result {
             case .success(objects: let item):
-                myCollectionArray = []
-                myCollectionArray = item
+                myEssayArray = []
+                myEssayArray = item
                 coverLoad.leave()
             case .failure(error: let error): errorLeanCloud(error, view: view)
             }
         }
         
-        myCollectionBoxButtonArray = []
+        myEssayBoxButtonArray = []
         coverLoad.notify(queue: .main) { [self] in
-            for index in 0 ..< myCollectionArray.count { myCollectionBuild(index, superView: collectionBox, superViewContent: collectionBoxContentView) }
+            for index in 0 ..< myEssayArray.count { myEssayBuild(index, superView: essayBox, superViewContent: essayBoxContentView) }
         }
         
-        return collectionBox.snp.bottom
+        return essayBox.snp.bottom
     }
     
     /// 创建模块3的方法
@@ -542,20 +538,27 @@ extension MineViewController {
     func myCollectionBuild(_ index: Int, superView: UIView, superViewContent: UIView) {
         /// 装单个合集的框子
         let collectionBoxButton = UIButton()
+        collectionBoxButton.layer.cornerRadius = 15
+        collectionBoxButton.layer.masksToBounds = true
         superViewContent.addSubview(collectionBoxButton)
         myCollectionBoxButtonArray.append(collectionBoxButton)
         collectionBoxButton.snp.makeConstraints { make in
-            make.width.equalTo(superView).multipliedBy(0.5).offset(-JunSpaced.control() / 2)
-            make.height.equalTo(60)
-            if index > 2 {
-                make.left.equalTo(myCollectionBoxButtonArray[index - 3].snp.right).offset(JunSpaced.control()) // ⚠️
-                make.top.equalTo(myCollectionBoxButtonArray[index - 3].snp.top)
-            } else {
-                make.left.equalTo(0)
-                make.top.equalTo(0).offset(index * (60 + Int(JunSpaced.control())))
-            }
+            make.width.equalTo(superView).multipliedBy(0.33).offset(-JunSpaced.control() * 0.5)
+            make.top.equalTo(JunSpaced.control())
+            make.bottom.equalTo(0)
+            if index > 0 { make.left.equalTo(myCollectionBoxButtonArray[index - 1].snp.right).offset(JunSpaced.control())}
+                else { make.left.equalTo(0) }
             if index == myCollectionArray.count - 1 { make.right.equalToSuperview() }
         }
+        
+        /// 控件显示内容部分的高斯模糊
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        collectionBoxButton.addSubview(blurView)
+        blurView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        }
+        blurView.isUserInteractionEnabled = false
+        blurView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         
         let coverView = UIImageView()
         
@@ -568,6 +571,7 @@ extension MineViewController {
                 DispatchQueue.main.async {
                     if let coverImage = coverImage {
                         coverView.image = coverImage
+                        collectionBoxButton.setBackgroundImage(coverImage, for: .normal)
                     }
                 }
             }
@@ -578,17 +582,68 @@ extension MineViewController {
         coverView.layer.masksToBounds = true
         collectionBoxButton.addSubview(coverView)
         coverView.snp.makeConstraints { make in
+            make.top.equalTo(JunSpaced.control())
+            make.left.equalTo(JunSpaced.control())
+            make.height.width.equalTo(60)
+        }
+        
+        guard let collectionTitleText = myCollectionArray[index].get("title")?.stringValue else { return }
+        let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.title3())
+        collectionTitle.textColor = UIColor.white
+        collectionBoxButton.addSubview(collectionTitle)
+        collectionTitle.snp.makeConstraints { make in
+            make.top.equalTo(coverView.snp.bottom).offset(JunSpaced.control())
+            make.height.equalTo(collectionTitle)
+            make.left.right.equalTo(JunSpaced.control())
+        }
+    }
+    
+    func myEssayBuild(_ index: Int, superView: UIView, superViewContent: UIView) {
+        /// 装单个合集的框子
+        let essayBoxButton = UIButton()
+        superViewContent.addSubview(essayBoxButton)
+        myEssayBoxButtonArray.append(essayBoxButton)
+        essayBoxButton.snp.makeConstraints { make in
+            make.width.equalTo(superView).multipliedBy(0.5).offset(-JunSpaced.control() / 2)
+            make.height.equalTo(60)
+            if index > 2 {
+                make.left.equalTo(myEssayBoxButtonArray[index - 3].snp.right).offset(JunSpaced.control()) // ⚠️
+                make.top.equalTo(myEssayBoxButtonArray[index - 3].snp.top)
+            } else {
+                make.left.equalTo(0)
+                make.top.equalTo(0).offset(index * (60 + Int(JunSpaced.control())))
+            }
+            if index == myEssayArray.count - 1 { make.right.equalToSuperview() }
+        }
+        
+        let coverView = UIImageView()
+        
+        guard let coverURLString = (myEssayArray[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+        
+        guard let coverURL = URL(string: coverURLString) else { return }
+        URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
+            if let data = data {
+                let coverImage = UIImage(data: data)
+                DispatchQueue.main.async { if let coverImage = coverImage { coverView.image = coverImage } }
+            }
+        }.resume()
+        
+        coverView.contentMode = .scaleAspectFill
+        coverView.layer.cornerRadius = 5
+        coverView.layer.masksToBounds = true
+        essayBoxButton.addSubview(coverView)
+        coverView.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.height.width.equalTo(60)
         }
         
-        guard let collectionTitleText = myCollectionArray[index].get("title")?.stringValue else { return }
-        let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
-        collectionBoxButton.addSubview(collectionTitle)
-        collectionTitle.snp.makeConstraints { make in
+        guard let essayTitleText = myEssayArray[index].get("title")?.stringValue else { return }
+        let essayTitle = UILabel().fontAdaptive(essayTitleText, font: JunFont.text(.bold))
+        essayBoxButton.addSubview(essayTitle)
+        essayTitle.snp.makeConstraints { make in
             make.top.equalTo(5)
-            make.height.equalTo(collectionTitle)
+            make.height.equalTo(essayTitle)
             make.left.equalTo(coverView.snp.right).offset(JunSpaced.control())
             make.right.equalTo(0)
         }

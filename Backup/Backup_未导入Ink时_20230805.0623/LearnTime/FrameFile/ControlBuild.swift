@@ -453,8 +453,6 @@ func largeControlBuild(origin: CGPoint, imageName: String, title: String, title2
     return control
 }
 
-
-
 // type: 类型(自定义: custom, 开关: switch, 跳转: forward)
 // rowTitle:
 // rowHeight: 行高(默认: default, 倍数)

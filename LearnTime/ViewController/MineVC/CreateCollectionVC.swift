@@ -99,7 +99,7 @@ extension CreateCollectionViewController {
             //        // 模块4：输入手机号
             //        snpTop = module4(snpTop)
             //        // 模块5：注册并且登录按钮
-            module5(snpTop)
+            module4(snpTop)
         }
         // 键盘显示和隐藏时触发相关通知
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -336,8 +336,8 @@ extension CreateCollectionViewController {
         return profileInputBox.snp.bottom
     }
     
-    /// 创建模块5的方法
-    func module5(_ snpTop: ConstraintRelatableTarget) {
+    /// 创建模块4的方法
+    func module4(_ snpTop: ConstraintRelatableTarget) {
         /// 注册并且登录的按钮
         let createButton = UIButton()
         createButton.backgroundColor = JunColor.LearnTime1()
