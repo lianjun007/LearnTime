@@ -5,35 +5,35 @@ import SnapKit
 import Toast
 import UIView_Shimmer
 
-import SwiftUI
+//import SwiftUI
 
-@available(iOS 13.0, *)
-struct Login_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerPreview {
-            UINavigationController(rootViewController: MineViewController())
-        }
-    }
-}
-
-struct ViewControllerPreview: UIViewControllerRepresentable {
-
-    typealias UIViewControllerType = UIViewController
-
-    let viewControllerBuilder: () -> UIViewControllerType
-
-    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
-        self.viewControllerBuilder = viewControllerBuilder
-    }
-
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        viewControllerBuilder()
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-    }
-}
+//@available(iOS 13.0, *)
+//struct Login_Preview: PreviewProvider {
+//    static var previews: some View {
+//        ViewControllerPreview {
+//            UINavigationController(rootViewController: MineViewController())
+//        }
+//    }
+//}
+//
+//struct ViewControllerPreview: UIViewControllerRepresentable {
+//
+//    typealias UIViewControllerType = UIViewController
+//
+//    let viewControllerBuilder: () -> UIViewControllerType
+//
+//    init(_ viewControllerBuilder: @escaping () -> UIViewControllerType) {
+//        self.viewControllerBuilder = viewControllerBuilder
+//    }
+//
+//    @available(iOS 13.0.0, *)
+//    func makeUIViewController(context: Context) -> UIViewController {
+//        viewControllerBuilder()
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//    }
+//}
 
 
 /// 界面的声明内容
@@ -161,7 +161,8 @@ extension MineViewController {
             make.top.right.bottom.equalTo(title)
             make.width.equalTo(38)
         }
-        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
+        titleButton.tag = 1
+        titleButton.addTarget(self, action: #selector(createContentClicked), for: .touchUpInside)
         
         let collectionBox = UIScrollView()
         collectionBox.isPagingEnabled = true
@@ -171,7 +172,7 @@ extension MineViewController {
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
             make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
             make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
-            make.height.equalTo(180 + JunSpaced.control() * 2)
+            make.height.equalTo(170)
         }
         
         let collectionBoxContentView = UIView()
@@ -229,7 +230,8 @@ extension MineViewController {
             make.top.right.bottom.equalTo(title)
             make.width.equalTo(38)
         }
-        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
+        titleButton.tag = 2
+        titleButton.addTarget(self, action: #selector(createContentClicked), for: .touchUpInside)
         
         let essayBox = UIScrollView()
         essayBox.isPagingEnabled = true
@@ -252,7 +254,7 @@ extension MineViewController {
         let coverLoad = DispatchGroup()
         coverLoad.enter()
         guard let userObjectId = LCApplication.default.currentUser?.objectId?.stringValue else { return essayBox.snp.bottom }
-        let query = LCQuery(className: "Collection")
+        let query = LCQuery(className: "Essay")
         query.whereKey("authorObjectId", .equalTo(userObjectId))
         _ = query.find { [self] result in
             switch result {
@@ -299,7 +301,8 @@ extension MineViewController {
             make.top.right.bottom.equalTo(title)
             make.width.equalTo(38)
         }
-        titleButton.addTarget(self, action: #selector(addMyFileClicked), for: .touchUpInside)
+        titleButton.tag = 3
+        titleButton.addTarget(self, action: #selector(createContentClicked), for: .touchUpInside)
         
         let fileBox = UIScrollView()
         fileBox.isPagingEnabled = true
@@ -388,10 +391,21 @@ extension MineViewController {
     }
     
     /// 跳转到创建文件界面
-    @objc func addMyFileClicked() {
-        let VC = CreateCollectionViewController()
-        let NavC = UINavigationController(rootViewController: VC)
-        present(NavC, animated: true)
+    @objc func createContentClicked(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            let VC = CreateCollectionViewController()
+            let NavC = UINavigationController(rootViewController: VC)
+            present(NavC, animated: true)
+        case 2:
+            let VC = CreateEssayViewController()
+            let NavC = UINavigationController(rootViewController: VC)
+            present(NavC, animated: true)
+        default:
+            let VC = CreateCollectionViewController()
+            let NavC = UINavigationController(rootViewController: VC)
+            present(NavC, animated: true)
+        }
     }
 }
 
@@ -538,12 +552,12 @@ extension MineViewController {
     func myCollectionBuild(_ index: Int, superView: UIView, superViewContent: UIView) {
         /// 装单个合集的框子
         let collectionBoxButton = UIButton()
-        collectionBoxButton.layer.cornerRadius = 15
+        collectionBoxButton.layer.cornerRadius = 10
         collectionBoxButton.layer.masksToBounds = true
         superViewContent.addSubview(collectionBoxButton)
         myCollectionBoxButtonArray.append(collectionBoxButton)
         collectionBoxButton.snp.makeConstraints { make in
-            make.width.equalTo(superView).multipliedBy(0.33).offset(-JunSpaced.control() * 0.5)
+            make.width.equalTo(115)
             make.top.equalTo(JunSpaced.control())
             make.bottom.equalTo(0)
             if index > 0 { make.left.equalTo(myCollectionBoxButtonArray[index - 1].snp.right).offset(JunSpaced.control())}
@@ -562,7 +576,7 @@ extension MineViewController {
         
         let coverView = UIImageView()
         
-        guard let coverURLString = (myCollectionArray[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+        guard let coverURLString = (myCollectionArray[index].get("cover") as! LCFile).thumbnailURL(.size(width: 300, height: 300))?.absoluteString else { return }
         
         guard let coverURL = URL(string: coverURLString) else { return }
         URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in
@@ -582,19 +596,21 @@ extension MineViewController {
         coverView.layer.masksToBounds = true
         collectionBoxButton.addSubview(coverView)
         coverView.snp.makeConstraints { make in
-            make.top.equalTo(JunSpaced.control())
-            make.left.equalTo(JunSpaced.control())
-            make.height.width.equalTo(60)
+            make.top.equalTo(7.5)
+            make.centerX.equalTo(collectionBoxButton)
+            make.height.width.equalTo(100)
         }
         
         guard let collectionTitleText = myCollectionArray[index].get("title")?.stringValue else { return }
-        let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.title3())
+        let collectionTitle = UILabel().fontAdaptive(collectionTitleText, font: JunFont.text(.bold))
         collectionTitle.textColor = UIColor.white
+        collectionTitle.numberOfLines = 2
         collectionBoxButton.addSubview(collectionTitle)
         collectionTitle.snp.makeConstraints { make in
-            make.top.equalTo(coverView.snp.bottom).offset(JunSpaced.control())
+            make.top.equalTo(coverView.snp.bottom).offset(5)
             make.height.equalTo(collectionTitle)
-            make.left.right.equalTo(JunSpaced.control())
+            make.left.equalTo(4.5)
+            make.right.equalTo(-4.5)
         }
     }
     
@@ -618,7 +634,7 @@ extension MineViewController {
         
         let coverView = UIImageView()
         
-        guard let coverURLString = (myEssayArray[index].get("cover") as! LCFile).thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
+        guard let coverURLString = (myEssayArray[index].get("cover") as? LCFile)?.thumbnailURL(.size(width: 180, height: 180))?.absoluteString else { return }
         
         guard let coverURL = URL(string: coverURLString) else { return }
         URLSession.shared.dataTask(with: URLRequest(url: coverURL)) { (data, response, error) in

@@ -74,6 +74,7 @@
 		DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */ = {isa = PBXBuildFile; productRef = DA70AD142A8514A800CBB2FA /* LeanCloud */; };
 		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
 		DA8D71AB2A80540700566778 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71AA2A80540700566778 /* Trash.swift */; };
+		DAB028162AAD93B6007CCF81 /* CreateEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB028152AAD93B6007CCF81 /* CreateEssayVC.swift */; };
 		DAB0F6FF2AA57F5A0079FE3A /* UIView-Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */; };
 		DAC3AA502A7543EE002E643B /* EssayThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */; };
 		DAF20F0E2A8A786700506FFD /* CreateCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */; };
@@ -141,6 +142,7 @@
 		DA7068602A7175C5000977E9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DA8D71A82A802B2200566778 /* InfoViewControlle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewControlle.swift; sourceTree = "<group>"; };
 		DA8D71AA2A80540700566778 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
+		DAB028152AAD93B6007CCF81 /* CreateEssayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEssayVC.swift; sourceTree = "<group>"; };
 		DAC3AA4F2A7543EE002E643B /* EssayThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssayThemeViewController.swift; sourceTree = "<group>"; };
 		DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollectionVC.swift; sourceTree = "<group>"; };
 		DAF514172A72A84C009EC9B1 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				DA0253F62A85293D00D5FBFA /* SignUpVC.swift */,
 				DA6FDED42A87EBC200B18A0C /* SignInVC.swift */,
 				DAF20F0D2A8A786700506FFD /* CreateCollectionVC.swift */,
+				DAB028152AAD93B6007CCF81 /* CreateEssayVC.swift */,
 			);
 			path = MineVC;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				DA6FDED32A87EB8E00B18A0C /* AccountVC.swift in Sources */,
 				DA13A4D32A2E5D52002F44AB /* MineVC.swift in Sources */,
 				DAF5141A2A73CC68009EC9B1 /* ControlExtension.swift in Sources */,
+				DAB028162AAD93B6007CCF81 /* CreateEssayVC.swift in Sources */,
 				DA13A4CD2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 				DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */,
 				DA13A4FB2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
