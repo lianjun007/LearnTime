@@ -72,6 +72,7 @@
 		DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DA6FDEDB2A88583700B18A0C /* Toast */; };
 		DA7068612A7175C5000977E9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7068602A7175C5000977E9 /* UserDefaults.swift */; };
 		DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */ = {isa = PBXBuildFile; productRef = DA70AD142A8514A800CBB2FA /* LeanCloud */; };
+		DA7BB4982AAF139E001C96B2 /* JXSegmentedView in Frameworks */ = {isa = PBXBuildFile; productRef = DA7BB4972AAF139E001C96B2 /* JXSegmentedView */; };
 		DA8D71A92A802B2200566778 /* InfoViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71A82A802B2200566778 /* InfoViewControlle.swift */; };
 		DA8D71AB2A80540700566778 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D71AA2A80540700566778 /* Trash.swift */; };
 		DAB028162AAD93B6007CCF81 /* CreateEssayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB028152AAD93B6007CCF81 /* CreateEssayVC.swift */; };
@@ -157,6 +158,7 @@
 				DA70AD152A8514A800CBB2FA /* LeanCloud in Frameworks */,
 				DAB0F6FF2AA57F5A0079FE3A /* UIView-Shimmer in Frameworks */,
 				DAF5B1F92A8467200048B038 /* Ink in Frameworks */,
+				DA7BB4982AAF139E001C96B2 /* JXSegmentedView in Frameworks */,
 				DA29D27B2A7C1BE30002D162 /* SnapKit in Frameworks */,
 				DA6FDEDC2A88583700B18A0C /* Toast in Frameworks */,
 				DA0C48472A7F179000658550 /* Yams in Frameworks */,
@@ -343,6 +345,7 @@
 				DA70AD142A8514A800CBB2FA /* LeanCloud */,
 				DA6FDEDB2A88583700B18A0C /* Toast */,
 				DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */,
+				DA7BB4972AAF139E001C96B2 /* JXSegmentedView */,
 			);
 			productName = LearnTime;
 			productReference = DA13A4862A2E5CE4002F44AB /* LearnTime.app */;
@@ -423,6 +426,7 @@
 				DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */,
 				DA6FDEDA2A88583600B18A0C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				DAB0F6FD2AA57F5A0079FE3A /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
+				DA7BB4962AAF139E001C96B2 /* XCRemoteSwiftPackageReference "JXSegmentedView" */,
 			);
 			productRefGroup = DA13A4872A2E5CE4002F44AB /* Products */;
 			projectDirPath = "";
@@ -910,6 +914,14 @@
 				minimumVersion = 17.11.0;
 			};
 		};
+		DA7BB4962AAF139E001C96B2 /* XCRemoteSwiftPackageReference "JXSegmentedView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pujiaxin33/JXSegmentedView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
 		DAB0F6FD2AA57F5A0079FE3A /* XCRemoteSwiftPackageReference "UIView-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/omerfarukozturk/UIView-Shimmer.git";
@@ -948,6 +960,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA70AD132A8514A800CBB2FA /* XCRemoteSwiftPackageReference "swift-sdk" */;
 			productName = LeanCloud;
+		};
+		DA7BB4972AAF139E001C96B2 /* JXSegmentedView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA7BB4962AAF139E001C96B2 /* XCRemoteSwiftPackageReference "JXSegmentedView" */;
+			productName = JXSegmentedView;
 		};
 		DAB0F6FE2AA57F5A0079FE3A /* UIView-Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
