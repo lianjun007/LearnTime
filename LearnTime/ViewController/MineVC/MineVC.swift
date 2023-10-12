@@ -165,13 +165,11 @@ extension MineViewController {
         titleButton.addTarget(self, action: #selector(createContentClicked), for: .touchUpInside)
         
         let collectionBox = UIScrollView()
-        collectionBox.isPagingEnabled = true
         collectionBox.showsHorizontalScrollIndicator = false
         containerView.addSubview(collectionBox)
         collectionBox.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(JunSpaced.control())
-            make.left.equalTo(containerView.safeAreaLayoutGuide).offset(JunSpaced.screen())
-            make.right.equalTo(containerView.safeAreaLayoutGuide).offset(-JunSpaced.screen())
+            make.left.right.equalTo(0)
             make.height.equalTo(170)
         }
         
@@ -561,8 +559,8 @@ extension MineViewController {
             make.top.equalTo(JunSpaced.control())
             make.bottom.equalTo(0)
             if index > 0 { make.left.equalTo(myCollectionBoxButtonArray[index - 1].snp.right).offset(JunSpaced.control())}
-                else { make.left.equalTo(0) }
-            if index == myCollectionArray.count - 1 { make.right.equalToSuperview() }
+            else { make.left.equalTo(superViewContent.safeAreaLayoutGuide).offset(JunSpaced.screen()) }
+            if index == myCollectionArray.count - 1 { make.right.equalTo(superViewContent.safeAreaLayoutGuide).offset(-JunSpaced.screen()) }
         }
         
         /// 控件显示内容部分的高斯模糊

@@ -132,15 +132,6 @@ extension SettingViewController {
 
      // 实现观察者方法
     @objc func accountChange() {
-        
-//            // 记录当前滚动视图的偏移量
-//            var offset: CGPoint?
-//            for subview in view.subviews {
-//                if let scrollView = subview as? UIScrollView {
-//                    offset = scrollView.contentOffset
-//                    break
-//                }
-//            }
     
             // 移除旧的滚动视图
             for subview in view.subviews {
