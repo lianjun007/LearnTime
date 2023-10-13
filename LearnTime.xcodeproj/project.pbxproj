@@ -48,12 +48,12 @@
 		DA13A4F12A2E5DAA002F44AB /* Cover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4E42A2E5DAA002F44AB /* Cover.xcassets */; };
 		DA13A4F22A2E5DAA002F44AB /* Cover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4E42A2E5DAA002F44AB /* Cover.xcassets */; };
 		DA13A4F32A2E5DAB002F44AB /* Cover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13A4E42A2E5DAA002F44AB /* Cover.xcassets */; };
-		DA13A4F82A2E5DE4002F44AB /* BasicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* BasicData.swift */; };
-		DA13A4F92A2E5DE4002F44AB /* BasicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* BasicData.swift */; };
-		DA13A4FA2A2E5DE4002F44AB /* BasicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* BasicData.swift */; };
-		DA13A4FB2A2E5DE4002F44AB /* ControlBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */; };
-		DA13A4FC2A2E5DE4002F44AB /* ControlBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */; };
-		DA13A4FD2A2E5DE4002F44AB /* ControlBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */; };
+		DA13A4F82A2E5DE4002F44AB /* JunData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* JunData.swift */; };
+		DA13A4F92A2E5DE4002F44AB /* JunData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* JunData.swift */; };
+		DA13A4FA2A2E5DE4002F44AB /* JunData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F52A2E5DE4002F44AB /* JunData.swift */; };
+		DA13A4FB2A2E5DE4002F44AB /* JunControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* JunControl.swift */; };
+		DA13A4FC2A2E5DE4002F44AB /* JunControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* JunControl.swift */; };
+		DA13A4FD2A2E5DE4002F44AB /* JunControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F62A2E5DE4002F44AB /* JunControl.swift */; };
 		DA13A4FE2A2E5DE4002F44AB /* DataInvoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */; };
 		DA13A4FF2A2E5DE4002F44AB /* DataInvoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */; };
 		DA13A5002A2E5DE4002F44AB /* DataInvoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */; };
@@ -126,8 +126,8 @@
 		DA13A4E02A2E5DAA002F44AB /* FeaturedCollectionsData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FeaturedCollectionsData.plist; sourceTree = "<group>"; };
 		DA13A4E12A2E5DAA002F44AB /* FeaturedPaperData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FeaturedPaperData.plist; sourceTree = "<group>"; };
 		DA13A4E42A2E5DAA002F44AB /* Cover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cover.xcassets; sourceTree = "<group>"; };
-		DA13A4F52A2E5DE4002F44AB /* BasicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicData.swift; sourceTree = "<group>"; };
-		DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlBuild.swift; sourceTree = "<group>"; };
+		DA13A4F52A2E5DE4002F44AB /* JunData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JunData.swift; sourceTree = "<group>"; };
+		DA13A4F62A2E5DE4002F44AB /* JunControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JunControl.swift; sourceTree = "<group>"; };
 		DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataInvoke.swift; sourceTree = "<group>"; };
 		DA15E4A92A4221E2002CF9C0 /* SettingImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SettingImage.xcassets; sourceTree = "<group>"; };
 		DA182AB82A357E3D009F73EE /* ContentFile.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentFile.plist; sourceTree = "<group>"; };
@@ -205,6 +205,7 @@
 		DA13A4882A2E5CE4002F44AB /* LearnTime */ = {
 			isa = PBXGroup;
 			children = (
+				DA5D287E2AD8FFFF00249408 /* JunUI */,
 				DA13A4F42A2E5DE4002F44AB /* FrameFile */,
 				DA13A4DE2A2E5DAA002F44AB /* DataFile */,
 				DA13A4BC2A2E5D52002F44AB /* ViewController */,
@@ -279,9 +280,7 @@
 				DA3BE8A42A7DFC9B001B4D94 /* Test.md */,
 				DA3BE8A22A7DB97D001B4D94 /* basic.css */,
 				DA7068602A7175C5000977E9 /* UserDefaults.swift */,
-				DA13A4F52A2E5DE4002F44AB /* BasicData.swift */,
 				DAF514192A73CC68009EC9B1 /* ControlExtension.swift */,
-				DA13A4F62A2E5DE4002F44AB /* ControlBuild.swift */,
 				DA13A4F72A2E5DE4002F44AB /* DataInvoke.swift */,
 				DA5C73BA2A4B7CB500EC672A /* EssayControl copy.swift */,
 				DA8D71AA2A80540700566778 /* Trash.swift */,
@@ -296,6 +295,15 @@
 				DA54BBC92A46109D0009BF68 /* Media.xcassets */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		DA5D287E2AD8FFFF00249408 /* JunUI */ = {
+			isa = PBXGroup;
+			children = (
+				DA13A4F52A2E5DE4002F44AB /* JunData.swift */,
+				DA13A4F62A2E5DE4002F44AB /* JunControl.swift */,
+			);
+			path = JunUI;
 			sourceTree = "<group>";
 		};
 		DA6CB6772AD53B8C00847F95 /* DiscussView */ = {
@@ -515,8 +523,8 @@
 				DAB028162AAD93B6007CCF81 /* CreateEssayVC.swift in Sources */,
 				DA13A4CD2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 				DA5C73BB2A4B7CB500EC672A /* EssayControl copy.swift in Sources */,
-				DA13A4FB2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
-				DA13A4F82A2E5DE4002F44AB /* BasicData.swift in Sources */,
+				DA13A4FB2A2E5DE4002F44AB /* JunControl.swift in Sources */,
+				DA13A4F82A2E5DE4002F44AB /* JunData.swift in Sources */,
 				DA8D71AB2A80540700566778 /* Trash.swift in Sources */,
 				DA13A4C72A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
 				DA13A48C2A2E5CE4002F44AB /* SceneDelegate.swift in Sources */,
@@ -535,11 +543,11 @@
 				DA13A4D12A2E5D52002F44AB /* SuggestViewController.swift in Sources */,
 				DA13A4FF2A2E5DE4002F44AB /* DataInvoke.swift in Sources */,
 				DA13A4C82A2E5D52002F44AB /* DiscussViewController.swift in Sources */,
-				DA13A4F92A2E5DE4002F44AB /* BasicData.swift in Sources */,
+				DA13A4F92A2E5DE4002F44AB /* JunData.swift in Sources */,
 				DA13A4CB2A2E5D52002F44AB /* CourseViewController.swift in Sources */,
 				DA13A4A42A2E5CE5002F44AB /* LearnTimeTests.swift in Sources */,
 				DA13A4DC2A2E5D86002F44AB /* ViewController.swift in Sources */,
-				DA13A4FC2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
+				DA13A4FC2A2E5DE4002F44AB /* JunControl.swift in Sources */,
 				DA13A4CE2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,11 +556,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA13A4FA2A2E5DE4002F44AB /* BasicData.swift in Sources */,
+				DA13A4FA2A2E5DE4002F44AB /* JunData.swift in Sources */,
 				DA13A4CF2A2E5D52002F44AB /* EssayViewController.swift in Sources */,
 				DA13A4D22A2E5D52002F44AB /* SuggestViewController.swift in Sources */,
 				DA13A4DD2A2E5D86002F44AB /* ViewController.swift in Sources */,
-				DA13A4FD2A2E5DE4002F44AB /* ControlBuild.swift in Sources */,
+				DA13A4FD2A2E5DE4002F44AB /* JunControl.swift in Sources */,
 				DA13A4B02A2E5CE5002F44AB /* LearnTimeUITestsLaunchTests.swift in Sources */,
 				DA13A4AE2A2E5CE5002F44AB /* LearnTimeUITests.swift in Sources */,
 				DA13A5002A2E5DE4002F44AB /* DataInvoke.swift in Sources */,

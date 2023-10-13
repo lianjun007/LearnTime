@@ -11,8 +11,8 @@ struct Initialize {
         // 设置界面背景色
         switch mode {
         case .basic: ViewController.view.backgroundColor = JunColor.background()
-        case .group: ViewController.view.backgroundColor = JunColor.groupBackground()
-        default: ViewController.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0)
+        case .group: ViewController.view.backgroundColor = JunColor.controlBackground()
+        default: ViewController.view.backgroundColor = JunColor.background()
         }
         // 设置导航栏标题
         ViewController.title = navigaionTitle
@@ -96,7 +96,7 @@ struct SettingControl {
         /// 控件上方的说明（`caption`）部分
         let captionLabel = UILabel().fontAdaptive(caption ?? "", font: JunFont.tips())
         if caption != nil {
-            captionLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+            captionLabel.textColor = JunColor.content2()
             settingControl.addSubview(captionLabel)
             captionLabel.snp.makeConstraints { make in
                 make.top.equalTo(0)
@@ -158,7 +158,7 @@ struct SettingControl {
             let rowLabelLeft = UILabel()
             rowLabelLeft.text = label?[index] ?? " "
             rowLabelLeft.font = JunFont.text(.regular)
-            rowLabelLeft.textColor = UIColor.black
+            rowLabelLeft.textColor = JunColor.content()
             rowLabelLeft.sizeToFit()
             row.addSubview(rowLabelLeft)
             rowLabelLeft.snp.makeConstraints { make in
@@ -173,7 +173,7 @@ struct SettingControl {
             if index != 0 {
                 // 创建线条并且设置相关属性
                 let segmentedLine = UIView()
-                segmentedLine.backgroundColor = UIColor(cgColor: JunColor.segmentedLine().cgColor)
+                segmentedLine.backgroundColor = JunColor.segmentedLine()
                 settingTable.addSubview(segmentedLine)
                 // 使用SnapKit来设置线条的约束
                 segmentedLine.snp.makeConstraints { make in
@@ -202,7 +202,7 @@ struct SettingControl {
         /// 控件下方的提示（`tips`）部分
         let tipsLabel = UILabel().fontAdaptive(tips ?? "", font: JunFont.tips())
         if tips != nil {
-            tipsLabel.textColor = UIColor.black.withAlphaComponent(0.6)
+            tipsLabel.textColor = JunColor.content2()
             settingControl.addSubview(tipsLabel)
             tipsLabel.snp.makeConstraints { make in
                 make.top.equalTo(settingTable.snp.bottom).offset(6)
@@ -224,7 +224,7 @@ struct SettingControl {
         /// 设置控件跳转类型行的跳转箭头图标
         let rowIcon = UIImageView()
         rowIcon.image = UIImage(systemName: "chevron.forward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        rowIcon.tintColor = UIColor.black.withAlphaComponent(0.5)
+        rowIcon.tintColor = JunColor.content3()
         row.addSubview(rowIcon)
         rowIcon.snp.makeConstraints { make in
             make.top.equalTo(14)
@@ -241,7 +241,7 @@ struct SettingControl {
         } // 处理空行或者数组数不够的情况
         rowLabel.text = string
         rowLabel.font = JunFont.text(.regular)
-        rowLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        rowLabel.textColor = JunColor.content2()
         rowLabel.sizeToFit()
         rowLabel.textAlignment = .right
         
@@ -257,7 +257,7 @@ struct SettingControl {
         /// 设置控件跳转类型行的跳转箭头图标
         let rowIcon = UIImageView()
         rowIcon.image = UIImage(systemName: "chevron.forward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        rowIcon.tintColor = UIColor.black.withAlphaComponent(0.5)
+        rowIcon.tintColor = JunColor.content3()
         row.addSubview(rowIcon)
         rowIcon.snp.makeConstraints { make in
             make.top.equalTo(14)
@@ -274,7 +274,7 @@ struct SettingControl {
         } // 处理空行或者数组数不够的情况
         rowLabel.text = string
         rowLabel.font = JunFont.text(.regular)
-        rowLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        rowLabel.textColor = JunColor.content3()
         rowLabel.sizeToFit()
         rowLabel.textAlignment = .right
         
@@ -360,12 +360,12 @@ struct ShowcaseControl {
                                                 UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 120))
         }
         blurView.isUserInteractionEnabled = false
-        blurView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+        blurView.backgroundColor = JunColor.whiteBlur()
         
         /// 设置控件的标题
         let largeTitle = UILabel()
         largeTitle.text = title
-        largeTitle.textColor = UIColor.black
+        largeTitle.textColor = JunColor.content()
         largeTitle.font = JunFont.title2()
         largeTitle.sizeToFit()
         largeTitle.isUserInteractionEnabled = false
@@ -380,7 +380,7 @@ struct ShowcaseControl {
         // 设置控件的副标题(作者名)
         let smallTitle = UILabel(frame: CGRect(x: !direction ? JunSpaced.screen(): mediumControlImageWidth + JunSpaced.screen(), y: mediumControlSize.height / 5 * 3, width: 0, height: 0))
         smallTitle.text = text
-        smallTitle.textColor = UIColor.black
+        smallTitle.textColor = JunColor.content()
         smallTitle.font = JunFont.text()
         smallTitle.sizeToFit()
         smallTitle.isUserInteractionEnabled = false
@@ -429,12 +429,12 @@ struct ShowcaseControl {
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0))
         }
         blurView.isUserInteractionEnabled = false
-        blurView.backgroundColor = .black.withAlphaComponent(0.6)
+        blurView.backgroundColor = JunColor.darkBlur()
         
         // 设置控件的标题
         let largeTitle = UILabel()
         largeTitle.text = title
-        largeTitle.textColor = UIColor.white
+        largeTitle.textColor = JunColor.background()
         largeTitle.font = JunFont.title2()
         largeTitle.sizeToFit()
         largeTitle.isUserInteractionEnabled = false
@@ -448,7 +448,7 @@ struct ShowcaseControl {
         // 设置控件的副标题(作者名)
         let smallTitle = UILabel()
         smallTitle.text = text
-        smallTitle.textColor = UIColor.white
+        smallTitle.textColor = JunColor.background()
         smallTitle.font = JunFont.text()
         smallTitle.sizeToFit()
         smallTitle.isUserInteractionEnabled = false
@@ -480,7 +480,7 @@ func settingControlBuild(title: String, tips: String, _ superView: UIView, _ poi
         settingModuleTitle.font = JunFont.tips()
         settingModuleTitle.sizeToFit()
         settingModuleTitle.frame.size.width = JunScreen.basicWidth() - 36
-        settingModuleTitle.textColor = UIColor.black.withAlphaComponent(0.6)
+        settingModuleTitle.textColor = JunColor.content2()
         superView.addSubview(settingModuleTitle)
     }
     
@@ -499,7 +499,7 @@ func settingControlBuild(title: String, tips: String, _ superView: UIView, _ poi
     
     // 设置主体框
     let settingModuleBox = UIView(frame: CGRect(x: JunSpaced.screenAuto(), y: settingModuleTitle.frame.maxY + 6, width: JunScreen.basicWidth(), height: settingModuleHeight))
-    settingModuleBox.backgroundColor = UIColor.systemBackground
+    settingModuleBox.backgroundColor = JunColor.controlBackground()
     settingModuleBox.layer.cornerRadius = 12
     settingModuleBox.clipsToBounds = true
     superView.addSubview(settingModuleBox)
@@ -511,7 +511,7 @@ func settingControlBuild(title: String, tips: String, _ superView: UIView, _ poi
         settingModuleTips.font = JunFont.tips()
         settingModuleTips.sizeToFit()
         settingModuleTips.frame.size.width = settingModuleBox.frame.width - 36
-        settingModuleTips.textColor = UIColor.black.withAlphaComponent(0.6)
+        settingModuleTips.textColor = JunColor.content2()
         superView.addSubview(settingModuleTips)
     }
     
@@ -528,13 +528,13 @@ func settingControlBuild(title: String, tips: String, _ superView: UIView, _ poi
             rowTitle.frame.origin = CGPoint(x: 18, y: 13)
             rowTitle.text = item["rowTitle"]
             rowTitle.font = JunFont.text()
-            rowTitle.textColor = UIColor.black
+            rowTitle.textColor = JunColor.content()
             rowTitle.sizeToFit()
             rowBox.addSubview(rowTitle)
             
             let rowIcon = UIImageView(frame: CGRect(x: settingModuleBox.frame.maxX - 45, y: 14, width: 10, height: 16))
             rowIcon.image = UIImage(systemName: "chevron.forward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            rowIcon.tintColor = UIColor.black.withAlphaComponent(0.5)
+            rowIcon.tintColor = JunColor.content3()
             rowBox.addSubview(rowIcon)
         case "switch": break
         default:

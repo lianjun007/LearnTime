@@ -1,4 +1,4 @@
-// 常用的标准化数据封装起来，方便调用和统一修改
+// 常用的标准化数据，方便调用和统一修改
 
 import Foundation
 import UIKit
@@ -159,6 +159,21 @@ struct JunFont {
     }
 }
 
+extension UIColor {
+    convenience init(light: UIColor, dark: UIColor) {
+        self.init { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .light, .unspecified:
+                return light
+            case .dark:
+                return dark
+            @unknown default:
+                return light
+            }
+        }
+    }
+}
+
 /// 颜色结构体，选择对应的方法返回对应的`UIColor`
 /// # 使用方法
 /// ```swift
@@ -201,20 +216,52 @@ struct JunFont {
 struct JunColor {
     /// 标准界面的背景色
     static func background() -> UIColor {
-        UIColor.white
+        UIColor(light: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.000),
+                dark: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.000))
     }
-    /// 有默认分组控件界面的背景色（例如设置界面背景）
-    static func groupBackground() -> UIColor {
-        UIColor.systemGroupedBackground
+    /// 有白色控件界面的背景色
+    static func controlBackground() -> UIColor {
+        UIColor(light: UIColor(red: 242/255.0, green: 242/255.0, blue: 247/255.0, alpha: 1.000),
+                dark: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.000))
     }
-    /// 默认分组控件的主体色（例如设置界面控件）
+    /// 默认控件的背景色
     static func control() -> UIColor {
-        UIColor.white
+        UIColor(light: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.000),
+                dark: UIColor(red: 28/255.0, green: 28/255.0, blue: 30/255.0, alpha: 1.000))
     }
-    /// 设置控件的行间分隔线颜色
+    /// 默认控件的行间分隔线颜色
     static func segmentedLine() -> UIColor {
-        UIColor.black.withAlphaComponent(0.2)
+        UIColor(light: UIColor(red: 226/255.0, green: 226/255.0, blue: 227/255.0, alpha: 1.000),
+                dark: UIColor(red: 45/255.0, green: 45/255.0, blue: 48/255.0, alpha: 1.000))
     }
+    
+    /// 内容颜色
+    static func content() -> UIColor {
+        UIColor(light: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.000),
+                dark: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.000))
+    }
+    /// 内容颜色2
+    static func content2() -> UIColor {
+        UIColor(light: UIColor(red: 102/255.0, green: 102/255.0, blue: 104/255.0, alpha: 1.000),
+                dark: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.000))
+    }
+
+    /// 内容颜色3
+    static func content3() -> UIColor {
+        UIColor(light: UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 1.000),
+                dark: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.000))
+    }
+
+    /// 高斯模糊透明蒙版颜色
+    static func darkBlur() -> UIColor {
+        UIColor(light: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.600),
+                dark: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.400))
+    }
+    static func whiteBlur() -> UIColor {
+        UIColor(light:  UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.400),
+                dark: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.600))
+    }
+    
     /// 主题色（紫）
     static func LearnTime0() -> UIColor {
         UIColor(red: 165/255.0, green: 164/255.0, blue: 231/255.0, alpha: 1.000)
